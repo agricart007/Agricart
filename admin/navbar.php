@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin dasboard</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
 <input type="checkbox" name="" id="menu-toggle">
     <div class="sidebar">
         <div class="sidebar-container">
@@ -9,51 +19,51 @@
             </div>
 
             <div class="sidebar-avartar">
-                <div>
-                    <img src="images/adminfarmerlogo.png" alt="">
-                </div>
                 <div class="avartar-info">
                     <div class="avartar-text">
-                        <h4>
-                            Tom Cruise
-                        </h4>
-                        <small>
-                            1092-1234-235
-                        </small>
-
+                        <h3>
+                            Admin
+                        </h3>
                     </div>
-                    <span class="las la-angle-double-down"></span>
+                    
                 </div>
             </div>
 
             <div class="sidebar-menu">
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="index.php">
                             <span class="las la-adjust"></span>
                             <span>Dasboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="sales.php">
                             <span class="las la-chart-bar"></span>
                             <span> Sales</span>
                         </a>
                     </li>
+                    
                     <li>
-                        <a href="" class="active">
-                            <span class="las la-chart-pie"></span>
-                            <span>Analytics</span>
+                        <a href="products.php">
+                            <span class="las la-user"></span>
+                            <span>Products</span>
                         </a>
                     </li>
                     <li>
                         <a href="">
                             <span class="las la-user"></span>
+                            <span>Message</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="buyer.php">
+                            <span class="las la-user"></span>
                             <span>Buyer</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="seller.php">
                             <span class="las la-user"></span>
                             <span>Seller</span>
                         </a>
@@ -85,4 +95,6 @@
                 <button class="btn btn-main btn-block">Create Now</button>
             </div>
         </div>
-    </div>
+    </div>    
+</body>
+</html>

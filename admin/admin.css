@@ -119,6 +119,9 @@ img {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.avartar-text h3{
+    color: #444;
+}
 
 .sidebar-menu li {
     margin-bottom: .2rem;
@@ -253,7 +256,7 @@ main {
 }
 
 .analytics {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 2.5rem;
     margin-bottom: 3rem;

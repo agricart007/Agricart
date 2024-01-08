@@ -14,15 +14,13 @@
     <div class="main-content">
         <header>
             <div class="header-title-wrapper">
-                <label for="menu-toggle">
-                    <span class="las la-bars"></span>
-                </label>
+                
                 <div class="header-title">
                     <h1>
-                        Analytics
+                        Dashboard
                     </h1>
                     <p>
-                        Display Analytics About Your Website <span class="las la-chart-lin"></span>
+                        Display Analytics About Website <span class="las la-chart-lin"></span>
                     </p>
                 </div>
             </div>
@@ -35,36 +33,24 @@
                 <h3 class="section-head">Overview</h3>
                 <div class="analytics">
                     <div class="analytic">
-                        <div class="analytic-icon">
-                            <span class="las la-eye"></span>
-                        </div>
                         <div class="analytic-info">
                             <h4>Sales</h4>
                             <h1>10.3M</h1>
                         </div>
                     </div>
                     <div class="analytic">
-                        <div class="analytic-icon">
-                            <span class="las la-users"></span>
-                        </div>
                         <div class="analytic-info">
                             <h4>Users</h4>
                             <h1>10.3M</h1>
                         </div>
                     </div>
                     <div class="analytic">
-                        <div class="analytic-icon">
-                            <span class="las la-users"></span>
-                        </div>
                         <div class="analytic-info">
-                            <h4>Viewers</h4>
-                            <h1>10.3M <small class="text-success">12%</small></h1>
+                            <h4>Buyer</h4>
+                            <h1>10.3M</h1>
                         </div>
                     </div>
                     <div class="analytic">
-                        <div class="analytic-icon">
-                            <span class="las la-store"></span>
-                        </div>
                         <div class="analytic-info">
                             <h4>Orders</h4>
                             <h1>10.3M</h1>
