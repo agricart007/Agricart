@@ -45,8 +45,8 @@ $result = mysqli_query($conn,$query);
                                     <th>Name</th>
                                     <th>E-mail</th>
                                     <th>Contact</th>
-                                    
                                     <th>Created on</th>
+                                    <th>Tools</th>
                                 </tr>
                             </thead>
                             <tbody>

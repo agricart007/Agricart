@@ -267,9 +267,15 @@ main {
     padding: 1.5rem;
     border-radius: 10px;
     display: flex;
-    padding-left: 90px;
-}
 
+}
+.analytic i{
+    padding-top: 10px;
+    padding-right: 20px;
+    font-size: 40px;
+    height: 10px;
+    /* width: 10px; */
+}
 .analytic-info h4 {
     font-weight: 400;
     color: #555;

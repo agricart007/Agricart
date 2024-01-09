@@ -6,6 +6,8 @@
     <title>Admin dasboard</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
    
@@ -33,26 +35,30 @@
                 <h3 class="section-head">Overview</h3>
                 <div class="analytics">
                     <div class="analytic">
+                    <i class="fa-solid fa-cart-shopping"></i>
                         <div class="analytic-info">
                             <h4>Sales</h4>
                             <h1>10.3M</h1>
                         </div>
                     </div>
                     <div class="analytic">
+                    <i class="fa-solid fa-users"></i>
                         <div class="analytic-info">
                             <h4>Users</h4>
                             <h1>10.3M</h1>
                         </div>
                     </div>
                     <div class="analytic">
+                    <i class="fa-solid fa-users"></i>
                         <div class="analytic-info">
                             <h4>Buyer</h4>
                             <h1>10.3M</h1>
                         </div>
                     </div>
                     <div class="analytic">
+                    <i class="fa-solid fa-barcode"></i>
                         <div class="analytic-info">
-                            <h4>Orders</h4>
+                            <h4>Products</h4>
                             <h1>10.3M</h1>
                         </div>
                     </div>
