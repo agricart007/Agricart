@@ -1,0 +1,248 @@
+*{
+    font-family: 'spartan', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img.logo{
+    height: 80px;
+    width: 130px;
+}
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background: #c4ecd0;
+    box-shadow: 0 5px 15px 5px rgb(0,0,0,0.06);
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#navbar li{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+#navbar li a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.3s ease;
+}
+#navbar li.icon a{
+    font-size: 23px;
+    font-weight: 800;
+}
+#navbar li.module a:hover,
+#navbar li.module a.active{
+    color: #088178;
+}
+#navbar li.module a.active::after,
+#navbar li.module a:hover::after{
+    content: "";
+    width: 60%;
+    height: 2px;
+    background: #088178;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+#navbar li.icon a:hover{
+    color: #088178;
+}
+#page-hadder{
+    margin-bottom: 50px;
+    padding: 50px;
+    text-align: center;
+    background-image: url("../images/contact-head.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+}
+#page-hadder h2{
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 60px;
+    font-size: 45px;
+    font-weight: 800;
+}
+#page-hadder p{
+    color: white;
+}
+.section-p1{
+    padding: 40px 80px;
+}
+#contact-details{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+#contact-details span{
+    font-size: 14px;
+}
+#contact-details h2{
+    font-size: 40px;
+    line-height: 35px;
+    padding: 20px 0;
+}
+#contact-details h3{
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+#contact-details li{
+    list-style: none;
+    display: flex;
+    padding: 15px 0;
+    font-size: 25px;
+}
+#contact-details li p{
+    margin-left: 25px;
+    font-size: 18px;
+}
+#contact-details .map{
+    width: 55%;
+    height: 400px;
+}
+#contact-details .map iframe{
+    width: 100%;
+    height: 100%;
+}
+h1.why{
+    font-size: 50px;
+    font-weight: 800;
+}
+#form-detail{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    padding: 80px;
+    border: 2px solid #e1e1e1;
+}
+#form-detail form{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+#form-detail form span{
+    font-size: 14px;
+}
+#form-detail form h2{
+    font-size: 40px;
+    line-height: 35px;
+    padding: 20px 0;
+}
+#form-detail form input,
+#form-detail form textarea{
+    width: 100%;
+    padding: 12px 15px;
+    outline: none;
+    margin-bottom: 20px;
+    border: 2px solid #e1e1e1;
+}
+button.normal{
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 30px;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+}
+#form-detail form button{
+    background-color: #088178;
+    color: white;
+    width: 120px;
+}
+#form-detail .people div{
+    padding-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+}
+#form-detail .people div img{
+    width: 130px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+#form-detail .people div p{
+    margin: 0;
+    font-size: 15PX;
+    line-height: 25PX;
+}
+#form-detail .people div span{
+    display: block;
+    font-size: 18px;
+    color: #1a1a1a  ;
+}
+
+
+
+
+
+
+
+
+footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #eaf2e9;
+}
+footer .col{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+footer .logo{
+    margin-bottom: 30px;
+}
+footer h4{
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+footer p{
+    font-size: 18px;
+    margin: 0 0 8px 0;
+}
+footer a{
+    font-size: 18px;
+    text-decoration: none;
+    margin: 0 0 8px 0;
+    color: #222;
+}
+footer .follow{
+    margin-top: 20px;
+}
+footer .follow i{
+    color: #222;
+    padding-right: 4px;
+    cursor: pointer;
+}
+footer img.logo-ga{
+    width: 200px;
+    height: 150px;
+}
+footer img.logo-pay{
+    width: 200px;
+    height: 60px;
+}
+footer .icon{
+    font-size: 30px;
+}

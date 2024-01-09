@@ -59,8 +59,8 @@ img.logo{
     color: #088178;
 }
 #hero{
-    background: url('images/farmer_img.png') no-repeat;
-    height: 791px;
+    background: url('../images/farmer_img.png') no-repeat;
+    height: 600px;
     width: 100%;
     background-size: 50%;
     background-position: top 25% right 0;
@@ -91,7 +91,7 @@ img.logo{
     padding-bottom: 25px;
 }
 #hero button{
-    background-image: url("images/homebutton.png");
+    background-image: url("../images/button.png");
     background-color: transparent;
     color: #088178;
     border: 0;
@@ -125,7 +125,7 @@ img.logo{
 }
 #product1 .pro{
     width: 23%;
-    height: 470px;
+    height: 450px;
     min-width: 200px;
     padding: 10px 12px;
     border: 1px solid #cce7d0;
@@ -195,7 +195,7 @@ img.logo{
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url("images/banner.jpg");
+    background-image: url("../images/banner.jpg");
     width: 100%;
     height: 50vh;
     background-size: cover;
@@ -242,8 +242,8 @@ button.normal{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("images/sm-banner1.jpg");
-    min-width: 855px;
+    background-image: url("../images/sm-banner1.jpg");
+    min-width: 660px;
     height: 50vh;
     background-size: cover;
     background-position: center;
@@ -255,8 +255,8 @@ button.normal{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("images/sm-banner2.jpg");
-    min-width: 855px;
+    background-image: url("../images/sm-banner2.jpg");
+    min-width: 660px;
     height: 50vh;
     background-size: cover;
     background-position: center;
@@ -311,8 +311,8 @@ button.white{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("images/abc.png");
-    min-width: 550px;
+    background-image: url("../images/abc.png");
+    min-width: 400px;
     height: 40vh;
     background-size: cover;
     background-position: center;
@@ -324,8 +324,8 @@ button.white{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("images/abc2.jpeg.jpg");
-    min-width: 550px;
+    background-image: url("../images/abc2.jpeg");
+    min-width: 400px;
     height: 40vh;
     background-size: cover;
     background-position: center;
@@ -337,8 +337,8 @@ button.white{
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("images/abc3.avif");
-    min-width: 600px;
+    background-image: url("../images/abc3.avif");
+    min-width: 400px;
     height: 40vh;
     background-size: cover;
     background-position: center;
@@ -360,7 +360,7 @@ button.white{
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    background-image: url("images/newslatter-bg.jpeg.jpg");
+    background-image: url("../images/newslatter-bg.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     background-size: cover;
@@ -409,8 +409,8 @@ footer{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    width: 90%;
-    
+    width: 100%;
+    background-color: #eaf2e9;
 }
 footer .col{
     display: flex;
@@ -454,42 +454,3 @@ footer img.logo-pay{
 footer .icon{
     font-size: 30px;
 }
-
-/* shop page */
-
-#page-header {
-    background-image: url("images/newslatter-bg.jpeg.jpg");
-    width: 100%;
-    height: 40vh;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    padding: 14px;
-}
-
-#page-header h2,
-#page-header p {
-    color: red;
-}
-
-#pagination {
-    text-align: center;
-}
-
-#pagination a{
-    text-decoration: none;
-    background-color: #049b91;
-    padding: 15px 20px;
-    border-radius: 4px;
-    color: white;
-    font-weight: 600;
-}
-
-#pagination a .ion-icon{
-    font-size: 16px;
-    font-weight: 600;
-}
-
-/* single product */
