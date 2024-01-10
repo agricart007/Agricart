@@ -63,7 +63,7 @@ $result = mysqli_query($conn,$query);
             <div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Total Orders</h3>
+						<h3>Total Sales</h3>
 						<i class='las la-search' ></i>
 						<i class='las la-filter' ></i>
 					</div>
