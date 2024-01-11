@@ -5,14 +5,14 @@
     box-sizing: border-box;
 }
 img.logo{
-    height: 80px;
-    width: 130px;
+    height: 20%;
+    width: 23%;
 }
 #header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 80px;
+    padding: 1.5% 2.5%;
     background: #c4ecd0;
     box-shadow: 0 5px 15px 5px rgb(0,0,0,0.06);
     z-index: 999;
@@ -60,7 +60,7 @@ img.logo{
 }
 #hero{
     background: url('../images/farmer_img.png') no-repeat;
-    height: 600px;
+    height: 85%;
     width: 100%;
     background-size: 50%;
     background-position: top 25% right 0;
@@ -73,7 +73,7 @@ img.logo{
 }
 
 #hero b.h4{
-    padding-bottom: 15px;
+    padding-bottom: 1%;
     font-size: 20px;
     color: #222;
 }
@@ -88,14 +88,14 @@ img.logo{
     color: #222;
 }
 #hero p{
-    padding-bottom: 25px;
+    padding-bottom: 2%;
 }
 #hero button{
     background-image: url("../images/button.png");
     background-color: transparent;
     color: #088178;
     border: 0;
-    padding: 14px 80px 14px 65px;
+    padding: 1% 5% 1.5% 5.2%;
     font-size: 16px;
     font-weight: 700;
     background-repeat:no-repeat;
@@ -453,4 +453,135 @@ footer img.logo-pay{
 }
 footer .icon{
     font-size: 30px;
+}
+#page-hadder{
+    margin-bottom: 50px;
+    padding: 50px;
+    text-align: center;
+    background-image: url("../images/contact-head.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+}
+#page-hadder h2{
+    color: white;
+    margin-bottom: 10px;
+    margin-top: 60px;
+    font-size: 45px;
+    font-weight: 800;
+}
+#page-hadder p{
+    color: white;
+}
+.section-p1{
+    padding: 40px 80px;
+}
+#contact-details{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+#contact-details span{
+    font-size: 14px;
+}
+#contact-details h2{
+    font-size: 40px;
+    line-height: 35px;
+    padding: 20px 0;
+}
+#contact-details h3{
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+#contact-details li{
+    list-style: none;
+    display: flex;
+    padding: 15px 0;
+    font-size: 25px;
+}
+#contact-details li p{
+    margin-left: 25px;
+    font-size: 18px;
+}
+#contact-details .map{
+    width: 55%;
+    height: 400px;
+}
+#contact-details .map iframe{
+    width: 100%;
+    height: 100%;
+}
+h1.why{
+    font-size: 50px;
+    font-weight: 800;
+}
+#form-detail{
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+    padding: 80px;
+    border: 2px solid #e1e1e1;
+}
+#form-detail form{
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}
+#form-detail form span{
+    font-size: 14px;
+}
+#form-detail form h2{
+    font-size: 40px;
+    line-height: 35px;
+    padding: 20px 0;
+}
+#form-detail form input,
+#form-detail form textarea{
+    width: 100%;
+    padding: 12px 15px;
+    outline: none;
+    margin-bottom: 20px;
+    border: 2px solid #e1e1e1;
+}
+button.normal{
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 30px;
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+}
+#form-detail form button{
+    background-color: #088178;
+    color: white;
+    width: 120px;
+}
+#form-detail .people div{
+    padding-bottom: 30px;
+    display: flex;
+    align-items: flex-start;
+}
+#form-detail .people div img{
+    width: 130px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+#form-detail .people div p{
+    margin: 0;
+    font-size: 15PX;
+    line-height: 25PX;
+}
+#form-detail .people div span{
+    display: block;
+    font-size: 18px;
+    color: #1a1a1a  ;
 }
