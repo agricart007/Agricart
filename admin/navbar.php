@@ -6,6 +6,8 @@
     <title>Admin dasboard</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <body>
 <input type="checkbox" name="" id="menu-toggle">
@@ -46,13 +48,14 @@
                     
                     <li>
                         <a href="products.php">
-                            <span class="las la-user"></span>
+                            <span class="fa-solid fa-barcode"></span>
+                            <!-- <i class="fa-solid fa-barcode"></i> -->
                             <span>Products</span>
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <span class="las la-user"></span>
+                        <a href="message.php">
+                            <span class="fa-regular fa-message"></span>
                             <span>Message</span>
                         </a>
                     </li>
@@ -74,26 +77,17 @@
                             <span>Settings</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="">
+                            <span class="fa-solid fa-right-from-bracket"></span>
+                            <span>Sign-out</span>
+                        </a>
+                    </li>
 
                 </ul>
             </div>
 
-            <div class="sidebar-card">
-                <div class="side-card-icon">
-                    <span class="lab la-codiepie">
-
-                    </span>
-                </div>
-                <div>
-                    <h4>
-                        Make Ad
-                    </h4>
-                    <p>
-                        Add ads to your videos to earn money
-                    </p> 
-                </div>
-                <button class="btn btn-main btn-block">Create Now</button>
-            </div>
+            
         </div>
     </div>    
 </body>

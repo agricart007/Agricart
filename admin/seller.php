@@ -34,9 +34,15 @@ $result = mysqli_query($conn,$query);
         </header>
 
         <main>
-
+        <div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Total Sellers</h3>
+						<i class='las la-search' ></i>
+						<i class='las la-filter' ></i>
+					</div>
             <section>
-                <h3 class="section-head">Information Table</h3>
+                
                 <div class="table-data">
                     <div class="order">
                         

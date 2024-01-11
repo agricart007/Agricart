@@ -22,10 +22,10 @@ $result = mysqli_query($conn,$query);
                 
                 <div class="header-title">
                     <h1>
-                        Buyer
+                        Message
                     </h1>
                     <p>
-                        Display Information About Buyers<span class="las la-chart-lin"></span>
+                        Display Message From Seller and Buyer<span class="las la-chart-lin"></span>
                     </p>
                 </div>
             </div>
@@ -37,7 +37,7 @@ $result = mysqli_query($conn,$query);
         <div class="table-data">
 				<div class="order">
 					<div class="head">
-						<h3>Total Buyer</h3>
+						<h3>Total Message</h3>
 						<i class='las la-search' ></i>
 						<i class='las la-filter' ></i>
 					</div>
@@ -49,11 +49,10 @@ $result = mysqli_query($conn,$query);
                         <table>
                             <thead>
                                 <tr>
-                                    <th>#ID</th>
+                                    <th>#User ID</th>
                                     <th>Name</th>
-                                    <th>E-mail</th>
-                                    <th>Contact</th>
-                                    <th>Created on</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
                                     <th>Tools</th>
                                 </tr>
                             </thead>
@@ -62,11 +61,11 @@ $result = mysqli_query($conn,$query);
                                         while($row = mysqli_fetch_assoc($result)){
                                         ?>
                                         <tr>
-                                            <td><?php echo $row['Buyer_id'];?></td>
-                                            <td><?php echo $row['first_name'];?></td>
-                                            <td><?php echo $row['email'];?></td>
-                                            <td><?php echo $row['contact'];?></td>
-                                            <td><?php echo $row['created_on'];?></td>
+                                            <td><?php echo $row[''];?></td>
+                                            <td><?php echo $row[''];?></td>
+                                            <td><?php echo $row[''];?></td>
+                                            <td><?php echo $row[''];?></td>
+                                            <td><?php echo $row[''];?></td>
                                         </tr>
                                             
                                         <?php

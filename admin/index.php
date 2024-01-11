@@ -25,6 +25,7 @@
                         Display Analytics About Website <span class="las la-chart-lin"></span>
                     </p>
                 </div>
+                
             </div>
 
         </header>
@@ -75,7 +76,7 @@
                     <div class="revenue-card">
                         <h3 class="section-head">Total Revenue</h3>
                        <div class="rev-content">
-                        <img src="images/adminrevenue.jpeg"  alt="">
+                        <img src="../images/adminrevenue.jpeg"  alt="">
                         <div class="rev-info">
                             <h3>
                                 Tom Cruise
@@ -149,13 +150,7 @@
                         backgroundColor: "rgba(235, 247, 245, 0.7)",
                         data: [0,30,60,25,60,25,50,10,50,90,120]
                     },
-                    {
-                        label: "Viewers",
-                        borderColor: "blue",
-                        borderWidth: "3",
-                        backgroundColor: "rgba(233, 238, 253, 0.7)",
-                        data: [0,60,25,100,20,75,30,55,20,60,20]
-                    }
+                    
                 ]
             },
             options: {
