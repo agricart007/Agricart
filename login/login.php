@@ -25,22 +25,22 @@
             <div class="form login">
                 <center><span class="title">Login</span></center>
 
-                <form action="">
+                <form action="login_validation.php" method="POST">
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your email" required>
+                        <input type="text" placeholder="Enter your email" name="e-mail" required>
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Enter your password" required>
+                        <input type="password" class="password" placeholder="Enter your password" name="password" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
 
                     <div class="checkbox-text">
-                        <div class="checkbox-content">
+                        <!-- <div class="checkbox-content">
                             <input type="checkbox" id="logCheck">
                             <label for="logCheck" class="text">Remember me</label>
-                        </div>
+                        </div> -->
                         
                         <a href="#" class="text">Forgot password?</a>
                     </div>
