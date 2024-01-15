@@ -10,6 +10,8 @@
 
 </head>
 <body>
+
+
 <input type="checkbox" name="" id="menu-toggle">
     <div class="sidebar">
         <div class="sidebar-container">
@@ -40,9 +42,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="sales.php">
+                        <a href="order.php">
                             <span class="las la-chart-bar"></span>
-                            <span> Sales</span>
+                            <span> Orders</span>
                         </a>
                     </li>
                     
@@ -71,14 +73,19 @@
                             <span>Seller</span>
                         </a>
                     </li>
+                    <!-- <li id="settingsDropdown">
+                       <a href="#" onclick="toggleDropdown()">
+                         <span class="las la-cog"></span>
+                         <span>Settings</span>
+                         <span class="las la-caret-down"></span>
+                       </a>
+                       <ul class="submenu">
+                         <li>Profile</li>
+                         <li>Manage</li>
+                       </ul>
+                    </li> -->
                     <li>
-                        <a href="">
-                            <span class="las la-cog"></span>
-                            <span>Settings</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
+                        <a href="../login/logout.php">
                             <span class="fa-solid fa-right-from-bracket"></span>
                             <span>Sign-out</span>
                         </a>
@@ -90,5 +97,12 @@
             
         </div>
     </div>    
+
+    <script>
+            function toggleDropdown() {
+               var submenu = document.querySelector('.submenu');
+               submenu.style.display = (submenu.style.display === 'block' ? 'none' : 'block');
+            }
+    </script>
 </body>
 </html>

@@ -89,7 +89,24 @@ img {
 .sidebar-container::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+/* setting submenu css */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    border-radius: 10px;
+}
 
+.submenu li {
+    padding: 10px;
+}
+
+.submenu li:hover {
+    background-color: white;
+    color: #396aff;
+}
 .brand h2 {
     color: #444;
 
@@ -432,9 +449,20 @@ main {
     border: none;
     outline: none;
 }
+.graph-board {
+    position: relative;
+}
+.download-button {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+}
 
 
 /* adminsales css */
+.download-button{
+    cursor: pointer;
+}
 
 .table-data {
 	display: flex;
@@ -545,3 +573,70 @@ main {
 .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+}
+
+.close-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #396aff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* styles.css */
+#usernameDisplay {
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 200px;
+    height: 50px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .popup-data{
+    border: 1px solid black;
+  }
+.details-display {
+        border: 1px solid #ccc;
+        padding: 5px;
+        width: 700px;
+        max-height: 100px; /* Adjust the max height as needed */
+        overflow-y: auto;
+    }

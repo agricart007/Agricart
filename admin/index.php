@@ -1,3 +1,51 @@
+<?php 
+include ("../session/session_start.php");
+include("../session/session_check.php");
+include("../database/connection.php");
+// query for tatal order
+$orderQuery = "SELECT COUNT(*) AS totalOrders FROM order_details";
+$orderResult = mysqli_query($conn, $orderQuery);
+$orderData = mysqli_fetch_assoc($orderResult);
+$totalOrders = $orderData['totalOrders'];
+
+// query for total buyers
+$userQuery = "SELECT COUNT(*) AS totalBuyers FROM buyer_details";
+$userResult = mysqli_query($conn, $userQuery);
+$userData = mysqli_fetch_assoc($userResult);
+$totalBuyers = $userData['totalBuyers'];
+
+// query for total sellers
+$userQuery = "SELECT COUNT(*) AS totalSeller FROM seller_details";
+$userResult = mysqli_query($conn, $userQuery);
+$userData = mysqli_fetch_assoc($userResult);
+$totalSeller = $userData['totalSeller'];
+
+// query for total products
+$userQuery = "SELECT COUNT(*) AS totalProduct FROM product_details";
+$userResult = mysqli_query($conn, $userQuery);
+$userData = mysqli_fetch_assoc($userResult);
+$totalProduct = $userData['totalProduct'];
+
+// Calculate total income
+$incomeQuery = "SELECT SUM(price) AS totalIncome FROM order_details";
+$incomeResult = mysqli_query($conn, $incomeQuery);
+$incomeData = mysqli_fetch_assoc($incomeResult);
+$totalIncome = $incomeData['totalIncome'];
+
+// Calculate total income for each month
+$incomeQuery = "SELECT DATE_FORMAT(order_date, '%b') AS month, SUM(price) AS monthlyIncome FROM order_details GROUP BY month";
+$incomeResult = mysqli_query($conn, $incomeQuery);
+
+// Initialize arrays to store month labels and corresponding income values
+$months = [];
+$incomeData = [];
+
+// Fetch data and populate arrays
+while ($row = mysqli_fetch_assoc($incomeResult)) {
+    $months[] = $row['month'];
+    $incomeData[] = $row['monthlyIncome'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +59,7 @@
 </head>
 <body>
    
-    <?php include ("navbar.php");
+<?php include ("navbar.php");
     ?>
     <div class="main-content">
         <header>
@@ -39,28 +87,28 @@
                     <i class="fa-solid fa-cart-shopping"></i>
                         <div class="analytic-info">
                             <h4>Sales</h4>
-                            <h1>10.3M</h1>
-                        </div>
-                    </div>
-                    <div class="analytic">
-                    <i class="fa-solid fa-users"></i>
-                        <div class="analytic-info">
-                            <h4>Users</h4>
-                            <h1>10.3M</h1>
+                            <h1><?php echo $totalOrders; ?></h1>
                         </div>
                     </div>
                     <div class="analytic">
                     <i class="fa-solid fa-users"></i>
                         <div class="analytic-info">
                             <h4>Buyer</h4>
-                            <h1>10.3M</h1>
+                            <h1><?php echo $totalBuyers; ?></h1>
+                        </div>
+                    </div>
+                    <div class="analytic">
+                    <i class="fa-solid fa-users"></i>
+                        <div class="analytic-info">
+                            <h4>Seller</h4>
+                            <h1><?php echo $totalSeller; ?></h1>
                         </div>
                     </div>
                     <div class="analytic">
                     <i class="fa-solid fa-barcode"></i>
                         <div class="analytic-info">
                             <h4>Products</h4>
-                            <h1>10.3M</h1>
+                            <h1><?php echo $totalProduct; ?></h1>
                         </div>
                     </div>
                     
@@ -79,48 +127,26 @@
                         <img src="../images/adminrevenue.jpeg"  alt="">
                         <div class="rev-info">
                             <h3>
-                                Tom Cruise
+                                Admin
                             </h3>
-                            <h1>3.5M <small>Users</small></h1>
+                            <h1><?php echo $totalBuyers; ?> <small> Buyers</small></h1>
                         </div>
                         <div class="rev-sum">
                             <h4>Total Income</h4>
-                            <h2>$90,000</h2>
+                            <h2>₹<?php echo number_format($totalIncome, 2); ?></h2>
                         </div>
                        </div>
                     </div>
 
                     <div class="graph-card">
                         <h3 class="section-head">Graph</h3>
+                        
                         <div class="graph-content">
-                            <div class="graph-head">
-                                <div class="icons-wrapper">
-                                    <div class="icon">
-                                        <span class="las la-eye text-main"></span>
-                                    </div>
-                                    <div class="icon">
-                                        <span class="las la-users text-success"></span>
-                                    </div>
-                                </div>
-                                <div class="graph-select">
-                                    <select name="" id="">
-                                        <option value="">January</option>
-                                        <option value="">February</option>
-                                        <option value="">March</option>
-                                        <option value="">April</option>
-                                        <option value="">May</option>
-                                        <option value="">June</option>
-                                        <option value="">July</option>
-                                        <option value="">August</option>
-                                        <option value="">September</option>
-                                        <option value="">October</option>
-                                        <option value="">November</option>
-                                        <option value="">December</option>
-                                    </select>
-                                </div>
-                            </div>
+                            
                             <div class="graph-board">
                                 <canvas id="revenueChart" weight="100%" height="50px"></canvas>
+                                <button class="download-button" onclick="downloadGraph()"><i class="fa-solid fa-file-export"></i></button>
+                            
 
                             </div>
                         </div>
@@ -140,17 +166,15 @@
         let revChart = new Chart(ctx, {
             type: "line",
             data: {
-                labels: ["Sept 1", "Sept 3", "Sept 6", "Sept 9", "Sept 12", "Sept 15", "Sept 18", "Sept 21",
-                "Sept 24", "Sept 27", "Sept 30"],
+                labels: <?php echo json_encode($months); ?>,
                 datasets: [
                     {
-                        label: "Sales",
+                        label: "Monthly Income",
                         borderColor: "green",
                         borderWidth: "3",
                         backgroundColor: "rgba(235, 247, 245, 0.7)",
-                        data: [0,30,60,25,60,25,50,10,50,90,120]
+                        data: <?php echo json_encode($incomeData); ?>
                     },
-                    
                 ]
             },
             options: {
@@ -161,7 +185,31 @@
                 }
             }
         });
-          
+       
+    function downloadGraph() {
+        // Convert the canvas to a data URL
+        var dataURL = revChart.toBase64Image();
+
+        // Create a temporary link element
+        var link = document.createElement("a");
+
+        // Set the link's href attribute to the data URL
+        link.href = dataURL;
+
+        // Set the download attribute with the desired file name
+        link.download = "revenue_chart.png";
+
+        // Append the link to the document
+        document.body.appendChild(link);
+
+        // Trigger a click event on the link to start the download
+        link.click();
+
+        // Remove the link from the document
+        document.body.removeChild(link);
+    }
+</script>
+
     </script>
 </body>
 </html>

@@ -206,3 +206,8 @@
         text-align: center;
     }
 
+/* Add this CSS to your existing styles or create a new stylesheet */
+.error-message {
+    color: red;
+    margin-bottom: 10px;
+}

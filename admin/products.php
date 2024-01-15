@@ -1,91 +1,167 @@
 <?php 
 include ("..\database\connection.php");
-$query = "select * from products_details";
-$result = mysqli_query($conn,$query);
+$query = "SELECT product_details.*, seller_details.first_name AS seller_name FROM product_details
+          LEFT JOIN seller_details ON product_details.seller_id = seller_details.seller_id";
+$result = mysqli_query($conn, $query);
+include ("../session/session_start.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin dasboard</title>
+    <title>Admin dashboard</title>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="admin.css">
 </head>
+
 <body>
-<?php include ("navbar.php"); ?>
+    <?php include ("navbar.php"); ?>
     
     <div class="main-content">
         <header>
             <div class="header-title-wrapper">
-                
                 <div class="header-title">
-                    <h1>
-                        Products
-                    </h1>
-                    <p>
-                        Display Information About Products<span class="las la-chart-lin"></span>
-                    </p>
+                    <h1>Products</h1>
+                    <p>Display Information About Products<span class="las la-chart-lin"></span></p>
                 </div>
             </div>
-            
-
         </header>
 
         <main>
-        <div class="table-data">
-				<div class="order">
-					<div class="head">
-						<h3>Total Products</h3>
-						<i class='las la-search' ></i>
-						<i class='las la-filter' ></i>
-					</div>
-            <section>
-                
-                <div class="table-data">
-                    <div class="order">
-                        
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>#ID</th>
-                                    <th>Photo</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Tools</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                     while($row = mysqli_fetch_assoc($result)){
-                                        ?>
+            <div class="table-data">
+                <div class="order">
+                <div class="head">
+            <h3>Total Products</h3>
+            <form id="csvForm">
+                <!-- Move the download button inside the table head -->
+                <button type="button" onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
+            </form>
+        </div>
+                    <section>
+                        <div class="table-data">
+                            <div class="order">
+                                <table>
+                                    <thead>
                                         <tr>
-                                            <td><?php echo $row['product_id'];?></td>
-                                            <td><?php echo $row['photo'];?></td>
-                                            <td><?php echo $row['name'];?></td>
-                                            <td><?php echo $row['price'];?></td>
-                                            <td><?php echo $row['quantity'];?></td>
-                                            
+                                            <th>#ID</th>
+                                            <th>Photo</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Quantity</th>
+                                            <th>Tools</th>
                                         </tr>
-                                            
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                        while($row = mysqli_fetch_assoc($result)){
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $row['product_id'];?></td>
+                                                <!-- <td><?php echo $row['photo'];?></td> -->
+                                                <td>
+                                                        <?php
+                                                        $photo = empty($row['photo']) ? '../photos/profile.jpg' : $row['photo'];
+                                                        echo "<img src='$photo' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
+                                                        ?>
+                                                    </td>
+                                                <td><?php echo $row['name'];?></td>
+                                                <td><?php echo $row['price'];?></td>
+                                                <td><?php echo $row['quantity'];?></td>
+                                                <td>
+                                                    <button onclick="openPopup('<?php echo $row['product_id']; ?>')"><i class="fa-solid fa-magnifying-glass"></i> Views</button>
+                                                    <div class="overlay" id="overlay_<?php echo $row['product_id']; ?>">
+                                                        <div class="popup">
+                                                            <span class="close-btn" onclick="closePopup('<?php echo $row['product_id']; ?>')">×</span>
+                                                            <h2>Products Details</h2>
+                                                            <form>
+                                                            <div style="max-height: 400px; overflow-y: auto;">
+                                                                <table>
+                                                                    <tr>
+            <td>ID</td>
+            <td>
+                <div id="productIDDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['product_id']; ?></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Photo</td>
+            <td>
+                <div id="photoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo']; ?></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>
+                <div id="productNameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['name']; ?></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Seller Name</td>
+            <td>
+                <div id="sellerNameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['seller_name']; ?></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>
+                <div id="priceDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['price']; ?></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td>
+                <div id="quantityDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['quantity']; ?></div>
+            </td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>
+                <div id="descriptionDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px; overflow: auto;">
+                    <?php echo $row['description']; ?>
+                </div>
+            </td>
+        </tr>
+                                                                    
+                                                                </table>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         <?php
                                         }
-                                   ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-    
-            </section>
-
-            
-        
-
+            </div>
         </main>
     </div>
 
-   
+    <script>
+        function openPopup(productId) {
+            document.getElementById("overlay_" + productId).style.display = "flex";
+        }
+
+        function closePopup(productId) {
+            document.getElementById("overlay_" + productId).style.display = "none";
+        }
+
+        function downloadCSV() {
+    // Open a new window or iframe to trigger the download
+    var downloadWindow = window.open('fetch_details/fetch_product_details.php', '_blank');
+    downloadWindow.focus();
+}
+
+
+
+
+    </script>
 </body>
+
 </html>

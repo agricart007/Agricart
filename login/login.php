@@ -1,3 +1,12 @@
+
+<?php
+    include ("../session/session_start.php");
+    $loginError = isset($_SESSION['login_error']) ? $_SESSION['login_error'] : '';
+    unset($_SESSION['login_error']); // Clear the session variable
+    $loginError = isset($_SESSION['register_error']) ? $_SESSION['register_error'] : '';
+    unset($_SESSION['register_error']); // Clear the session variable
+    
+?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -24,8 +33,14 @@
         <div class="forms">
             <div class="form login">
                 <center><span class="title">Login</span></center>
-
-                <form action="login_validation.php" method="POST">
+                <!-- Display error message if it exists -->
+                <?php if ($loginError): ?>
+                    <div class="error-message" style="text-align: center; font-size: 18px;">
+                        <p><?php echo $loginError; ?></p>
+                    </div>
+                <?php endif; ?>
+                <form action="register_validation.php" method="POST" autocomplete="off">
+                <input type="hidden" name="action" value="login">
                     <div class="input-field">
                         <input type="text" placeholder="Enter your email" name="e-mail" required>
                         <i class="uil uil-envelope icon"></i>
@@ -61,29 +76,25 @@
             <div class="form signup">
                 <center><span class="title">Registration</span></center>
 
-                <form action="#">
-                    <div class="input-field">
-                        <input type="text" placeholder="Enter your Full name" required>
+                <form action="register_validation.php" method="POST" autocomplete="off">
+                    <input type="hidden" name="action" value="registration">
+                    <!-- <div class="input-field">
+                        <input type="text" placeholder="Enter your Full name" name="name" required>
                         <i class="uil uil-user"></i>
-                    </div>
+                    </div> -->
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your email" required>
+                        <input type="email" placeholder="Enter your email"  name="e-mail" required>
                         <i class="uil uil-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" placeholder="Enter your Contact No" required>
+                        <input type="text" placeholder="Enter your Contact No" name="number" required>
                         <i class="uil uil-phone-alt"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" placeholder="Enter your password" required>
+                        <input type="password" class="password" placeholder="Enter your password" name="password" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
-                    
-
-                    
-                   
-
                     <div class="checkbox-text">
                         <div class="checkbox-content">
                             <input type="checkbox" id="termCon" requiredg>
@@ -94,6 +105,7 @@
                     <div class="input-field button">
                         <button>Signup</button>
                     </div>
+                    
                 </form>
 
                 <div class="login-signup">
@@ -105,6 +117,6 @@
         </div>
     </div>
 
-     <script src="script.js"></script> 
+     <script src="login.js"></script> 
 </body>
 </html>
