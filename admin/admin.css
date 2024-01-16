@@ -461,7 +461,7 @@ main {
 
 /* adminsales css */
 .download-button{
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .table-data {
@@ -615,11 +615,12 @@ input {
 button {
     background-color: #396aff;
     color: #fff;
-    padding: 10px 20px;
+    padding: 10px 6px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
+
 /* styles.css */
 #usernameDisplay {
     border: 1px solid #ccc;
@@ -640,3 +641,24 @@ button {
         max-height: 100px; /* Adjust the max height as needed */
         overflow-y: auto;
     }
+
+.deactivate-button {
+    background-color: red;
+    color: white; /* text color */
+    padding: 8.5px 3px; /* adjust padding as needed */
+    border: none; /* remove border */
+    border-radius: 5px; /* optional: add rounded corners */
+    cursor: pointer; /* change cursor on hover */
+    font-size: 16px; /* adjust font size as needed */
+}
+.activate-button {
+    background-color: green;
+    color: white; /* text color */
+    padding: 8.5px 13px; /* adjust padding as needed */
+    border: none; /* remove border */
+    border-radius: 5px; /* optional: add rounded corners */
+    cursor: pointer; /* change cursor on hover */
+    font-size: 16px; /* adjust font size as needed */
+}
+
+

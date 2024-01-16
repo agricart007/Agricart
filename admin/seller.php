@@ -42,7 +42,7 @@ $result = mysqli_query($conn, $query);
             <h3>Total Seller</h3>
             <form id="csvForm">
                 <!-- Move the download button inside the table head -->
-                <button type="button" onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
+                <button type="download-button" onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
             </form>
         </div>
                     <section>
@@ -80,6 +80,17 @@ $result = mysqli_query($conn, $query);
                                                     <td><?php echo $row['created_on']; ?></td>
                                                     <td>
                                                         <button onclick="openPopup(<?php echo $row['seller_id']; ?>)"><i class="fa-solid fa-magnifying-glass"></i> Views</button>
+                                                        <!-- <a href="action.php?id=<?=$row['seller_id']?>" class="deactivate-button">deactivate</a> -->
+                                                        <?php
+                                                        if ($row['status'] == 0) {
+                                                            // Display Deactivate button
+                                                            echo '<a href="deactivate_action.php?seller_id=' . $row['seller_id'] . '" class="deactivate-button"><i class="fa-solid fa-trash"></i> Deactivate</a>';
+                                                        } elseif ($row['status'] == 1) {
+                                                            // Display Activate button
+                                                            echo '<a href="activate_action.php?seller_id=' . $row['seller_id'] . '" class="activate-button"><i class="fa-solid fa-check"></i> Activate</a>';
+                                                        }
+                                                        ?>
+
                                                         <div class="overlay" id="overlay_<?php echo $row['seller_id']; ?>">
                                                             <div class="popup">
                                                                 <span class="close-btn" onclick="closePopup(<?php echo $row['seller_id']; ?>)">×</span>
@@ -134,7 +145,8 @@ $result = mysqli_query($conn, $query);
                                                                         <tr>
                                                                             <td>Shop Address</td>
                                                                             <td>
-                                                                                <div id="sellerPhotoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['shop_address']; ?></div>
+                                                                                <textarea id="sellerShopAddressDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;" readonly="false"><?php echo $row['shop_address']; ?></textarea>
+
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -173,7 +185,7 @@ $result = mysqli_query($conn, $query);
                                         } else {?>
                                             <tr>
                                                 <td colspan="6">
-                                                    <p class='no-data-found'>No sales data found.</p>
+                                                    <p class='no-data-found'>No seller data found.</p>
                                                 </td>
                                             </tr>
                                         <?php

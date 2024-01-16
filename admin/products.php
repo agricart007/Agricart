@@ -1,5 +1,6 @@
 <?php 
-include ("..\database\connection.php");
+
+include ("../database/connection.php");
 $query = "SELECT product_details.*, seller_details.first_name AS seller_name FROM product_details
           LEFT JOIN seller_details ON product_details.seller_id = seller_details.seller_id";
 $result = mysqli_query($conn, $query);
@@ -56,6 +57,7 @@ include ("../session/session_start.php");
                                     </thead>
                                     <tbody>
                                         <?php 
+                                        if (mysqli_num_rows($result) > 0) {
                                         while($row = mysqli_fetch_assoc($result)){
                                         ?>
                                             <tr>
@@ -80,49 +82,49 @@ include ("../session/session_start.php");
                                                             <div style="max-height: 400px; overflow-y: auto;">
                                                                 <table>
                                                                     <tr>
-            <td>ID</td>
-            <td>
-                <div id="productIDDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['product_id']; ?></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Photo</td>
-            <td>
-                <div id="photoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo']; ?></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td>
-                <div id="productNameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['name']; ?></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Seller Name</td>
-            <td>
-                <div id="sellerNameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['seller_name']; ?></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Price</td>
-            <td>
-                <div id="priceDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['price']; ?></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Quantity</td>
-            <td>
-                <div id="quantityDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['quantity']; ?></div>
-            </td>
-        </tr>
-        <tr>
-            <td>Description</td>
-            <td>
-                <div id="descriptionDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px; overflow: auto;">
-                    <?php echo $row['description']; ?>
-                </div>
-            </td>
-        </tr>
+                                                                        <td>ID</td>
+                                                                        <td>
+                                                                            <div id="productIDDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['product_id']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Photo</td>
+                                                                        <td>
+                                                                            <div id="photoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Name</td>
+                                                                        <td>
+                                                                            <div id="productNameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['name']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Seller Name</td>
+                                                                        <td>
+                                                                            <div id="sellerNameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['seller_name']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Price</td>
+                                                                        <td>
+                                                                            <div id="priceDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['price']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Quantity</td>
+                                                                        <td>
+                                                                            <div id="quantityDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['quantity']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Description</td>
+                                                                        <td>
+                                                                            <div id="descriptionDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px; overflow: auto;">
+                                                                                <?php echo $row['description']; ?>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
                                                                     
                                                                 </table>
                                                             </form>
@@ -130,9 +132,17 @@ include ("../session/session_start.php");
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php
+                                            }
+                                        } else {?>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p class='no-data-found'>No product data found.</p>
+                                                </td>
+                                            </tr>
                                         <?php
                                         }
-                                        ?>
+                                       ?>
                                     </tbody>
                                 </table>
                             </div>

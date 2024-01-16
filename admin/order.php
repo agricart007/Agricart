@@ -1,5 +1,5 @@
 <?php 
-include ("..\database\connection.php");
+include ("../database/connection.php");
 include ("../session/session_start.php");
 
 // query to take data from database in popup menu and table
@@ -82,7 +82,7 @@ $totalIncome = $incomeData['totalIncome'];
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>#Order ID</th>
+                                        <th>#ID</th>
                                         <th>Product Name</th>
                                         <th>Price</th>
                                         <th>Payment</th>
@@ -166,12 +166,17 @@ $totalIncome = $incomeData['totalIncome'];
                                                     </div>
                                                 </td>
                                             </tr>
-                                    <?php
+                                            <?php
+                                            }
+                                        } else {?>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p class='no-data-found'>No order data found.</p>
+                                                </td>
+                                            </tr>
+                                        <?php
                                         }
-                                    } else {
-                                        echo "<tr><td colspan='7'><p class='no-data-found'>No sales data found.</p></td></tr>";
-                                    }
-                                    ?>
+                                       ?>
                                 </tbody>
                             </table>
                         </div>

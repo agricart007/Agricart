@@ -1,5 +1,5 @@
 <?php 
-include ("..\database\connection.php");
+include ("../database/connection.php");
 $query = "SELECT contact_details.*, buyer_details.first_name AS buyer_name FROM contact_details
           LEFT JOIN buyer_details ON contact_details.buyer_id = buyer_details.buyer_id";
 $result = mysqli_query($conn, $query);
@@ -55,6 +55,7 @@ include ("../session/session_start.php");
                                     </thead>
                                     <tbody>
                                         <?php 
+                                        if (mysqli_num_rows($result) > 0) {
                                         while($row = mysqli_fetch_assoc($result)){
                                         ?>
                                             <tr>
@@ -110,9 +111,17 @@ include ("../session/session_start.php");
                                                     </div>
                                                 </td>
                                             </tr>
+                                            <?php
+                                            }
+                                        } else {?>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p class='no-data-found'>No message data found.</p>
+                                                </td>
+                                            </tr>
                                         <?php
                                         }
-                                        ?>
+                                       ?>
                                     </tbody>
                                 </table>
                             </div>

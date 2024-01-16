@@ -1,5 +1,5 @@
 <?php 
-include ("..\database\connection.php");
+include ("../database/connection.php");
 $query = "select * from buyer_details";
 $result = mysqli_query($conn, $query);
 include ("../session/session_start.php");
@@ -65,16 +65,17 @@ include ("../session/session_start.php");
                                     </thead>
                                     <tbody>
                                         <?php 
+                                        if (mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                         ?>
                                             <tr>
                                                 <td><?php echo $row['Buyer_id']; ?></td>
                                                 <td><?php echo $row['first_name']; ?></td>
                                                 <td><?php echo $row['email']; ?></td>
-                                                <td><?php echo $row['contact']; ?></td>
+                                                <td><?php echo $row['contact_no']; ?></td>
                                                 <td><?php echo $row['created_on']; ?></td>
                                                 <td>
-                                                    <button onclick="openPopup(<?php echo $row['Buyer_id']; ?>)"><i class="fa-solid fa-magnifying-glass"></i> Views Details</button>
+                                                    <button onclick="openPopup(<?php echo $row['Buyer_id']; ?>)"><i class="fa-solid fa-magnifying-glass"></i> Views</button>
                                                     <div class="overlay" id="overlay_<?php echo $row['Buyer_id']; ?>">
                                                         <div class="popup">
                                                             <span class="close-btn" onclick="closePopup(<?php echo $row['Buyer_id']; ?>)">×</span>
@@ -116,7 +117,7 @@ include ("../session/session_start.php");
                                                                     <tr>
                                                                         <td>Contact</td>
                                                                         <td>
-                                                                            <div id="usernameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['contact'];?></div>
+                                                                            <div id="usernameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['contact_no'];?></div>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -128,7 +129,9 @@ include ("../session/session_start.php");
                                                                     <tr>
                                                                         <td>Address</td>
                                                                         <td>
-                                                                            <div id="usernameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['address'];?></div>
+                                                                        <textarea id="sellerShopAddressDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;" readonly="false"><?php echo $row['address']; ?></textarea>
+
+                                                                            <!-- <div id="usernameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['address'];?></div> -->
                                                                         </td>
                                                                     </tr>
                                                                 </table>
@@ -137,10 +140,19 @@ include ("../session/session_start.php");
                                                     </div>
                                                 </td>
                                             </tr>
-
+                                            <?php
+                                            }
+                                        } else {?>
+                                            <tr>
+                                                <td colspan="6">
+                                                    <p class='no-data-found'>No buyer data found.</p>
+                                                </td>
+                                            </tr>
                                         <?php
                                         }
-                                        ?>
+                                       ?>
+
+                                       
                                     </tbody>
                                 </table>
                             </div>
