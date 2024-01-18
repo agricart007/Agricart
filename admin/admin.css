@@ -458,12 +458,6 @@ main {
     right: -10px;
 }
 
-
-/* adminsales css */
-.download-button{
-    /* cursor: pointer; */
-}
-
 .table-data {
 	display: flex;
 	flex-wrap: wrap;
@@ -523,9 +517,7 @@ main {
 	border-radius: 50%;
 	object-fit: cover;
 }
-.table-data .order table tbody tr:hover {
-	background: var(--grey);
-}
+
 .table-data .order table tr td .status {
 	font-size: 10px;
 	padding: 6px 16px;
@@ -573,6 +565,44 @@ main {
 .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
+/* Add this CSS to your existing styles */
+/* .status {
+    display: inline-block;
+    padding: 5px;
+    background-color: white;
+    border-radius: 3px; /* Optional: Add rounded corners for a better visual effect */
+/* }
+
+.status_inner_div {
+    background-color: green;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 5px;
+    
+} */ */
+
+.status {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 3px; /* Optional: Add rounded corners for a better visual effect */
+}
+
+.status_inner_div {
+    background-color: ;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    height: 30px; /* Set a fixed height for better appearance */
+    border-radius: 5px;
+    color: white;
+}
+
+
+
+
+
 
 
 .overlay {

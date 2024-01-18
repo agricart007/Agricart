@@ -61,7 +61,11 @@ include ("../session/session_start.php");
                                             <tr>
                                                 <td><?php echo $row['contact_id'];?></td>
                                                 <td><?php echo $row['buyer_name'];?></td>
-                                                <td><?php echo $row['status'];?></td>
+                                                <td class="status" >
+                                                    <div class="status_inner_div"  style="background-color: <?php echo ($row['status'] == 0) ? 'green' : 'red'; ?>;">
+                                                        <span><?php echo ($row['status'] == 0) ? 'New' : 'Viewed'; ?></span>
+                                                    </div>
+                                                </td>
                                                 <td><?php echo $row['created_on'];?></td>
                                                 <td>
                                                     <button onclick="openPopup('<?php echo $row['contact_id']; ?>')"><i class="fa-solid fa-magnifying-glass"></i> Views</button>
@@ -104,6 +108,10 @@ include ("../session/session_start.php");
                                                                         <td>
                                                                             <div id="createdonDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['created_on']; ?></div>
                                                                         </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Status</td>
+                                                                        
                                                                     </tr>
                                                                 </table>
                                                             </form>
