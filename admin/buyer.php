@@ -42,17 +42,16 @@ include ("../session/session_start.php");
                 <div class="order">
                 <div class="head">
             <h3>Total Buyers</h3>
-            <form id="csvForm">
+            <form id="download">
                 <!-- Move the download button inside the table head -->
-                <button type="button" onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
+                <button onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
             </form>
         </div>
                     <section>
 
                         <div class="table-data">
                             <div class="order">
-
-                                <table>
+                                <table id="table">
                                     <thead>
                                         <tr>
                                             <th>#ID</th>

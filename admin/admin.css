@@ -600,11 +600,6 @@ main {
 }
 
 
-
-
-
-
-
 .overlay {
     display: none;
     position: fixed;
@@ -642,15 +637,51 @@ input {
     box-sizing: border-box;
 }
 
-button {
+#download button {
+    background-color: #396aff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+    width: 40px;
+}
+#d button {
+    background-color: #396aff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+    width: 40px;
+    margin-left: 490px;
+} button {
+    background-color: #396aff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+    width: 40px;
+}
+#table button {
     background-color: #396aff;
     color: #fff;
     padding: 10px 6px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    height: 40px;
+    width: 70px;
 }
+#mark a{
+    align-items: center;
+    text-align: right;
 
+}
+/* .mark-as-read{
+    cursor: ;
+} */
 /* styles.css */
 #usernameDisplay {
     border: 1px solid #ccc;

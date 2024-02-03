@@ -143,11 +143,9 @@ while ($row = mysqli_fetch_assoc($incomeResult)) {
                         
                         <div class="graph-content">
                             
-                            <div class="graph-board">
+                            <div class="graph-board" id="d">
+                                <button onclick="downloadGraph()"><i class="fa-solid fa-file-export"></i></button>
                                 <canvas id="revenueChart" weight="100%" height="50px"></canvas>
-                                <button class="download-button" onclick="downloadGraph()"><i class="fa-solid fa-file-export"></i></button>
-                            
-
                             </div>
                         </div>
                     </div>

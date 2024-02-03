@@ -73,13 +73,13 @@ $totalIncome = $incomeData['totalIncome'];
                 <div class="order">
                 <div class="head">
                 <h3>Total Order</h3>
-                <form id="csvForm">
-                    <button type="button" onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
+                <form id="download">
+                    <button class="d" onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
                  </form>
             </div>
                     <div class="table-data">
                         <div class="order">
-                            <table>
+                            <table id="table">
                                 <thead>
                                     <tr>
                                         <th>#ID</th>
@@ -102,7 +102,7 @@ $totalIncome = $incomeData['totalIncome'];
                                                 <td><?php echo $row['payment'];?></td>
                                                 <td><?php echo $row['status'];?></td>
                                                 <td>
-                                                    <button onclick="openPopup(<?php echo $row['order_id']; ?>)"><i class="fa-solid fa-magnifying-glass"></i> Views Details</button>
+                                                    <button class="a" onclick="openPopup(<?php echo $row['order_id']; ?>)"><i class="fa-solid fa-magnifying-glass"></i> Views</button>
                                                     <div class="overlay" id="overlay_<?php echo $row['order_id']; ?>">
                                                         <div class="popup">
                                                             <span class="close-btn" onclick="closePopup(<?php echo $row['order_id']; ?>)">×</span>

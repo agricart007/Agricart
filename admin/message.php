@@ -35,15 +35,15 @@ include ("../session/session_start.php");
                 <div class="order">
                 <div class="head">
             <h3>Total Message</h3>
-            <form id="csvForm">
+            <form id="download">
                 <!-- Move the download button inside the table head -->
-                <button type="button" onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
+                <button onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
             </form>
         </div>
                     <section>
                         <div class="table-data">
                             <div class="order">
-                                <table>
+                                <table id="table">
                                     <thead>
                                         <tr>
                                             <th>#ID</th>
@@ -62,7 +62,7 @@ include ("../session/session_start.php");
                                                 <td><?php echo $row['contact_id'];?></td>
                                                 <td><?php echo $row['buyer_name'];?></td>
                                                 <td class="status" >
-                                                    <div class="status_inner_div"  style="background-color: <?php echo ($row['status'] == 0) ? 'green' : 'red'; ?>;">
+                                                    <div class="status_inner_div"  style="background-color: <?php echo ($row['status'] == 0) ? 'red' : 'green'; ?>;">
                                                         <span><?php echo ($row['status'] == 0) ? 'New' : 'Viewed'; ?></span>
                                                     </div>
                                                 </td>
@@ -75,7 +75,7 @@ include ("../session/session_start.php");
                                                             <h2>Message Details</h2>
                                                             <form>
                                                             <div style="max-height: 400px; overflow-y: auto;">
-                                                                <table>
+                                                                <table id="a">
                                                                     <!-- Include other details as needed -->
                                                                     <tr>
                                                                         <td>Contact ID</td>
@@ -110,7 +110,17 @@ include ("../session/session_start.php");
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>Status</td>
+                                                                        <td>
+                                                                        </td>
+                                                                        <td id="mark">
+                                                                        <?php
+                                                                            if ($row['status'] == 0) {
+                                                                                // Display Deactivate button
+                                                                                echo '<a href="mark_read_message.php?contact_id=' . $row['contact_id'] . '" class="mark-as-read"> Mark as read</a>';
+                                                                            }
+                                                                        ?> 
+                                                                        
+                                                                        </td>
                                                                         
                                                                     </tr>
                                                                 </table>
