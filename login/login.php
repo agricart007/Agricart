@@ -3,7 +3,7 @@
     include ("../session/session_start.php");
     $loginError = isset($_SESSION['login_error']) ? $_SESSION['login_error'] : '';
     unset($_SESSION['login_error']); // Clear the session variable
-    $loginError = isset($_SESSION['register_error']) ? $_SESSION['register_error'] : '';
+    $registerError = isset($_SESSION['register_error']) ? $_SESSION['register_error'] : '';
     unset($_SESSION['register_error']); // Clear the session variable
     
 ?>
@@ -38,8 +38,13 @@
                     <div class="error-message" style="text-align: center; font-size: 18px;">
                         <p><?php echo $loginError; ?></p>
                     </div>
+                <?php elseif ($registerError): ?>
+                    <div class="error-message" style="text-align: center; font-size: 18px;">
+                        <p><?php echo $registerError; ?></p>
+                    </div>
                 <?php endif; ?>
-                <form action="register_validation.php" method="POST" autocomplete="off">
+
+                <form action="validation.php" method="POST" autocomplete="off">
                 <input type="hidden" name="action" value="login">
                     <div class="input-field">
                         <input type="text" placeholder="Enter your email" name="e-mail" required>
@@ -52,11 +57,6 @@
                     </div>
 
                     <div class="checkbox-text">
-                        <!-- <div class="checkbox-content">
-                            <input type="checkbox" id="logCheck">
-                            <label for="logCheck" class="text">Remember me</label>
-                        </div> -->
-                        
                         <a href="#" class="text">Forgot password?</a>
                     </div>
 
@@ -76,7 +76,7 @@
             <div class="form signup">
                 <center><span class="title">Registration</span></center>
 
-                <form action="register_validation.php" method="POST" autocomplete="off">
+                <form action="validation.php" method="POST" autocomplete="off">
                     <input type="hidden" name="action" value="registration">
                     <!-- <div class="input-field">
                         <input type="text" placeholder="Enter your Full name" name="name" required>
@@ -97,7 +97,7 @@
                     </div>
                     <div class="checkbox-text">
                         <div class="checkbox-content">
-                            <input type="checkbox" id="termCon" requiredg>
+                            <input type="checkbox" id="termCon" required>
                             <label for="termCon" class="text">I accepted all terms and conditions</label>
                         </div>
                     </div>

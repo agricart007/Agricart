@@ -42,7 +42,7 @@ switch ($action) {
                 if (mysqli_num_rows($check_query) > 0) {
                     // Email already registered
                     $_SESSION['register_error'] = "E-mail already registered. You can login direclty";
-                    header("location:login.php");
+                    // header("location:login.php");
                 } else {
                     // Email not registered, proceed with registration
                     $sql = "INSERT INTO admin(email, contact, password) VALUES('$email','$number','$password')";
@@ -55,9 +55,8 @@ switch ($action) {
                         echo "Registration failed.";
                     }
                 }
-                break;
-            
-                break;
+                header("location:login.php");
+                exit();
             break;
     
         // ... (rest of your existing cases) ...

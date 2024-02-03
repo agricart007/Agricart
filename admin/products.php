@@ -36,6 +36,9 @@ include ("../session/session_start.php");
                 <div class="order">
                 <div class="head">
             <h3>Total Products</h3>
+            <div>
+                <input type="text" id="productSearch" placeholder="Search by Product Name" oninput="filterSellers()">
+            </div>
             <form id="download">
                 <!-- Move the download button inside the table head -->
                 <button onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
@@ -167,6 +170,35 @@ include ("../session/session_start.php");
     var downloadWindow = window.open('fetch_details/fetch_product_details.php', '_blank');
     downloadWindow.focus();
 }
+function filterSellers() {
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("productSearch");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                // Reset display style for each row
+                tr[i].style.display = "";
+
+                // Loop through all columns in the current row
+                for (j = 0; j < tr[i].cells.length; j++) {
+                    td = tr[i].cells[j];
+                    if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        // If the column contains the search query, break out of the loop
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            break;
+                        }
+                    }
+                }
+
+                // If none of the columns contain the search query, hide the row
+                if (j === tr[i].cells.length) {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
 
 
 
