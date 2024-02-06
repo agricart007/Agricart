@@ -1,3 +1,8 @@
+<?php
+// include ("../session/session_start.php");
+// include("../session/session_check.php");
+// include("../database/connection.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,13 +67,13 @@
         </section>
 
         <section id="form-detail">
-            <form action="">
+            <form action="contact_detail_store.php" method="POST">
                 <span>LEAVE A MESSAGE</span>
                 <h2>We love to hear from you</h2>
-                <input type="text" placeholder="Your Name">
-                <input type="text" placeholder="E-mail">
-                <input type="text" placeholder="Subject">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="text" name="email" placeholder="E-mail" required>
+                <!-- <input type="text" placeholder="Subject" required> -->
+                <textarea name="message" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
                 <button class="normal">Submit</button>
             </form>
             <div class="people">
@@ -94,6 +99,7 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
     <?php
+        include("newsletter.php");
         include ("footer.php");
     ?>
 </html>

@@ -1,14 +1,14 @@
 <?php 
 include ("../database/connection.php");
-$query = "SELECT contact_details.*, buyer_details.first_name AS buyer_name FROM contact_details
-          LEFT JOIN buyer_details ON contact_details.buyer_id = buyer_details.buyer_id";
+// $query = "SELECT contact_details.*, buyer_details.first_name AS buyer_name FROM contact_details
+//           LEFT JOIN buyer_details ON contact_details.buyer_id = buyer_details.buyer_id";
+$query = "select* from contact_details";
 $result = mysqli_query($conn, $query);
 include ("../session/session_start.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,6 +87,12 @@ include ("../session/session_start.php");
                                                                         <td>Buyer Name</td>
                                                                         <td>
                                                                             <div id="buyerIdDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['buyer_name']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Buyer email</td>
+                                                                        <td>
+                                                                            <div id="buyeremailDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['email']; ?></div>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>

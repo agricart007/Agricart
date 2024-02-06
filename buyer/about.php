@@ -1,4 +1,10 @@
-<HTML>
+<?php
+// include ("../session/session_start.php");
+// include("../session/session_check.php");
+// include("../database/connection.php");
+?>
+<!DOCTYPE html>
+<html lang="en">
 
     <head>
     <meta charset="UTF-8">
@@ -26,7 +32,7 @@
         </section>
 
         <section id="page-hadder" class="contct-hadder">
-            <h2>#About Us</h2>
+            <h2>About Us</h2>
             <p>Learn Few Things About Us</p>
         </section>
 
@@ -103,6 +109,7 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
     <?php
+        include("newsletter.php");
         include ("footer.php");
     ?>
-</HTML>
+</html>

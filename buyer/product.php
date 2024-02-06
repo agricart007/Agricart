@@ -1,3 +1,10 @@
+<?php
+// include ("../session/session_start.php");
+// include("../session/session_check.php");
+include("../database/connection.php");
+$query = "SELECT * FROM product_details "; // Assuming your table name is 'product_details'
+$result = mysqli_query($conn, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,82 +36,42 @@
         </section><br><br>
 
         <section id="product1" class="section-p1">
-            <div class="pro-container">
-                <div class="pro">
-                    <img src="../images/xyz.png" alt="">
-                    <div class="des">
-                        <span>ABCD</span>
-                        <h5>A-B-C-D image</h5>
-                        <div class="star">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
+        <?php
+            $photo = empty($row['photo']) ? '../images/xyz.png' : $row['photo'];
+            if (mysqli_num_rows($result) > 0) {
+                // Output product data dynamically
+                while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    <div class="pro-container">
+                        <div class="pro">
+                            <img src="<?php echo $photo; ?>">
+                            <div class="des">
+                                <!-- <span>ABCD</span> -->
+                                <h5><?php echo $row['name']; ?></h5>
+                                <div class="star">
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                </div>
+                                <h4><?php echo $row['price']; ?></h4>
+                            </div>
+                            <a href="#" class="cart"><ion-icon name="cart-outline"></ion-icon></a>
                         </div>
-                        <h4>₹780</h4>
                     </div>
-                    <a href="#" class="cart"><ion-icon name="cart-outline"></ion-icon></a>
-                </div>
-                <div class="pro">
-                    <img src="../images/xyz.png" alt="">
-                    <div class="des">
-                        <span>ABCD</span>
-                        <h5>A-B-C-D image</h5>
-                        <div class="star">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                        </div>
-                        <h4>₹780</h4>
-                    </div>
-                    <a href="#" class="cart"><ion-icon name="cart-outline"></ion-icon></a>
-                </div>
-                <div class="pro">
-                    <img src="../images/xyz.png" alt="">
-                    <div class="des">
-                        <span>ABCD</span>
-                        <h5>A-B-C-D image</h5>
-                        <div class="star">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                            <ion-icon name="star"></ion-icon>
-                        </div>
-                        <h4>₹780</h4>
-                    </div>
-                    <a href="#" class="cart"><ion-icon name="cart-outline"></ion-icon></a>
-                </div>
-                
-               
-            
+                    <?php
+                }
+            }
+        ?>
         </section>
- 
-        <!-- <section id="pagination" class="section-p1">
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#"><ion-icon name="arrow-forward-outline"></ion-icon></i></a>
-        </section> -->
-
-        <section id="newsletter" class="section-p1 section-m1">
-            <div class="newstext">
-                <h4>Sign up For Newsletters</h4>
-                <p>Get E-mail update about our latest product and <span>Special Offers.</span></p>
-            </div>
-            <div class="form">
-                <input type="text" placeholder="Your email address">
-                <button class="normal">Signe Up</button>
-            </div>
-        </section>
-
-
+        
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
     <?php
+        include("newsletter.php");
         include ("footer.php");
+        
     ?>
 </html>

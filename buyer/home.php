@@ -1,3 +1,8 @@
+<!-- <?php
+// include ("../session/session_start.php");
+// include("../session/session_check.php");
+// include("../database/connection.php");
+?> -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -29,7 +34,7 @@
             <b class="h2">Super value deals</b>
             <b class="h1">On all products</b>
             <p>Get up to 70% off!</p>
-            <button>Shop Now</button>
+            <button> <a href="product.php">Shop Now</a></button>
         </section><br><br>
 
         <section id="product1" class="section-p1">
@@ -171,7 +176,7 @@
 
         <section id="banner" class="section-m1">
             <h4>Repair Services</h4>
-            <h2>up to <span>70% OFF</span> At Farming Goods</h2>
+            <h2>up to <span>20% OFF</span> At Farming Goods</h2>
             <button class="normal">Explore More</button>
         </section>
         
@@ -204,25 +209,11 @@
                 <h4>For winter Cultivation</h4>
             </div>
         </section>
-
-        <section id="newsletter" class="section-p1 section-m1">
-            <div class="newstext">
-                <h4>Sign up For Newsletters</h4>
-                <p>Get E-mail update about our latest product and <span>Special Offers.</span></p>
-            </div>
-            <div class="form">
-                <input type="text" placeholder="Your email address">
-                <button class="normal">Signe Up</button>
-            </div>
-        </section>
-
-        
-
-
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
     <?php
+        include("newsletter.php");
         include ("footer.php");
     ?>
 </html>

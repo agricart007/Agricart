@@ -104,26 +104,31 @@ img.logo{
 .section-m1{
     padding: 2.5rem 5rem;
 }
-#product1{
+
+#product1 {
     text-align: center;
 }
-#product1 .pro-container{
+
+#product1 .pro-container {
     display: flex;
     justify-content: space-between;
     padding-top: 0.9375rem;
     flex-wrap: wrap;
     text-align: center;
-    margin-left: 6.25rem;
-    margin-right: 6.25rem;
+    margin: 0 auto; /* Center the container horizontally */
+    max-width: 1300px; /* Set a max-width to control the width of the container */
 }
-#product1 h2{
+
+#product1 h2 {
     font-size: 60;
 }
-#product1 p{
+
+#product1 p {
     font-size: 20;
     color: #555353;
 }
-#product1 .pro{
+
+#product1 .pro {
     width: 23%;
     height: 28.125rem;
     min-width: 12.5rem;
@@ -137,40 +142,48 @@ img.logo{
     margin-top: 1.875rem;
     margin-bottom: 1.875rem;
 }
-#product1 .pro:hover{
+
+#product1 .pro:hover {
     box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.15);
 }
-#product1 .pro img{
+
+#product1 .pro img {
     width: 100%;
     border-radius: 1.25rem;
 }
-#product1 .pro .des{
+
+#product1 .pro .des {
     text-align: start;
     padding: 0.625rem 0;
 }
-#product1 .pro .des span{
+
+#product1 .pro .des span {
     color: #606063;
     font-size: 1rem;
 }
-#product1 .pro .des h5{
+
+#product1 .pro .des h5 {
     padding-top: 0.4375rem;
     color: black;
     font-size: 1.3125rem;
 }
-#product1 .pro .des .star{
+
+#product1 .pro .des .star {
     font-size: 1.3125rem;
     font-weight: 900;
     color: rgb(243, 181, 25);
 }
-#product1 .pro .des h4{
+
+#product1 .pro .des h4 {
     font-size: 1.75rem;
     font-weight: 700;
-    padding-top: 0.3125rem;  
+    padding-top: 0.3125rem;
     color: #088178;
 }
-#product1 .pro .cart{
+
+#product1 .pro .cart {
     width: 3.125rem;
-    height:3.125rem;
+    height: 3.125rem;
     line-height: 3.125rem;
     border-radius: 3.125rem;
     background-color: #eaf2e9;
@@ -180,12 +193,13 @@ img.logo{
     padding-right: 0.5rem;
     padding-top: 0.4575rem;
     padding-bottom: 0.3125rem;
-    border: 0.0625rem solid  #c8ebc4;
+    border: 0.0625rem solid #c8ebc4;
     position: absolute;
     bottom: 1.25rem;
     right: 0.625rem;
     margin-right: 0.9375rem;
 }
+
 .section-m1{
     margin: 40px 0;
 }

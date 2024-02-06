@@ -10,10 +10,11 @@
 <footer class="section-p1">
             <div class="col">
                 <img src="../images/homelogo.png" class="logo">
-                <h4>contact</h4>
-                <p><strong>Address:</strong>------------------</p>
-                <p><strong>Phone:</strong>------------------</p>
-                <p><strong>Hours:</strong>------------------</p>
+                <h4>Contact</h4>
+                <p><strong>Address: </strong> LJ Campus Near Sarkhej-Sanand Circle,<br>
+                                            Sarkhej - Gandhinagar Hwy, Ahmedabad, Gujarat 382210</p>
+                <p><strong>Phone: </strong> +91 8980072388</p>
+                <p><strong>Hours: </strong> Monday to Saturday: 9:00am to 7:00pm</p>
                 <div class="follow">
                     <h4>Follow us</h4>
                     <div class="icon">
@@ -28,14 +29,14 @@
                 <h4>About</h4>
                 <a href="about.php">About us</a>
                 <a href="contact.php">contact us</a>
-                <a href="#">Terma & Condition</a>
+                <a href="#">Term & Condition</a>
             </div>
 
             <div class="col">
                 <h4>My Account</h4>
-                <a href="#">Sign In</a>
-                <a href="#">Log in</a>
-                <a href="#">Help</a>
+                <a href="../login/login.php">Sign up</a>
+                <a href="../login/login.php">Log in</a>
+                <a href="contact.php">Help</a>
             </div>
 
             <div class="col install">

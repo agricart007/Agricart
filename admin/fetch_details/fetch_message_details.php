@@ -2,20 +2,20 @@
 include ("..\..\database\connection.php");
 
 // Fetch data from the contact_details and buyer_details tables
-$query = "SELECT contact_details.*, buyer_details.first_name AS buyer_name FROM contact_details
-          LEFT JOIN buyer_details ON contact_details.buyer_id = buyer_details.buyer_id";
+// $query = "SELECT contact_details.*, buyer_details.first_name AS buyer_name FROM contact_details
+//           LEFT JOIN buyer_details ON contact_details.buyer_id = buyer_details.buyer_id";
+$query = "select* from contact_details";
 $result = mysqli_query($conn, $query);
 
 // Generate CSV content
-$csvContent = "Contact ID,Buyer Name,Description,Status,Created On\n";
+$csvContent = "Contact ID,Buyer Name,E-mail,Description,Status,Created On\n";
 
 while ($row = mysqli_fetch_assoc($result)) {
     $description = str_replace("\n", " ", $row['message']); // Replace newlines with spaces in the description
     $description = str_replace('"', '""', $description); // Escape double quotes in the description
     $createdOn = new DateTime($row['created_on']);
     $formattedCreatedOn = $createdOn->format('Y-m-d H:i:s'); // Adjust the format as needed
-    $csvContent .= "{$row['contact_id']},{$row['buyer_name']}," . '"' . "{$description}" . '"' . ",{$row['status']},{$formattedCreatedOn}\n";
-
+    $csvContent .= "{$row['contact_id']},{$row['buyer_name']},{$row['email']}," . '"' . "{$description}" . '"' . ",{$row['status']},{$formattedCreatedOn}\n";
 }
 
 // Set headers for CSV download
