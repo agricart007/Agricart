@@ -11,13 +11,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>AgriCart</title>
         <link rel="stylesheet" href="home.css">
+        <link rel="icon" href="../images/titlelogo.png" type="image/x-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1 , shrink-to-fit=no">
+        <script>
+    function reloadPage() {
+        location.reload();
+    }
+</script>
+
     </head>
 
     <body>
 
         <section id="header">
-            <a href="#"><img src="../images/homelogo.png" class="logo"></a>
+            <a onclick="reloadPage()"><img src="../images/homelogo.png" class="logo"></a>
             <div>
             <ul id="navbar">
                     <li  class="module"><a href="home.php">Home</a></li>
