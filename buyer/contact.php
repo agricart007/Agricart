@@ -1,7 +1,10 @@
-<HTML>
+<!DOCTYPE html>
+<html lang="en">
 
     <head>
-        <title>Contact Us</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AgriCart</title>
         <link rel="stylesheet" href="home.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     </head>
@@ -11,20 +14,20 @@
         <section id="header">
             <a href="#"><img src="../images/homelogo.png" class="logo"></a>
             <div>
-                <ul id="navbar">
-                    <li  class="module"><a href="home.html">Home</a></li>
-                    <li class="module"><a href="product.html">Products</a></li>
-                    <li class="module"><a href="shop.html">Shop</a></li>
-                    <li  class="module"><a href="about.html">About</a></li>
-                    <li class="module"><a class="active" href="contact.html">Contact</a></li>
-                    <li class="icon"><a href="cart.html"><ion-icon name="cart-outline"></ion-icon></a></li>
-                    <li class="icon"><a href="profile.html"><ion-icon name="person-outline"></ion-icon></a></li>
+            <ul id="navbar">
+                    <li  class="module"><a href="home.php">Home</a></li>
+                    <li class="module"><a href="product.php">Products</a></li>
+                    <li class="module"><a href="shop.php">Shop</a></li>
+                    <li  class="module"><a href="about.php">About</a></li>
+                    <li class="module"><a class="active" href="contact.php">Contact</a></li>
+                    <li class="icon"><a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a></li>
+                    <li class="icon"><a href="profile."><ion-icon name="person-outline"></ion-icon></a></li>
                 </ul>
             </div>
         </section>
 
         <section id="page-hadder" class="contct-hadder">
-            <h2>#Lat's_talk</h2>
+            <h2>Let's_talk</h2>
             <p>Leave A Message, We Will Love To Hear From You</p>
         </section>
 
@@ -90,5 +93,7 @@
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
-
-</HTML>
+    <?php
+        include ("footer.php");
+    ?>
+</html>

@@ -1,10 +1,13 @@
-<html>
-    <head>
-    <link rel="stylesheet" href="home.css">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-    <footer class="section-p1">
+    <title>Document</title>
+</head>
+<body>
+<footer class="section-p1">
             <div class="col">
                 <img src="../images/homelogo.png" class="logo">
                 <h4>contact</h4>
@@ -23,8 +26,8 @@
 
             <div class="col">
                 <h4>About</h4>
-                <a href="#">About us</a>
-                <a href="#">contact us</a>
+                <a href="about.php">About us</a>
+                <a href="contact.php">contact us</a>
                 <a href="#">Terma & Condition</a>
             </div>
 
@@ -47,5 +50,5 @@
         </footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    </body>
-    </html>
+</body>
+</html>
