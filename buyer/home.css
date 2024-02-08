@@ -626,3 +626,35 @@ button.normal{
     width: 50%;
     margin-bottom: 50px;
 }
+#why {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px 100px;
+}
+#why .text h2{
+    font-size: 40px;
+    line-height: 35px;
+    padding: 20px 0;
+}
+#why .text p{
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+#why .img img{
+    height: 300px;
+    width: 600px;
+}
+#why .text{
+    width: 50%;
+    margin-bottom: 50px;
+}
+#why .img{
+    width: 50%;
+    margin-bottom: 50px;
+}
+
+#contact-details p{
+    font-size: 25px;
+    padding-bottom: 10px;
+}

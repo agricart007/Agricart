@@ -1,7 +1,7 @@
 <?php
 include("../database/connection.php");
 
-$query = "SELECT * FROM product_details"; // Assuming your table name is 'product_details'
+$query = "SELECT * FROM product_details ORDER BY RAND()"; // Assuming your table name is 'product_details'
 $result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>

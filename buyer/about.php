@@ -46,31 +46,30 @@
         <section id="contact-details" class="section-p1">
             <div class="detalis">
                 <h2>About Our Website</h2>
-                <h3>Welcome to [Your E-Commerce Website Name],<br> 
+                <p>Welcome to [Your E-Commerce Website Name],<br> 
                     where we celebrate the dedication and hard work<br>
                     of our farming community. As stewards of the land,<br>
                     farmers play a crucial role in feeding the world,<br>
                     and we are honored to support them through our online platform.
-                </h3>   
+                </p>   
             </div>
             <div class="map">
                 <img src="../images/xyz3.avif">
             </div>
         </section>
 
-
         <section id="contact-details" class="section-p1">
             <div class="map">
                 <img src="../images/useless.jpg">
             </div>
             <div class="detalis">
-                <h3>At [Your E-Commerce Website Name],we<br>
+                <p>At [Your E-Commerce Website Name],we<br>
                     understandthe unique challenges that farmers<br>
                     face, from unpredictable weather conditions to<br>
                     market fluctuations. Our mission is to empower farmers<br>
                     by providing them with a convenient and efficient way<br>
                     to access the tools, supplies, and resources they need to thrive.
-                </h3>   
+                </p>   
             </div>
         </section>
 
@@ -89,23 +88,54 @@
         </div>
 
         <div class="img">
-            <img src="../images/xyz3.avif">
+            <img src="../images/useless4.jpg">
         </div>
 
         <div class="img">
-            <img src="../images/useless.jpg">
+            <img src="../images/useless2.avif">
         </div>
 
         <div class="text">
-            <h2>Agricultural Expertise:</h2><br>
-            <p>Our team consists of individuals with a deep understanding<br>
-                of agriculture. We are committed to curating a selection of<br>
-                products that meet the specific needs of farmers, whether<br>
-                they are seasoned professionals or just starting their<br>
-                journey in agriculture.
+            <h2>Wide Range of Products:</h2><br>
+            <p>Explore our comprehensive range of products,<br>
+                from high-quality seeds and fertilizers to<br>
+                cutting-edge agricultural machinery. We partner<br>
+                with trusted suppliers to ensure that farmers have<br>
+                access to the latest innovations and time-tested <br>
+                essentials.
            </p>
         </div>
 
+        <div class="text">
+            <h2>Convenient Online Shopping:</h2><br>
+            <p>We understand that farmers have demanding schedules.<br>
+                Our user-friendly website allows you to browse and<br>
+                shop at your convenience, eliminating the need for<br>
+                ime-consuming trips to physical stores. Order from the<br>
+                comfort of your home or field, and have your supplies<br>
+                delivered right to your doorstep.
+           </p>
+        </div>
+
+        <div class="img">
+            <img src="../images/useless3.jpg">
+        </div>
+
+        <div class="img">
+            <img src="../images/useless5.jpg">
+        </div>
+
+        <div class="text">
+            <h2>Customer Care:
+            </h2><br>
+            <p>Our dedicated customer support team is here to assist you<br>
+                at every step. Whether you have questions about a<br>
+                product, need help with an order, or simply want advice<br>
+                on improving your farming practices, we are just a<br>
+                message or call away.
+            </p>
+        </div>
+        
        </section>
 
 
