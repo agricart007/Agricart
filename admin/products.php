@@ -68,7 +68,7 @@ include ("../session/session_start.php");
                                                 <!-- <td><?php echo $row['photo'];?></td> -->
                                                 <td>
                                                         <?php
-                                                        $photo = empty($row['photo']) ? '../photos/profile.jpg' : $row['photo'];
+                                                        $photo = empty($row['photo']) ? '../images/profile.jpg' : $row['photo'];
                                                         echo "<img src='$photo' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
                                                         ?>
                                                     </td>

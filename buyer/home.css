@@ -101,6 +101,9 @@ img.logo{
     background-repeat:no-repeat;
     cursor: pointer;
 }
+#hero button a{
+    color: #088178;
+}
 .section-m1{
     padding: 2.5rem 5rem;
 }

@@ -1,6 +1,8 @@
 <?php
 include ("..\database\connection.php");
-session_start();
+include ("..\session\session_start.php");
+// include ("..\session\session_check.php");
+
 
 $action = isset($_POST['action']) ? $_POST['action'] : '';
 

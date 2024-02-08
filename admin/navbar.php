@@ -27,6 +27,7 @@
                     <div class="avartar-text">
                         <h3>
                             Admin
+                            <!-- <?php echo $email;?> -->
                         </h3>
                     </div>
                     

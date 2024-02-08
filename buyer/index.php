@@ -26,7 +26,7 @@ $result = mysqli_query($conn, $query);
     <a onclick="reloadPage()"><img src="../images/homelogo.png" class="logo"></a>
     <div>
         <ul id="navbar">
-            <li class="module"><a class="active" href="home.php">Home</a></li>
+            <li class="module"><a class="active" href="index.php">Home</a></li>
             <li class="module"><a href="product.php">Products</a></li>
             <li class="module"><a href="shop.php">Shop</a></li>
             <li class="module"><a href="about.php">About</a></li>
@@ -41,8 +41,8 @@ $result = mysqli_query($conn, $query);
     <b class="h4">Trade-in-offer</b>
     <b class="h2">Super value deals</b>
     <b class="h1">On all products</b>
-    <p>Get up to 70% off!</p>
-    <button> <a href="product.php">Shop Now</a></button>
+    <p>Get up to 20% off!</p>
+    <a href="product.php"><button>Shop Now</button></a>
 </section><br><br>
 
 <section id="product1" class="section-p1">
@@ -60,8 +60,8 @@ $result = mysqli_query($conn, $query);
             echo '<div class="pro">';
             echo '<img src="' . $image . '" alt="">';
             echo '<div class="des">';
-            echo '<span>ABCD</span>';
-            echo '<h5>' . $name . '</h5>';
+            echo '<span> <h5>' . $name . '</h5></span>';
+            echo '<h5>' . 700 . '</h5>';
             echo '<div class="star">';
             echo '<ion-icon name="star"></ion-icon>';
             echo '<ion-icon name="star"></ion-icon>';
