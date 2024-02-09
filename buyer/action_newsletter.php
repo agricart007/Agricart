@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO newsletter (email) VALUES ('$email')";
         if ($conn->query($sql) === TRUE) {
             // Redirect after successful insertion
-            header("Location: index.php");
+            header("Location: contact.php");
             exit(); // Ensure script execution stops after redirection
         } else {
             // Error handling if query execution fails
