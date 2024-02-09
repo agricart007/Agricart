@@ -27,7 +27,7 @@
             <a onclick="reloadPage()"><img src="../images/homelogo.png" class="logo"></a>
             <div>
             <ul id="navbar">
-                    <li  class="module"><a href="home.php">Home</a></li>
+            <li class="module"><a href="index.php">Home</a></li>
                     <li class="module"><a href="product.php">Products</a></li>
                     <li class="module"><a href="shop.php">Shop</a></li>
                     <li  class="module"><a href="about.php">About</a></li>
@@ -106,7 +106,7 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
     <?php
-        include("newsletter.php");
+        // include("newsletter.php");
         include ("footer.php");
     ?>
 </html>

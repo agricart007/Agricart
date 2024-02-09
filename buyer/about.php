@@ -22,12 +22,12 @@
     </head>
 
     <body>
-
+        
         <section id="header">
             <a onclick="reloadPage()"><img src="../images/homelogo.png" class="logo"></a>
             <div>
             <ul id="navbar">
-                    <li  class="module"><a href="home.php">Home</a></li>
+            <li class="module"><a href="index.php">Home</a></li>
                     <li class="module"><a href="product.php">Products</a></li>
                     <li class="module"><a href="shop.php">Shop</a></li>
                     <li  class="module"><a class="active" href="about.php">About</a></li>
@@ -42,7 +42,7 @@
             <h2>About Us</h2>
             <p>Learn Few Things About Us</p>
         </section>
-
+        
         <section id="contact-details" class="section-p1">
             <div class="detalis">
                 <h2>About Our Website</h2>
@@ -146,7 +146,7 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
     <?php
-        include("newsletter.php");
+        // include("newsletter.php");
         include ("footer.php");
     ?>
 </html>

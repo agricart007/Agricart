@@ -130,7 +130,10 @@ img.logo{
     font-size: 20;
     color: #555353;
 }
-
+#product1 a {
+    font-size: 32px;
+    color:#088178;
+}
 #product1 .pro {
     width: 23%;
     height: 28.125rem;
@@ -260,7 +263,7 @@ button.normal{
     justify-content: center;
     align-items: flex-start;
     background-image: url("../images/sm-banner1.jpg");
-    min-width: 660px;
+    min-width: 680px;
     height: 50vh;
     background-size: cover;
     background-position: center;
@@ -273,7 +276,7 @@ button.normal{
     justify-content: center;
     align-items: flex-start;
     background-image: url("../images/sm-banner2.jpg");
-    min-width: 660px;
+    min-width: 680px;
     height: 50vh;
     background-size: cover;
     background-position: center;
@@ -499,7 +502,7 @@ footer .icon{
     display: flex;
     align-items:center;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin: 35px;
 }
 #contact-details span{
     font-size: 14px;
@@ -607,6 +610,7 @@ button.normal{
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 40px 100px;
+    margin-left: 45px;
 }
 #why .text h2{
     font-size: 40px;

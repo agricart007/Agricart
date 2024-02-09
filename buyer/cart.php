@@ -27,7 +27,7 @@
             <a onclick="reloadPage()"><img src="../images/homelogo.png" class="logo"></a>
             <div>
             <ul id="navbar">
-                    <li  class="module"><a href="home.php">Home</a></li>
+            <li class="module"><a href="index.php">Home</a></li>
                     <li class="module"><a href="product.php">Products</a></li>
                     <li class="module"><a href="shop.php">Shop</a></li>
                     <li  class="module"><a href="about.php">About</a></li>
@@ -39,8 +39,8 @@
         </section>
 
         <section id="page-hadder" class="contct-hadder">
-            <h2>Let's_talk</h2>
-            <p>Leave A Message, We Will Love To Hear From You</p>
+            <h2>Cart</h2>
+            <p>Purchase products at best price</p>
         </section>
 
         <section id="cart" class="section-p1">

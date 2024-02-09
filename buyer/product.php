@@ -26,7 +26,7 @@ $result = mysqli_query($conn, $query);
     <a onclick="reloadPage()"><img src="../images/homelogo.png" class="logo"></a>
     <div>
         <ul id="navbar">
-            <li class="module"><a href="home.php">Home</a></li>
+            <li class="module"><a href="index.php">Home</a></li>
             <li class="module"><a class="active" href="product.php">Products</a></li>
             <li class="module"><a href="shop.php">Shop</a></li>
             <li class="module"><a href="about.php">About</a></li>
@@ -44,7 +44,8 @@ $result = mysqli_query($conn, $query);
 <section id="product1" class="section-p1">
     <h2>Featured Products</h2>
     <p>Specially for Organic Farming</p>
-    <div class="pro-container" onclick="window.location.href='sproduct.php';">
+    <div class="pro-container" onclick="window.location.href='product_detail.php';">
+    <!-- this line will redirect the user -->
         <?php
         // Loop through each product fetched from the database
         while ($row = mysqli_fetch_assoc($result)) {
@@ -78,7 +79,7 @@ $result = mysqli_query($conn, $query);
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 <?php
-include("newsletter.php");
+// include("newsletter.php");
 include ("footer.php");
 ?>
 </html>
