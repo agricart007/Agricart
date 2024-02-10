@@ -1,7 +1,9 @@
 <?php
+include("../session/session_start.php");
+include("../session/session_check.php");
 include("../database/connection.php");
 
-$query = "SELECT * FROM product_details ORDER BY RAND() LIMIT 8"; // Ordering randomly and limiting to 6 products
+$query = "SELECT * FROM product_details ORDER BY RAND() LIMIT 8"; // Ordering randomly and limiting to 8 products
 $result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
@@ -17,7 +19,7 @@ $result = mysqli_query($conn, $query);
     function reloadPage() {
         location.reload();
     }
-</script>
+    </script>
 
 </head>
 <body>
@@ -44,40 +46,7 @@ $result = mysqli_query($conn, $query);
     <p>Get up to 20% off!</p>
     <a href="product.php"><button>Shop Now</button></a>
 </section><br><br>
-
-<section id="product1" class="section-p1">
-    <h2>Featured Products</h2>
-    <p>Specially for Organic Farming</p>
-    <div class="pro-container">
-        <?php
-        // Loop through each product fetched from the database
-        while ($row = mysqli_fetch_assoc($result)) {
-            $image = empty($row['photo']) ? '../images/xyz.png' : $row['photo'];
-            $name = $row['name'];
-            $price = $row['price'];
-
-            // Display product dynamically using fetched data
-            echo '<div class="pro">';
-            echo '<img src="' . $image . '" alt="">';
-            echo '<div class="des">';
-            echo '<span> <h5>' . $name . '</h5></span>';
-            echo '<h5>' . 700 . '</h5>';
-            echo '<div class="star">';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '</div>';
-            echo '<h4>₹' . $price . '</h4>';
-            echo '</div>';
-            echo '<a href="#" class="cart"><ion-icon name="cart-outline"></ion-icon></a>';
-            echo '</div>';
-        }
-        ?>
-    </div>
-</section>
-
+<?php include("8_product.php");?>
 <section id="banner" class="section-m1">
     <h4>Repair Services</h4>
     <h2>Get up to <span>20% OFF</span> At Farming Goods</h2>

@@ -1,9 +1,50 @@
 <?php
 include("../database/connection.php");
+include("../session/session_start.php");
 
-$query = "SELECT * FROM product_details ORDER BY RAND() LIMIT 8"; // Assuming your table name is 'product_details'
-$result = mysqli_query($conn, $query);
+// Check if 'username' session variable is set
+if(isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+}
+
+// Fetch product details based on product_id if available
+if(isset($_GET['product_id'])) {
+    $product_id = mysqli_real_escape_string($conn, $_GET['product_id']);
+    $query = "SELECT * FROM product_details WHERE product_id = '$product_id'";
+    $result = mysqli_query($conn, $query);
+
+    if(mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $name = $row['name'];
+        $price = $row['price'];
+        $quantity = $row['quantity'];
+        $image1 = empty($row['photo']) ? '../images/xyz.png' : $row['photo'];
+        $image2 = empty($row['photo']) ? '../images/xyz.png' : $row['photo2'];
+        $image3 = empty($row['photo']) ? '../images/xyz.png' : $row['photo3'];
+    }
+}
+if(isset($_POST['add_to_cart'])) {
+    // Sanitize and validate form data
+    $product_id = mysqli_real_escape_string($conn, $_POST['product_id']);
+    // $size = mysqli_real_escape_string($conn, $_POST['size']);
+    $quantity = (int)$_POST['quantity']; // Convert to integer
+
+    // Insert product details into cart_details table
+    // $insert_query = "INSERT INTO cart_details (product_id, buyer_username, size, quantity) VALUES ('$product_id', '$username', '$size', '$quantity')";
+    // $insert_result = mysqli_query($conn, $insert_query);
+    $insert_query = "INSERT INTO cart_details (product_id, buyer_username, quantity) VALUES ('$product_id', '$username', '$quantity')";
+    $insert_result = mysqli_query($conn, $insert_query);
+
+    if($insert_result) {
+        // Product successfully added to cart
+        echo "<script>alert('Product added to cart successfully.')</script>";
+    } else {
+        // Error occurred while adding product to cart
+        echo "<script>alert('Failed to add product to cart. Please try again.')</script>";
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +58,7 @@ $result = mysqli_query($conn, $query);
     function reloadPage() {
         location.reload();
     }
-</script>
-
+    </script>
 </head>
 <body>
 
@@ -26,7 +66,7 @@ $result = mysqli_query($conn, $query);
     <a onclick="reloadPage()"><img src="../images/homelogo.png" class="logo"></a>
     <div>
         <ul id="navbar">
-        <li class="module"><a href="index.php">Home</a></li>
+            <li class="module"><a href="index.php">Home</a></li>
             <li class="module"><a class="active" href="product.php">Products</a></li>
             <li class="module"><a href="shop.php">Shop</a></li>
             <li class="module"><a href="about.php">About</a></li>
@@ -38,91 +78,54 @@ $result = mysqli_query($conn, $query);
 </section>
 
 <section id="productdetails" class="section-p1">
+    <?php if(isset($name)): ?>
     <div class="single-product-image">
-       <img src="../images/sproduct2.webp" width="100%" id="MainImg" alt="">
+        <img src="../images/<?php echo $image1; ?>" width="100%" id="MainImg" alt="Main Image">
 
         <div class="small-img-group">
-            <div class="small-img-col">
-               <img src="../images/sproduct2.webp" width="100%" class="small-img" alt="">
-            </div>
-            <div class="small-img-col">
-               <img src="../images/sproduct1.png"width="100%" class="small-img" alt="">
-            </div>
-            <div class="small-img-col">
-               <img src="../images/sproduct2.webp" width="100%" class="small-img" alt="">
-            </div>
-            <div class="small-img-col">
-               <img src="../images/sproduct2.webp" width="100%" class="small-img" alt="">
-            </div>
+        <div class="small-img-col">
+            <img src="../images/<?php echo $image1; ?>" width="100%" class="small-img" alt="Small Image 1">
         </div>
 
+            <div class="small-img-col">
+                <img src="../images/<?php echo $image2; ?>" width="100%" class="small-img" alt="Small Image 2">
+            </div>
+            <div class="small-img-col">
+                <img src="../images/<?php echo $image3; ?>" width="100%" class="small-img" alt="Small Image 3">
+            </div>
+        </div>
     </div>
 
     <div class="single-product-details">
-
-        <h1>Home / T-shirt</h1>
-        <h4>Men's Fashion T-shirt</h4>
-        <h2>$500</h2>
-        <select>
-            <option>Select Size</option>
-            <option>Small</option>
-            <option>Medium</option>
-            <option>Large</option>
-            <option>XL</option>
-            <option>XXL</option>
-        </select>
-        <input type="number" value="1">
-        <button class="normal">Add To Cart</button>
+        <h1><?php echo $name; ?></h1>
+        <h4>Product Description</h4>
+        <h2>₹<?php echo $price; ?></h2>
+        <form method="post" action="">
+            <select name="size">
+                <option>Select Size</option>
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+                <option>XL</option>
+                <option>XXL</option>
+            </select>
+            <input type="number" name="quantity" value="1" min="1" max="<?php echo $quantity; ?>">
+            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+            <button type="submit" name="add_to_cart" class="normal">Add To Cart</button>
+        </form>
         <h4>Product Details</h4>
-        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint nihil hic adipisci ab.<br>
-             Quibusdam asperiores accusamus corrupti? Aliquam facilis nulla repellendus ut cupiditate<br>
-              inventore obcaecati quaerat delectus, harum eos maiores.Lorem ipsum dolor sit amet consectetur<br>
-               adipisicing elit. Ex similique eaque, eveniet reprehenderit nihil modi exercitationem,<br> 
-               porro beatae unde accusamus,amet quos! Corporis assumenda minima laboriosam, optio eos inventore veritatis?
-        </span>
-
+        <span><?php echo $row['description']; ?></span>
     </div>
-    
+    <?php else: ?>
+    <p>No product found.</p>
+    <?php endif; ?>
 </section>
-
-<section id="product1" class="section-p1">
-    <h2>Similar Products</h2>
-    <p>Specially for Organic Farming</p>
-    <div class="pro-container" onclick="window.location.href='product_detail.php';">
-        <?php
-        // Loop through each product fetched from the database
-        while ($row = mysqli_fetch_assoc($result)) {
-            $image = empty($row['photo']) ? '../images/xyz.png' : $row['photo'];
-            $name = $row['name'];
-            $price = $row['price'];
-
-            // Display product dynamically using fetched data
-            echo '<div class="pro">';
-            echo '<img src="' . $image . '" alt="">';
-            echo '<div class="des">';
-            echo '<span>ABCD</span>';
-            echo '<h5>' . $name . '</h5>';
-            echo '<div class="star">';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '</div>';
-            echo '<h4>₹' . $price . '</h4>';
-            echo '</div>';
-            echo '<a href="#" class="cart"><ion-icon name="cart-outline"></ion-icon></a>';
-            echo '</div>';
-        }
-        ?>
-    </div>
-</section>
+<?php include("8_product.php");?>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 <script>
-
    var MainImg = document.getElementById("MainImg");
    var smallimg =document.getElementsByClassName("small-img");
 
@@ -138,12 +141,10 @@ $result = mysqli_query($conn, $query);
    smallimg[3].onclick =function(){
      MainImg.src = smallimg[3].src;
    }
-
 </script>
 
 </body>
 <?php
-// include("newsletter.php");
 include ("footer.php");
 ?>
 </html>

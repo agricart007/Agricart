@@ -1,7 +1,7 @@
 <?php
-// include ("../session/session_start.php");
-// include("../session/session_check.php");
-// include("../database/connection.php");
+include ("../session/session_start.php");
+include("../session/session_check.php");
+include("../database/connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

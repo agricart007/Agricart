@@ -1,8 +1,29 @@
 <?php
+include("../session/session_start.php");
+include("../session/session_check.php");
 include("../database/connection.php");
 
 $query = "SELECT * FROM product_details ORDER BY RAND()"; // Assuming your table name is 'product_details'
 $result = mysqli_query($conn, $query);
+ 
+if(isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+}
+ 
+if(isset($_POST['add_to_cart_short_cut'])) {
+    $product_id = mysqli_real_escape_string($conn, $_POST['product_id']);
+    $quantity = 1; 
+    $insert_query = "INSERT INTO cart_details (product_id, buyer_username, quantity) VALUES ('$product_id', '$username', '$quantity')";
+    $insert_result = mysqli_query($conn, $insert_query);
+
+    if($insert_result) {
+        // Product successfully added to cart
+        echo "<script>alert('Product added to cart successfully.')</script>";
+    } else {
+        // Error occurred while adding product to cart
+        echo "<script>alert('Failed to add product to cart. Please try again.')</script>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +38,7 @@ $result = mysqli_query($conn, $query);
     function reloadPage() {
         location.reload();
     }
-</script>
+    </script>
 
 </head>
 <body>
@@ -44,17 +65,17 @@ $result = mysqli_query($conn, $query);
 <section id="product1" class="section-p1">
     <h2>Featured Products</h2>
     <p>Specially for Organic Farming</p>
-    <div class="pro-container" onclick="window.location.href='product_detail.php';">
-    <!-- this line will redirect the user -->
+    <div class="pro-container">
         <?php
         // Loop through each product fetched from the database
         while ($row = mysqli_fetch_assoc($result)) {
-            $image = empty($row['photo']) ? '../images/xyz.png' : $row['photo'];
+            $image = empty($row['photo']) ? '../images/xyz.png' : '../images/' . $row['photo'];
+            $product_id = $row['product_id']; // Assuming 'product_id' is the primary key column in your 'product_details' table
             $name = $row['name'];
             $price = $row['price'];
 
-            // Display product dynamically using fetched data
-            echo '<div class="pro">';
+            // Output HTML for each product with a link to product_detail.php along with the product ID
+            echo '<div class="pro" onclick="window.location.href=\'product_detail.php?product_id=' . $product_id . '\'">';
             echo '<img src="' . $image . '" alt="">';
             echo '<div class="des">';
             echo '<span>ABCD</span>';
@@ -68,7 +89,10 @@ $result = mysqli_query($conn, $query);
             echo '</div>';
             echo '<h4>₹' . $price . '</h4>';
             echo '</div>';
-            echo '<a href="#" class="cart"><ion-icon name="cart-outline"></ion-icon></a>';
+            echo '<form method="post" action="">';
+            echo '<input type="hidden" name="product_id" value="' . $product_id . '">';
+            echo '<button class="cart" type="submit" name="add_to_cart_short_cut"><ion-icon name="cart-outline"></ion-icon></button>';
+            echo '</form>';
             echo '</div>';
         }
         ?>
@@ -77,9 +101,4 @@ $result = mysqli_query($conn, $query);
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
-<?php
-// include("newsletter.php");
-include ("footer.php");
-?>
-</html>
+</body
