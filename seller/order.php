@@ -17,22 +17,6 @@ $order_query = "SELECT o.*, p.name, p.photo, p.description, `by`.first_name, `by
                 WHERE o.seller_id = '$seller_id'";
 
 $order_result = mysqli_query($conn, $order_query);
-
-if(isset($_POST['save_changes'])) {
-    // Retrieve order ID and tracking ID from the form
-    $order_id = $_POST['order_id'];
-    $tracking_no = $_POST['tracking_no'];
-
-    // Update the database with the tracking ID
-    $update_query = "UPDATE order_details SET tracking_no = '$tracking_no' WHERE order_id = '$order_id'";
-    $update_result = mysqli_query($conn, $update_query);
-
-    if($update_result) {
-        echo "<script>alert('Tracking ID updated successfully');</script>";
-    } else {
-        echo "<script>alert('Failed to update Tracking ID');</script>";
-    }
-}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -105,7 +89,7 @@ if(isset($_POST['save_changes'])) {
                                         <div class="popup">
                                         <span class="close-btn" onclick="closePopup('<?php echo $row['order_id']; ?>')">×</span>
                                             <h2>Order Details</h2>
-                                            <form method="POST"  enctype="multipart/form-data">
+                                            <form method="POST"  action="update_trackingid.php"  enctype="multipart/form-data">
                                                 <input type="hidden" name="order_id" value="<?php echo $row['order_id']; ?>">
                                                 <div style="max-height: 400px; overflow-y: auto;">
                                                     <table>

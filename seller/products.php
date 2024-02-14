@@ -87,9 +87,13 @@ $product_result = mysqli_query($conn, $product_query);
                                         <button onclick="openPopup(<?php echo $row['product_id']; ?>)">
                                             <i class='fa-solid fa-magnifying-glass'></i> Edit
                                         </button>
-                                        <button onclick="deleteProduct(<?php echo $row['product_id']; ?>)">
-                                        <i class='fa-solid fa-magnifying-glass'></i> Delete
-                                        </button>
+                                        <form method="POST" action="delete_product.php">
+    <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+    <button type="submit">
+        <i class='fa-solid fa-magnifying-glass'></i> Delete
+    </button>
+</form>
+
 
                                     </div>
                                     <div class="overlay" id="overlay_<?php echo $row['product_id']; ?>">

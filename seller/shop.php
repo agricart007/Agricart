@@ -27,6 +27,13 @@ $result_shop = mysqli_query($conn, $sql_shop);
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+        function openPopup(shopid) {
+            document.getElementById("overlay_" + shopid).style.display = "flex";
+        }
+
+        function closePopup(shopid) {
+            document.getElementById("overlay_" + shopid).style.display = "none";
+        }
         $(document).ready(function () {
             $(".nav").click(function () {
                 $("#mySidenav").css('width', '70px');
@@ -110,15 +117,80 @@ $result_shop = mysqli_query($conn, $sql_shop);
                                         <td><?php echo $row['name']; ?></td>
                                         <td><?php echo $row['city']; ?></td>
                                         <td>
-                                    <div class="view-button">
-                                        <button onclick="openPopup(<?php echo $row['shop_id']; ?>)">
-                                            <i class='fa-solid fa-magnifying-glass'></i> Edit
-                                        </button>
-                                        <button>
-                                            <i class='fa-solid fa-magnifying-glass'></i> Delete
-                                        </button>
+                                            <div class="view-button">
+                                                <button onclick="openPopup(<?php echo $row['shop_id']; ?>)">
+                                                    <i class='fa-solid fa-magnifying-glass'></i> Edit
+                                                </button>
+                                                <form method="POST" action="delete_shop.php">
+                                                    <input type="hidden" name="shop_id" value="<?php echo $row['shop_id']; ?>">
+                                                    <button type="submit">
+                                                        <i class='fa-solid fa-magnifying-glass'></i> Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <div class="overlay" id="overlay_<?php echo $row['shop_id']; ?>">
+                                        <div class="popup">
+                                            <span class="close-btn" onclick="closePopup('<?php echo $row['shop_id']; ?>')">×</span>
+                                            <h2>Edit Product Details</h2>
+                                            <form method="POST" action="update_shop.php" enctype="multipart/form-data">
+                                                <input type="hidden" name="shop_id" value="<?php echo $row['shop_id']; ?>">
+                                                <div style="max-height: 400px; overflow-y: auto;">
+                                                    <table>
+                                                        <tr>
+                                                            <td>Shop Name</td>
+                                                            <td>
+                                                                <input type="text" name="name" value="<?php echo $row['name']; ?>">
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                        <tr>
+                                                            <td>Address</td>
+                                                            <td>
+                                                                <input type="text" name="address" value="<?php echo $row['address']; ?>">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>City</td>
+                                                            <td>
+                                                                <input type="text" name="city" value="<?php echo $row['city']; ?>">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>E-mail</td>
+                                                            <td>
+                                                            <input type="text" name="email" value="<?php echo $row['city']; ?>">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Image</td>
+                                                            <td>
+                                                                <img src="../images/<?php echo $row['photo']; ?>" style="max-width: 100px; max-height: 100px;">
+                                                                <input type="file" name="image">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Conatct Number</td>
+                                                            <td><input type="number" name="contact_no" value="<?php echo $row['contact_no']; ?>"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>location</td>
+                                                            <td><input type="text" name="location" value="<?php echo $row['location']; ?>"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Timming</td>
+                                                            <td><input type="text" name="timming" value="<?php echo $row['time']; ?>"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Contact Person</td>
+                                                            <td><input type="text" name="contact_person" value="<?php echo $row['contact_person']; ?>"></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <button type="submit">Save Changes</button>
+                                            </form>
+                                        </div>
                                     </div>
-                                </td>
+                                        </td>
                                     </tr>
                                     <?php
                                 }

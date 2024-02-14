@@ -13,12 +13,8 @@ if (!$seller_id_result) {
 $seller_id_row = mysqli_fetch_assoc($seller_id_result);
 $seller_id = $seller_id_row['seller_id'];
 
-// Query to fetch total sales
-$total_sales_query = "SELECT price * quantity AS total_sales FROM order_details WHERE seller_id = '$seller_id'";
+$total_sales_query = "SELECT SUM(price * quantity) AS total_sales FROM order_details WHERE seller_id = '$seller_id'";
 $total_sales_result = mysqli_query($conn, $total_sales_query);
-if (!$total_sales_result) {
-    die("Error: " . mysqli_error($conn)); // Add error handling
-}
 $total_sales_row = mysqli_fetch_assoc($total_sales_result);
 $total_sales = $total_sales_row['total_sales'];
 

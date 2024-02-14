@@ -13,7 +13,7 @@ $seller_id_row = mysqli_fetch_assoc($seller_id_result);
 $seller_id = $seller_id_row['seller_id'];
 
 // Query to fetch total sales
-$total_sales_query = "SELECT SUM(price) AS total_sales FROM order_details WHERE seller_id = '$seller_id'";
+$total_sales_query = "SELECT SUM(price * quantity) AS total_sales FROM order_details WHERE seller_id = '$seller_id'";
 $total_sales_result = mysqli_query($conn, $total_sales_query);
 $total_sales_row = mysqli_fetch_assoc($total_sales_result);
 $total_sales = $total_sales_row['total_sales'];
@@ -31,7 +31,7 @@ $total_products_row = mysqli_fetch_assoc($total_products_result);
 $total_products = $total_products_row['total_products'];
 
 // Query to fetch top 5 selling products
-$top_products_query = "SELECT pd.name, SUM(od.quantity) AS total_quantity_sold, SUM(od.price) AS total_revenue 
+$top_products_query = "SELECT pd.name, od.quantity AS total_quantity_sold, od.price * od.quantity AS total_revenue 
 FROM order_details od
 JOIN product_details pd ON od.product_id = pd.product_id
 WHERE od.seller_id = '$seller_id'

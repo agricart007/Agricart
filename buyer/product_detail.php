@@ -194,6 +194,7 @@ if(isset($_POST['add_to_cart'])) {
 
 </body>
 <?php
+include ("8_product.php");
 include ("footer.php");
 ?>
 </html>
