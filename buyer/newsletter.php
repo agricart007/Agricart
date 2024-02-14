@@ -7,14 +7,14 @@
 </head>
 <body>
 <section id="newsletter" class="section-p1 section-m1">
-    <div class="newstext">
-        <h4>Sign up For Newsletters</h4>
-        <p>Get E-mail update about our latest product and <span>Special Offers.</span></p>
-    </div>
-    <form class="form" action="action_newsletter.php" method="POST">
-        <input type="email" name="email" placeholder="Your email address">
-        <button type="submit" class="normal">Sign Up</button>
-    </form>
+            <div class="newstext">
+                <h4>Sign up For Newsletters</h4>
+                <p>Get E-mail update about our latest product and <span>Special Offers.</span></p>
+            </div>
+            <div class="form" action="action_newletter.php">
+                <input type="text" placeholder="Your email address">
+                <button class="normal">Signe Up</button>
+            </div>
 </section>
 </body>
 </html>

@@ -1,20 +1,27 @@
 <?php
-// Retrieve the email from the form submission
-if(isset($_POST['email'])) {
+include ("../database/connection.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get form data
     $email = $_POST['email'];
 
-    include ("..\database\connection.php");
-
-    // Prepare SQL statement
-    $sql = "INSERT INTO newsletter (email) VALUES ('$email')";
-
-    // Execute SQL statement
-    if ($conn->query($sql) === TRUE) {
-        header("location:index.php");
+    // Validate data
+    if (!empty($email)) {
+        // Insert data into database
+        $sql = "INSERT INTO newsletter (email) VALUES ('$email')";
+        if ($conn->query($sql) === TRUE) {
+            // Redirect after successful insertion
+            header("Location: contact.php");
+            exit(); // Ensure script execution stops after redirection
+        } else {
+            // Error handling if query execution fails
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Please fill in all fields.";
     }
 
+    // Close the database connection
     $conn->close();
 }
 ?>

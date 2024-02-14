@@ -27,34 +27,25 @@
 
             <div class="col">
                 <h4>About</h4>
-                <a href="about.php">About Us</a>
-                <a href="contact.php">contact Us</a>
+                <a href="about.php">About us</a>
+                <a href="contact.php">contact us</a>
                 <a href="#">Term & Condition</a>
             </div>
 
             <div class="col">
                 <h4>My Account</h4>
-                <a href="../login/login.php">Sign Up</a>
-                <a href="../login/login.php">Log In</a>
+                <a href="../login/login.php">Sign up</a>
+                <a href="../login/login.php">Log in</a>
                 <a href="contact.php">Help</a>
             </div>
 
             <div class="col install">
-                <h4>Seller</h4>
-                <a href="">Became a Seller</a>
-                <a href="../login/login.php">Login To Seller Account</a>
-                <!-- <p>Form App Store or Google Play</p>
+                <h4>Install App</h4>
+                <p>Form App Store or Google Play</p>
                 <div class="row">
                     <img src="../images/google-apple-badge.jpg" class="logo-ga">
-                </div> -->
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br><br>
-                <h4>Secure Payment Gateway</h4>
+                </div>
+                <p>Secure Payment Gateway</p>
                 <img src="../images/payment-badge.png" class="logo-pay">
             </div>
         </footer>
