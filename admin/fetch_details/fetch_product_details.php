@@ -7,11 +7,11 @@ $query = "SELECT product_details.*, seller_details.first_name AS seller_name FRO
 $result = mysqli_query($conn, $query);
 
 // Generate CSV content
-$csvContent = "Product ID,Photo,Name,Seller Name,Price,Quantity,Description\n";
+$csvContent = "Product ID,Photo,Photo2,Photo3,Name,Seller Name,Price,Quantity,Description\n";
 
 while ($row = mysqli_fetch_assoc($result)) {
     $description = str_replace("\n", " ", $row['description']); // Replace newlines with spaces in the description
-    $csvContent .= "{$row['product_id']},{$row['photo']},{$row['name']},{$row['seller_name']},{$row['price']},{$row['quantity']},{$description}\n";
+    $csvContent .= "{$row['product_id']},{$row['photo']},{$row['photo2']},{$row['photo3']},{$row['name']},{$row['seller_name']},{$row['price']},{$row['quantity']},{$description}\n";
 }
 
 // Set headers for CSV download

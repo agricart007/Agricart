@@ -40,9 +40,6 @@ $result = mysqli_query($conn, $query);
                 <div class="order">
                 <div class="head">
             <h3>Total Seller</h3>
-            <div>
-                <input type="text" id="sellerSearch" placeholder="Search by Seller Name" oninput="filterSellers()">
-            </div>
             <form id="download">
                 <!-- Move the download button inside the table head -->
                 <button onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
@@ -73,8 +70,8 @@ $result = mysqli_query($conn, $query);
                                                     <!-- <td><?php echo $row['photo']; ?></td> -->
                                                     <td>
                                                         <?php
-                                                        $photo = empty($row['photo']) ? '../images/profile.jpg' : $row['photo'];
-                                                        echo "<img src='$photo' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
+                                                        $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                                                        echo "<img src='$image' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
                                                         ?>
                                                     </td>
                                                     <td><?php echo $row['first_name']; ?></td>
@@ -136,25 +133,6 @@ $result = mysqli_query($conn, $query);
                                                                             <td>Contact</td>
                                                                             <td>
                                                                                 <div id="sellerContactDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['contact_no']; ?></div>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>Shop Name</td>
-                                                                            <td>
-                                                                                <div id="sellerPhotoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['shop_name']; ?></div>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>Shop Address</td>
-                                                                            <td>
-                                                                                <textarea id="sellerShopAddressDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;" readonly="false"><?php echo $row['shop_address']; ?></textarea>
-
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>Photo</td>
-                                                                            <td>
-                                                                                <div id="sellerPhotoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['shop_photo']; ?></div>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>

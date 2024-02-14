@@ -66,7 +66,7 @@ $result = mysqli_query($conn, $query);
     <?php
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="detalis">';
+            echo '<div class="outer"><div class="detalis">';
             echo '<h2>' . $row['name'] . '</h2>';
             echo '<div>';
             echo '<li>';
@@ -95,8 +95,8 @@ $result = mysqli_query($conn, $query);
             echo '</div>';
             echo '</div>';
             echo '<div class="img">';
-            echo '<img src="../images/' . $row['shop_image'] . '" alt="' . $row['name'] . '">';
-            echo '</div>';
+            echo '<img src="../images/' . $row['photo'] . '" alt="' . $row['name'] . '">';
+            echo '</div></div>';
         }
     } else {
         // If no shops are found, display a message

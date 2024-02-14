@@ -6,10 +6,18 @@ include("../database/connection.php");
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 
+    $buyer_id_query = "SELECT buyer_id FROM buyer_details WHERE email = '$username'";
+    $buyer_id_result = mysqli_query($conn, $buyer_id_query);
+    $buyer_id_row = mysqli_fetch_assoc($buyer_id_result);
+    $buyer_id = $buyer_id_row['buyer_id'];
+    echo $buyer_id;
+
+// for procede to checkout
+
     // Fetch cart details for the logged-in user
     $query = "SELECT cart_details.*, product_details.name, product_details.price, product_details.photo FROM cart_details 
               INNER JOIN product_details ON cart_details.product_id = product_details.product_id
-              WHERE cart_details.buyer_username = '$username'";
+              WHERE cart_details.buyer_id = '$buyer_id'";
     $result = mysqli_query($conn, $query);
 
     // Initialize total price variable
@@ -28,7 +36,7 @@ if(isset($_SESSION['username'])) {
         $product_id = $_GET['remove_product'];
 
         // Remove the specific product from the cart for the logged-in user
-        $remove_query = "DELETE FROM cart_details WHERE buyer_username = '$username' AND product_id = $product_id LIMIT 1";
+        $remove_query = "DELETE FROM cart_details WHERE buyer_id = '$buyer_id' AND product_id = $product_id LIMIT 1";
         $remove_result = mysqli_query($conn, $remove_query);
 
         if($remove_result) {
@@ -79,8 +87,8 @@ if(isset($_POST['apply_coupon'])) {
 if(isset($_GET['remove_coupon']) && $_GET['remove_coupon'] === 'true') {
     // Reset discount to 0
     $discount = 0;
+    
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -95,6 +103,26 @@ if(isset($_GET['remove_coupon']) && $_GET['remove_coupon'] === 'true') {
     <script>
         function reloadPage() {
             location.reload();
+        }
+        
+        function prepareCheckout() {
+            // Create an array to store product details
+            var products = [];
+
+            // Loop through each product row in the table
+            var rows = document.querySelectorAll("#cart tbody tr");
+            rows.forEach(function(row) {
+                var product = {
+                    product_id: row.querySelector(".product_id").value,
+                    price: row.querySelector(".price").textContent.replace("₹", ""),
+                    quantity: row.querySelector(".quantity").textContent,
+                };
+                // Push product details to the array
+                products.push(product);
+            });
+
+            // Convert the array to JSON and set it as the value of the hidden input field
+            document.getElementById("product_details").value = JSON.stringify(products);
         }
     </script>
 </head>
@@ -147,9 +175,10 @@ if(isset($_GET['remove_coupon']) && $_GET['remove_coupon'] === 'true') {
                             <td><a href="cart.php?remove_product=<?php echo $row['product_id']; ?>"><ion-icon name="close-circle-outline"></ion-icon></a></td>
                             <td><img src="../images/<?php echo empty($row['photo']) ? 'abc2.jpeg' : $row['photo']; ?>" alt="Product Image"></td>
                             <td><?php echo $product_name; ?></td>
-                            <td>₹<?php echo $product_price; ?></td>
-                            <td><?php echo $quantity; ?></td>
+                            <td class="price">₹<?php echo $product_price; ?></td>
+                            <td class="quantity"><?php echo $quantity; ?></td>
                             <td>₹<?php echo $subtotal; ?></td>
+                            <input type="hidden" class="product_id" value="<?php echo $row['product_id']; ?>">
                         </tr>
                 <?php 
                     }
@@ -196,7 +225,10 @@ if(isset($_GET['remove_coupon']) && $_GET['remove_coupon'] === 'true') {
                 </tr>
             </table>
 
-            <button class="normal">Proceed To Checkout</button>
+            <form method="post" action="checkout_process.php" id="checkout_form">
+                <input type="hidden" name="product_details" id="product_details">
+                <button type="submit" name="proceed_to_checkout" class="normal" onclick="prepareCheckout()">Proceed To Checkout</button>
+            </form>
         </div>
     </section>
 

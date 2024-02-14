@@ -42,9 +42,7 @@ include ("../session/session_start.php");
                 <div class="order">
                 <div class="head">
             <h3>Total Buyers</h3>
-            <div>
-                <input type="text" id="buyerSearch" placeholder="Search by Buyer Name" oninput="filterSellers()">
-            </div>
+        
             <form id="download">
                 <!-- Move the download button inside the table head -->
                 <button onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>

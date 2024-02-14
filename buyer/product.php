@@ -9,20 +9,48 @@ $result = mysqli_query($conn, $query);
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
- 
+$buyer_id_query = "SELECT buyer_id FROM buyer_details WHERE email = '$username'";
+    $buyer_id_result = mysqli_query($conn, $buyer_id_query);
+    $buyer_id_row = mysqli_fetch_assoc($buyer_id_result);
+    $buyer_id = $buyer_id_row['buyer_id'];
+    // echo $buyer_id; 
 if(isset($_POST['add_to_cart_short_cut'])) {
     $product_id = mysqli_real_escape_string($conn, $_POST['product_id']);
     $quantity = 1; 
-    $insert_query = "INSERT INTO cart_details (product_id, buyer_username, quantity) VALUES ('$product_id', '$username', '$quantity')";
-    $insert_result = mysqli_query($conn, $insert_query);
 
-    if($insert_result) {
-        // Product successfully added to cart
-        echo "<script>alert('Product added to cart successfully.')</script>";
+    // Check if the product already exists in the cart
+    $check_query = "SELECT * FROM cart_details WHERE product_id = '$product_id' AND buyer_id = '$buyer_id'";
+    $check_result = mysqli_query($conn, $check_query);
+    
+    if(mysqli_num_rows($check_result) > 0) {
+        // If the product already exists, update the quantity
+        $update_query = "UPDATE cart_details SET quantity = quantity + $quantity WHERE product_id = '$product_id' AND buyer_id = '$buyer_id'";
+        $update_result = mysqli_query($conn, $update_query);
+
+        if($update_result) {
+            // Quantity updated successfully
+            echo "<script>alert('Quantity updated successfully.')</script>";
+        } else {
+            // Error updating quantity
+            echo "<script>alert('Failed to update quantity. Please try again.')</script>";
+        }
     } else {
-        // Error occurred while adding product to cart
-        echo "<script>alert('Failed to add product to cart. Please try again.')</script>";
+        // If the product does not exist, insert a new entry
+        $insert_query = "INSERT INTO cart_details (product_id, buyer_id, quantity) VALUES ('$product_id', '$buyer_id', '$quantity')";
+        $insert_result = mysqli_query($conn, $insert_query);
+
+        if($insert_result) {
+            // Product successfully added to cart
+            echo "<script>alert('Product added to cart successfully.')</script>";
+        } else {
+            // Error occurred while adding product to cart
+            echo "<script>alert('Failed to add product to cart. Please try again.')</script>";
+        }
     }
+
+    // Redirect to the same page to prevent form resubmission
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
 }
 ?>
 <!DOCTYPE html>
@@ -101,4 +129,8 @@ if(isset($_POST['add_to_cart_short_cut'])) {
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body
+</body>
+<?php
+    include ("footer.php");
+?>
+</html>

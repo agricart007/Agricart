@@ -882,6 +882,14 @@ button.normal{
     border-radius: 15px;
     margin-bottom: 30px;
 }
+#search button{
+    border: none;
+    outline: none;
+    font-size: 22px;
+    color: #666666;
+    background-color: transparent;
+    margin-right: 15px;
+}
 #search input{
     height: 40px;
     width: 1000px;
@@ -895,11 +903,18 @@ button.normal{
     margin-bottom: -10px;
     color: #666666;
 }
-#shop-details{
+#shop-details .outer{
     display: flex;
     align-items:center;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
+    /* border: solid 1px #797979; */
+    padding: 20px;
+}
+#shop-details{
+    display: grid;
+    align-items:center;
+    justify-content: space-between;
 }
 
 #shop-details h2{
@@ -927,8 +942,8 @@ button.normal{
     height: 100%;
 }
 #shop-details img{
-    height: 400px;
-    width: 620px;
+    height: 380px;
+    width: 600px;
 }
 #shop-details button{
     background-color: #088178;

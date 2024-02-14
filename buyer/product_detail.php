@@ -6,6 +6,11 @@ include("../session/session_start.php");
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
+$buyer_id_query = "SELECT buyer_id FROM buyer_details WHERE email = '$username'";
+$buyer_id_result = mysqli_query($conn, $buyer_id_query);
+$buyer_id_row = mysqli_fetch_assoc($buyer_id_result);
+$buyer_id = $buyer_id_row['buyer_id'];
+// echo $buyer_id;
 
 // Fetch product details based on product_id if available
 if(isset($_GET['product_id'])) {
@@ -23,25 +28,61 @@ if(isset($_GET['product_id'])) {
         $image3 = empty($row['photo']) ? '../images/xyz.png' : $row['photo3'];
     }
 }
+
 if(isset($_POST['add_to_cart'])) {
     // Sanitize and validate form data
     $product_id = mysqli_real_escape_string($conn, $_POST['product_id']);
-    // $size = mysqli_real_escape_string($conn, $_POST['size']);
-    $quantity = (int)$_POST['quantity']; // Convert to integer
+    $requested_quantity = (int)$_POST['quantity']; // Convert to integer
 
-    // Insert product details into cart_details table
-    // $insert_query = "INSERT INTO cart_details (product_id, buyer_username, size, quantity) VALUES ('$product_id', '$username', '$size', '$quantity')";
-    // $insert_result = mysqli_query($conn, $insert_query);
-    $insert_query = "INSERT INTO cart_details (product_id, buyer_username, quantity) VALUES ('$product_id', '$username', '$quantity')";
-    $insert_result = mysqli_query($conn, $insert_query);
-
-    if($insert_result) {
-        // Product successfully added to cart
-        echo "<script>alert('Product added to cart successfully.')</script>";
+    // Check if the requested quantity is greater than the available quantity
+    if($requested_quantity > $quantity) {
+        // If requested quantity exceeds available quantity, show alert
+        echo "<script>alert('Not enough quantity available.')</script>";
     } else {
-        // Error occurred while adding product to cart
-        echo "<script>alert('Failed to add product to cart. Please try again.')</script>";
+        // Proceed to add the product to cart
+        // Check if the product already exists in the cart
+        $check_query = "SELECT * FROM cart_details WHERE product_id = '$product_id' AND buyer_id = '$buyer_id'";
+        $check_result = mysqli_query($conn, $check_query);
+        
+        if(mysqli_num_rows($check_result) > 0) {
+            // If the product already exists, update the quantity
+            $row = mysqli_fetch_assoc($check_result);
+            $existing_quantity = (int)$row['quantity'];
+            $new_quantity = $existing_quantity + $requested_quantity;
+
+            if($new_quantity > $quantity) {
+                // If new quantity exceeds available quantity, show alert
+                echo "<script>alert('Not enough quantity available.')</script>";
+            } else {
+                $update_query = "UPDATE cart_details SET quantity = $new_quantity WHERE product_id = '$product_id' AND buyer_id = '$buyer_id'";
+                $update_result = mysqli_query($conn, $update_query);
+
+                if($update_result) {
+                    // Quantity updated successfully
+                    echo "<script>alert('Quantity updated successfully.')</script>";
+                } else {
+                    // Error updating quantity
+                    echo "<script>alert('Failed to update quantity. Please try again.')</script>";
+                }
+            }
+        } else {
+            // If the product does not exist, insert a new entry
+            $insert_query = "INSERT INTO cart_details (product_id, buyer_id, quantity) VALUES ('$product_id', '$buyer_id', '$requested_quantity')";
+            $insert_result = mysqli_query($conn, $insert_query);
+
+            if($insert_result) {
+                // Product successfully added to cart
+                echo "<script>alert('Product added to cart successfully.')</script>";
+            } else {
+                // Error occurred while adding product to cart
+                echo "<script>alert('Failed to add product to cart. Please try again.')</script>";
+            }
+        }
     }
+
+    // Redirect to the same page to prevent form resubmission
+    header("Location: ".$_SERVER['PHP_SELF']."?product_id=$product_id");
+    exit();
 }
 ?>
 
@@ -54,10 +95,15 @@ if(isset($_POST['add_to_cart'])) {
     <link rel="stylesheet" href="home.css">
     <link rel="icon" href="../images/titlelogo.png" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <style>
+        .out-of-stock {
+            color: red;
+        }
+    </style>
     <script>
-    function reloadPage() {
-        location.reload();
-    }
+        function reloadPage() {
+            location.reload();
+        }
     </script>
 </head>
 <body>
@@ -83,9 +129,9 @@ if(isset($_POST['add_to_cart'])) {
         <img src="../images/<?php echo $image1; ?>" width="100%" id="MainImg" alt="Main Image">
 
         <div class="small-img-group">
-        <div class="small-img-col">
-            <img src="../images/<?php echo $image1; ?>" width="100%" class="small-img" alt="Small Image 1">
-        </div>
+            <div class="small-img-col">
+                <img src="../images/<?php echo $image1; ?>" width="100%" class="small-img" alt="Small Image 1">
+            </div>
 
             <div class="small-img-col">
                 <img src="../images/<?php echo $image2; ?>" width="100%" class="small-img" alt="Small Image 2">
@@ -99,20 +145,24 @@ if(isset($_POST['add_to_cart'])) {
     <div class="single-product-details">
         <h1><?php echo $name; ?></h1>
         <h4>Product Description</h4>
-        <h2>₹<?php echo $price; ?></h2>
-        <form method="post" action="">
-            <select name="size">
-                <option>Select Size</option>
-                <option>Small</option>
-                <option>Medium</option>
-                <option>Large</option>
-                <option>XL</option>
-                <option>XXL</option>
-            </select>
-            <input type="number" name="quantity" value="1" min="1" max="<?php echo $quantity; ?>">
-            <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
-            <button type="submit" name="add_to_cart" class="normal">Add To Cart</button>
-        </form>
+        <?php if($quantity > 0): ?>
+            <h2>₹<?php echo $price; ?></h2>
+            <form method="post" action="">
+                <select name="size">
+                    <option>Select Size</option>
+                    <option>Small</option>
+                    <option>Medium</option>
+                    <option>Large</option>
+                    <option>XL</option>
+                    <option>XXL</option>
+                </select>
+                <input type="number" name="quantity" value="1" min="1" max="<?php echo $quantity; ?>">
+                <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                <button type="submit" name="add_to_cart" class="normal">Add To Cart</button>
+            </form>
+        <?php else: ?>
+            <h2 class="out-of-stock">Out of Stock</h2>
+        <?php endif; ?>
         <h4>Product Details</h4>
         <span><?php echo $row['description']; ?></span>
     </div>
@@ -120,7 +170,6 @@ if(isset($_POST['add_to_cart'])) {
     <p>No product found.</p>
     <?php endif; ?>
 </section>
-<?php include("8_product.php");?>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -148,3 +197,5 @@ if(isset($_POST['add_to_cart'])) {
 include ("footer.php");
 ?>
 </html>
+
+

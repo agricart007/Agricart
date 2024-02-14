@@ -3,7 +3,7 @@ include ("../database/connection.php");
 include ("../session/session_start.php");
 
 // query to take data from database in popup menu and table
-$query = "SELECT o.order_id,o.order_no,p.name AS product_name,bd.first_name AS buyer_name,sd.first_name AS seller_name,o.payment,o.price,o.quantity,o.status,o.order_date FROM order_details o JOIN product_details p ON o.product_id = p.product_id JOIN buyer_details bd ON o.buyer_id = bd.buyer_id JOIN seller_details sd ON o.seller_id = sd.seller_id";
+$query = "SELECT o.order_id,o.order_no,p.name AS product_name,bd.first_name AS buyer_name,sd.first_name AS seller_name,o.payment,o.price,o.quantity,o.status,o.order_date,o.tracking_no FROM order_details o JOIN product_details p ON o.product_id = p.product_id JOIN buyer_details bd ON o.buyer_id = bd.buyer_id JOIN seller_details sd ON o.seller_id = sd.seller_id";
 $result = mysqli_query($conn, $query);    
 
 // query for tatal order
@@ -82,7 +82,7 @@ $totalIncome = $incomeData['totalIncome'];
                             <table id="table">
                                 <thead>
                                     <tr>
-                                        <th>#ID</th>
+                                        <th>Order_no</th>
                                         <th>Product Name</th>
                                         <th>Price</th>
                                         <th>Payment</th>
@@ -96,11 +96,19 @@ $totalIncome = $incomeData['totalIncome'];
                                         while($row = mysqli_fetch_assoc($result)){
                                     ?>
                                             <tr>
-                                                <td><?php echo $row['order_id'];?></td>
+                                                <td><?php echo $row['order_no'];?></td>
                                                 <td><?php echo $row['product_name'];?></td>
                                                 <td><?php echo $row['price'];?></td>
-                                                <td><?php echo $row['payment'];?></td>
-                                                <td><?php echo $row['status'];?></td>
+                                                <?php if($row['payment'] == 0){?>
+                                                    <td>Cash</td><?php
+                                                }else{
+                                                    ?><td>Online</td><?php
+                                                }?>
+                                                <?php if($row['status'] == 0){?>
+                                                    <td>Pending</td><?php
+                                                }else{
+                                                    ?><td>shipped</td><?php
+                                                }?>
                                                 <td>
                                                     <button class="a" onclick="openPopup(<?php echo $row['order_id']; ?>)"><i class="fa-solid fa-magnifying-glass"></i> Views</button>
                                                     <div class="overlay" id="overlay_<?php echo $row['order_id']; ?>">
@@ -112,9 +120,15 @@ $totalIncome = $incomeData['totalIncome'];
                                                                 <!-- Adjust the following lines to display the correct details -->
                                                                 <table>
                                                                     <tr>
-                                                                        <td>Order ID</td>
+                                                                        <td>Order Number</td>
                                                                         <td>
                                                                             <div id="orderIdDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['order_id']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Tracking Number</td>
+                                                                        <td>
+                                                                            <div id="orderIdDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['tracking_no']; ?></div>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
@@ -144,15 +158,28 @@ $totalIncome = $incomeData['totalIncome'];
                                                                     <tr>
                                                                         <td>Payment</td>
                                                                         <td>
-                                                                            <div id="paymnetDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['payment']; ?></div>
+                                                                            <div id="paymnetDisplay" >
+                                                                                <?php if($row['payment'] == 0): ?>
+                                                                                    <input type="text" value="Cash" readonly>
+                                                                                <?php else: ?>
+                                                                                    <input type="text" value="Online" readonly>
+                                                                                <?php endif; ?>
+                                                                            </div>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Order Status</td>
                                                                         <td>
-                                                                            <div id="orderstatusDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['status']; ?></div>
+                                                                            <div id="orderstatusDisplay">
+                                                                                <?php if($row['status'] == 0): ?>
+                                                                                    <input type="text" value="Pending" readonly>
+                                                                                <?php else: ?>
+                                                                                    <input type="text" value="Shipped" readonly>
+                                                                                <?php endif; ?>
+                                                                            </div>
                                                                         </td>
                                                                     </tr>
+
                                                                     <tr>
                                                                         <td>Order Date</td>
                                                                         <td>

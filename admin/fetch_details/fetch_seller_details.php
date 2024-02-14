@@ -6,10 +6,10 @@ $query = "select * from seller_details";
 $result = mysqli_query($conn, $query);
 
 // Generate CSV content
-$csvContent = "Seller ID,Photo,First Name,Last Name,Email,Contact,Shop Name,Shop Address,Shop Photo,Government ID,GST Number,Created On\n";
+$csvContent = "Seller ID,Photo,First Name,Last Name,Email,Contact,Government ID,GST Number,Created On\n";
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $csvContent .= "{$row['seller_id']},{$row['photo']},{$row['first_name']},{$row['last_name']},{$row['email']},{$row['contact_no']},{$row['shop_name']},{$row['shop_address']},{$row['shop_photo']},{$row['government_id']},{$row['gst_no']},{$row['created_on']}\n";
+    $csvContent .= "{$row['seller_id']},{$row['photo']},{$row['first_name']},{$row['last_name']},{$row['email']},{$row['contact_no']},{$row['government_id']},{$row['gst_no']},{$row['created_on']}\n";
 }
 
 // Set headers for CSV download

@@ -36,9 +36,7 @@ include ("../session/session_start.php");
                 <div class="order">
                 <div class="head">
             <h3>Total Products</h3>
-            <div>
-                <input type="text" id="productSearch" placeholder="Search by Product Name" oninput="filterSellers()">
-            </div>
+            
             <form id="download">
                 <!-- Move the download button inside the table head -->
                 <button onclick="downloadCSV()"><i class="fa-solid fa-file-export"></i></button>
@@ -68,8 +66,8 @@ include ("../session/session_start.php");
                                                 <!-- <td><?php echo $row['photo'];?></td> -->
                                                 <td>
                                                         <?php
-                                                        $photo = empty($row['photo']) ? '../images/profile.jpg' : $row['photo'];
-                                                        echo "<img src='$photo' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
+                                                        $image = empty($row['photo']) ? '../images/xyz.png' : '../images/' . $row['photo'];
+                                                        echo "<img src='$image' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
                                                         ?>
                                                     </td>
                                                 <td><?php echo $row['name'];?></td>
@@ -94,6 +92,18 @@ include ("../session/session_start.php");
                                                                         <td>Photo</td>
                                                                         <td>
                                                                             <div id="photoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Photo2</td>
+                                                                        <td>
+                                                                            <div id="photoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo2']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Photo3</td>
+                                                                        <td>
+                                                                            <div id="photoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo3']; ?></div>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>

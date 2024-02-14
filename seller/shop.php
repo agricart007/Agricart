@@ -1,9 +1,25 @@
+<?php
+include("../session/session_start.php");
+include("../session/session_check.php");
+include("../database/connection.php");
+
+// Fetch shop details for the specific user from the database
+$seller_username = $_SESSION['username'];
+$seller_id_query = "SELECT seller_id FROM seller_details WHERE email = '$seller_username'";
+$seller_id_result = mysqli_query($conn, $seller_id_query);
+$seller_id_row = mysqli_fetch_assoc($seller_id_result);
+$seller_id = $seller_id_row['seller_id'];
+
+$sql_shop = "SELECT * FROM shop_details WHERE seller_id = $seller_id";
+$result_shop = mysqli_query($conn, $sql_shop);
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title></title>
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <title>Shop List</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -77,17 +93,40 @@
                                 <th>SR No.</th>
                                 <th>Photo</th>
                                 <th>Shop Name</th>
-                                <th>Shop Address</th>
+                                <th>Shop City</th>
                                 <th>Tools</th>
                             </tr>
-                            <tr>
-                                <td>Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                                <td>Germany</td>
-                                <td>Sample Address</td>
-                                <td>Sample Tools</td>
-                            </tr>
-                            <!-- Add more rows as needed -->
+                            <?php
+                            // Check if any rows were returned
+                            if ($result_shop && mysqli_num_rows($result_shop) > 0) {
+                                $sr_no = 1; // Initialize SR No.
+                                while ($row = mysqli_fetch_assoc($result_shop)) {?>
+                                    <tr>
+                                        <td><?php echo $sr_no++; ?></td>
+                                        <?php
+                                        $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                                        echo "<td><img src='$image' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'></td>";
+                                        ?>
+                                        <td><?php echo $row['name']; ?></td>
+                                        <td><?php echo $row['city']; ?></td>
+                                        <td>
+                                    <div class="view-button">
+                                        <button onclick="openPopup(<?php echo $row['shop_id']; ?>)">
+                                            <i class='fa-solid fa-magnifying-glass'></i> Edit
+                                        </button>
+                                        <button>
+                                            <i class='fa-solid fa-magnifying-glass'></i> Delete
+                                        </button>
+                                    </div>
+                                </td>
+                                    </tr>
+                                    <?php
+                                }
+                            } else {
+                                // No shops found for the user
+                                echo "<tr><td colspan='5'>No shops found.</td></tr>";
+                            }
+                            ?>
                         </table>
                     </div>
                 </div>
