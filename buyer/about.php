@@ -1,7 +1,7 @@
 <?php
-// include ("../session/session_start.php");
-// include("../session/session_check.php");
-// include("../database/connection.php");
+include ("../session/session_start.php");
+include("../session/session_check.php");
+include("../database/connection.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,24 +22,18 @@
     </head>
 
     <body>
-
+        
         <section id="header">
             <a onclick="reloadPage()"><img src="../images/homelogo.png" class="logo"></a>
             <div>
             <ul id="navbar">
-                    <li  class="module"><a href="home.php">Home</a></li>
+            <li class="module"><a href="index.php">Home</a></li>
                     <li class="module"><a href="product.php">Products</a></li>
                     <li class="module"><a href="shop.php">Shop</a></li>
                     <li  class="module"><a class="active" href="about.php">About</a></li>
                     <li class="module"><a href="contact.php">Contact</a></li>
                     <li class="icon"><a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a></li>
-                    <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
-                    <div class="dropdown-content">
-                    <a href="profile.php"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>
-                    <a href="#"><ion-icon name="cube-outline"></ion-icon> Orders</a>
-                    <a href="#"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
-                    </div>
-                    </li>
+                    <li class="icon"><a href="profile."><ion-icon name="person-outline"></ion-icon></a></li>
                 </ul>
             </div>
         </section>
@@ -48,7 +42,7 @@
             <h2>About Us</h2>
             <p>Learn Few Things About Us</p>
         </section>
-
+        
         <section id="contact-details" class="section-p1">
             <div class="detalis">
                 <h2>About Our Website</h2>
@@ -152,7 +146,7 @@
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
     <?php
-        include("newsletter.php");
+        // include("newsletter.php");
         include ("footer.php");
     ?>
 </html>
