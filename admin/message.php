@@ -1,10 +1,12 @@
 <?php 
 include ("../database/connection.php");
+include ("../session/session_start.php");
+include("../session/session_check.php");
 // $query = "SELECT contact_details.*, buyer_details.first_name AS buyer_name FROM contact_details
 //           LEFT JOIN buyer_details ON contact_details.buyer_id = buyer_details.buyer_id";
 $query = "select* from contact_details";
 $result = mysqli_query($conn, $query);
-include ("../session/session_start.php");
+
 ?>
 
 <!DOCTYPE html>

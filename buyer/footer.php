@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-<footer class="section-p1">
+        <footer class="section-p1">
             <div class="col">
                 <img src="../images/homelogo.png" class="logo">
                 <h4>Contact</h4>
@@ -38,6 +38,10 @@
                 <a href="../login/login.php">Log In</a>
                 <a href="contact.php">Help</a>
             </div>
+            <div class="col">
+                <h4>Terms and condition</h4>
+                <a href="#">Terms & Condition</a>
+            </div>
 
             <div class="col install">
                 <h4>Seller</h4>
@@ -56,6 +60,9 @@
                 <br><br>
                 <h4>Secure Payment Gateway</h4>
                 <img src="../images/payment-badge.png" class="logo-pay">
+            </div>
+            <div class="copyright">
+                <p>© 2024 Your Company Name. All rights reserved 2023-2024.</p>
             </div>
         </footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

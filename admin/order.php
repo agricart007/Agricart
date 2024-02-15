@@ -1,6 +1,7 @@
 <?php 
 include ("../database/connection.php");
 include ("../session/session_start.php");
+include("../session/session_check.php");
 
 // query to take data from database in popup menu and table
 $query = "SELECT o.order_id,o.order_no,p.name AS product_name,bd.first_name AS buyer_name,sd.first_name AS seller_name,o.payment,o.price,o.quantity,o.status,o.order_date,o.tracking_no FROM order_details o JOIN product_details p ON o.product_id = p.product_id JOIN buyer_details bd ON o.buyer_id = bd.buyer_id JOIN seller_details sd ON o.seller_id = sd.seller_id";

@@ -88,11 +88,11 @@ $product_result = mysqli_query($conn, $product_query);
                                             <i class='fa-solid fa-magnifying-glass'></i> Edit
                                         </button>
                                         <form method="POST" action="delete_product.php">
-    <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
-    <button type="submit">
-        <i class='fa-solid fa-magnifying-glass'></i> Delete
-    </button>
-</form>
+                                            <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
+                                            <button type="submit">
+                                                <i class='fa-solid fa-magnifying-glass'></i> Delete
+                                            </button>
+                                        </form>
 
 
                                     </div>

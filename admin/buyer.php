@@ -1,8 +1,10 @@
 <?php 
 include ("../database/connection.php");
+include ("../session/session_start.php");
+include("../session/session_check.php");
 $query = "select * from buyer_details";
 $result = mysqli_query($conn, $query);
-include ("../session/session_start.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +72,7 @@ include ("../session/session_start.php");
                                         ?>
                                             <tr>
                                                 <td><?php echo $row['Buyer_id']; ?></td>
-                                                <td><?php echo $row['first_name']; ?></td>
+                                                <td><?php echo $row['full_name']; ?></td>
                                                 <td><?php echo $row['email']; ?></td>
                                                 <td><?php echo $row['contact_no']; ?></td>
                                                 <td><?php echo $row['created_on']; ?></td>
@@ -99,13 +101,7 @@ include ("../session/session_start.php");
                                                                     <tr>
                                                                         <td>First Name</td>
                                                                         <td>
-                                                                            <div id="usernameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['first_name'];?></div>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Last Name</td>
-                                                                        <td>
-                                                                            <div id="usernameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['last_name'];?></div>
+                                                                            <div id="usernameDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['full_name'];?></div>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>

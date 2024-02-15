@@ -74,6 +74,12 @@
                             <span>Seller</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="create_admin.php">
+                            <span class="las la-user"></span>
+                            <span>Create Admin</span>
+                        </a>
+                    </li>
                     <!-- <li id="settingsDropdown">
                        <a href="#" onclick="toggleDropdown()">
                          <span class="las la-cog"></span>

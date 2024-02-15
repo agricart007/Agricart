@@ -700,27 +700,34 @@ input {
         border: 1px solid #ccc;
         padding: 5px;
         width: 700px;
-        max-height: 100px; /* Adjust the max height as needed */
+        max-height: 100px; 
         overflow-y: auto;
     }
 
 .deactivate-button {
     background-color: red;
-    color: white; /* text color */
-    padding: 8.5px 3px; /* adjust padding as needed */
-    border: none; /* remove border */
-    border-radius: 5px; /* optional: add rounded corners */
-    cursor: pointer; /* change cursor on hover */
-    font-size: 16px; /* adjust font size as needed */
+    color: white; 
+    padding: 8.5px 3px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
 }
 .activate-button {
     background-color: green;
-    color: white; /* text color */
-    padding: 8.5px 13px; /* adjust padding as needed */
-    border: none; /* remove border */
-    border-radius: 5px; /* optional: add rounded corners */
-    cursor: pointer; /* change cursor on hover */
-    font-size: 16px; /* adjust font size as needed */
+    color: white; 
+    padding: 8.5px 13px; 
+    border: none;  
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+}
+.profile-3{
+    /* background: red; */
+    max-width: 50%;
+}
+.profile-3 button{
+    width: 20%;
 }
 
 

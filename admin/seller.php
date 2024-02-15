@@ -1,5 +1,7 @@
 <?php 
-include ("..\database\connection.php");
+include ("../database/connection.php");
+include ("../session/session_start.php");
+include("../session/session_check.php");
 $query = "select * from seller_details";
 $result = mysqli_query($conn, $query);
 ?>
