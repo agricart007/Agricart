@@ -6,12 +6,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $message = $_POST['message'];
-    $created_on = time();
 
     // Validate data
-    if (!empty($name) && !empty($email) && !empty($message) && !empty($created_on)) {
-        // Insert data into database
-        $sql = "INSERT INTO contact_details (buyer_name, email, message, created_on) VALUES ('$name', '$email', '$message', '$created_on')";
+    if (!empty($name) && !empty($email) && !empty($message)) {
+        // Insert data into database with current timestamp
+        $sql = "INSERT INTO contact_details (buyer_name, email, message, created_on) VALUES ('$name', '$email', '$message', NOW())";
         if ($conn->query($sql) === TRUE) {
             // Redirect after successful insertion
             header("Location: contact.php");

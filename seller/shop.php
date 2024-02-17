@@ -91,7 +91,8 @@ $result_shop = mysqli_query($conn, $sql_shop);
             <div class="box-8">
                 <div class="content">
                     <p>
-                        <h1>Shop list</h1><button>+ Add Shop</button>
+                        <h1>Shop list</h1>
+                        <a href="add_shop.php"><button>+ Add Shop</button></a>
                     </p>
                     <br />
                     <div class="table-container">

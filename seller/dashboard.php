@@ -31,14 +31,15 @@ $total_products_row = mysqli_fetch_assoc($total_products_result);
 $total_products = $total_products_row['total_products'];
 
 // Query to fetch top 5 selling products
-$top_products_query = "SELECT pd.name, od.quantity AS total_quantity_sold, od.price * od.quantity AS total_revenue 
-FROM order_details od
-JOIN product_details pd ON od.product_id = pd.product_id
-WHERE od.seller_id = '$seller_id'
-GROUP BY pd.name
-ORDER BY total_quantity_sold DESC
-LIMIT 5";
-$top_products_result = mysqli_query($conn, $top_products_query);
+$sql = "SELECT pd.name, 
+               SUM(od.quantity) AS total_sold, 
+               SUM(od.quantity * od.price) AS total_revenue
+        FROM order_details od
+        INNER JOIN product_details pd ON od.product_id = pd.product_id
+        GROUP BY od.product_id
+        ORDER BY total_sold DESC
+        LIMIT 5";
+$result = $conn->query($sql);
 
 ?>
 
@@ -114,30 +115,31 @@ $top_products_result = mysqli_query($conn, $top_products_query);
                     <p>Top selling products of the month</p>
                     <br />
                     <table>
-                        <tr>
-                            <th>Product Name</th>
-                            <th>Total Quantity Sold</th>
-                            <th>Total Revenue</th>
-                        </tr>
-                        <?php
-							
-							while ($row = mysqli_fetch_assoc($top_products_result)) {?>
-							    <tr>
-                                    <td><?php echo $row['name']; ?></td>
-                                    <td><?php echo $row['total_quantity_sold']; ?></td>
-                                    <td><?php echo $row['total_revenue']; ?></td>
-                                </tr>
-                                <?php
-
-						}
-						?>
-
-                    </table>
+        <tr>
+            <th>Product Name</th>
+            <th>Total Quantity Sold</th>
+            <th>Total Revenue</th>
+        </tr>
+        <?php
+        if ($result->num_rows > 0) {
+            // Output data of each row using a while loop
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>
+                        <td>" . $row["name"] . "</td>
+                        <td>" . $row["total_sold"] . "</td>
+                        <td>" . $row["total_revenue"] . "</td>
+                      </tr>";
+            }
+        } else {
+            echo "<tr><td colspan='3'>No results found</td></tr>";
+        }
+        ?>
+    </table>
                 </div>
             </div>
         </div>
 
-        <div class="col-div-4">
+        <!-- <div class="col-div-4">
             <div class="box-4">
                 <div class="content">
                     <p>Total Sale</p>
@@ -149,12 +151,12 @@ $top_products_result = mysqli_query($conn, $top_products_query);
                             <div class="mask half">
                                 <div class="fill"></div>
                             </div>
-                            <div class="inside-circle"> 70% </div>
+                            <div class="inside-circle"> 10% </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="clearfix"></div>
     </div>

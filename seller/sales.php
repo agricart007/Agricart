@@ -27,7 +27,7 @@ if (!$total_orders_result) {
 $total_orders_row = mysqli_fetch_assoc($total_orders_result);
 $total_orders = $total_orders_row['total_orders'];
 
-$order_query = "SELECT od.quantity, od.price, od.quantity * od.price AS total, pd.name AS product_name, bd.first_name AS buyer_name
+$order_query = "SELECT od.quantity, od.price, od.quantity * od.price AS total, pd.name AS product_name, bd.full_name AS buyer_name
                 FROM order_details od
                 INNER JOIN product_details pd ON od.product_id = pd.product_id
                 INNER JOIN buyer_details bd ON od.buyer_id = bd.buyer_id

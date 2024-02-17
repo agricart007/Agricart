@@ -55,10 +55,11 @@ $product_result = mysqli_query($conn, $product_query);
         <div class="col-div-8">
             <div class="box-8">
                 <div class="content">
-                    <p>
-                        <h1>Total Products </h1><button>+ Add Products</button>
+                <p>
+    <h1>Total Products</h1>
+    <a href="add_product.php"><button>+ Add Products</button></a>
+</p>
 
-                    </p>
                     <br />
                     <table>
                         <tr>

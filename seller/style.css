@@ -136,7 +136,7 @@ body {
 	float: left;
 }
 .col-div-8-dash{
-  width: 70%;
+  width: 74%;
 	float: left;
 }
 .col-div-4{
@@ -284,4 +284,27 @@ button {
 .view-button button{
   margin-left: 10px;
   height: 40px;
+}
+.product-details{
+  /* background: red; */
+  width: 70%;
+}
+.product-details input{
+  /* background: red; */
+  width: 40%;
+}
+.product-details textarea{
+  width: 40%;
+}
+/* .submit{
+  width: 40%;
+  color: #c4ecd0;
+} */
+.submit input[type="submit"] {
+  background-color: #c4ecd0; /* Change to the desired color */
+  color: black; /* Text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Adjust padding as needed */
+  cursor: pointer; /* Add cursor pointer */
+  width: 20%;
 }

@@ -17,7 +17,7 @@
     <a href="products.php" class="icon-a"><i class="fa-solid fa-barcode"></i>      <v class="white">Products</v></a>
     <a href="order.php" class="icon-a"><i class="fa-solid fa-list"></i>      <v class="white">Order</v>  </a>
     <a href="Shop.php" class="icon-a"><i class="fa-solid fa-shop"></i>       <v class="white">Shop</v> </a>
-    <a href="#" class="icon-a"><i class="fa-solid fa-gear"></i>     <v class="white">Setting</v>   </a>
+    <a href="setting.php" class="icon-a"><i class="fa-solid fa-gear"></i>     <v class="white">Setting</v>   </a>
     <a href="../login/logout.php" class="icon-a"><i class="fa-solid fa-right-from-bracket"></i>     <v class="white">Sign Out</v>   </a>
 </div>
 

@@ -6,7 +6,7 @@ include("../session/session_check.php");
 $query = "SELECT product_details.*, seller_details.first_name AS seller_name FROM product_details
           LEFT JOIN seller_details ON product_details.seller_id = seller_details.seller_id";
 $result = mysqli_query($conn, $query);
-include ("../session/session_start.php");
+
 ?>
 
 <!DOCTYPE html>

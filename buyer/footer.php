@@ -62,7 +62,7 @@
                 <img src="../images/payment-badge.png" class="logo-pay">
             </div>
             <div class="copyright">
-                <p>© 2024 Your Company Name. All rights reserved 2023-2024.</p>
+                <p>© 2024 Agricart. All rights reserved 2023-2024.</p>
             </div>
         </footer>
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

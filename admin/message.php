@@ -105,11 +105,14 @@ $result = mysqli_query($conn, $query);
                                                                             </div>
                                                                         </td>
                                                                     </tr>
+                                                                    
                                                                     <tr>
                                                                         <td>Status</td>
-                                                                        <td>
-                                                                            <div id="statusDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['status']; ?></div>
-                                                                        </td>
+                                                                        <td class="status" >
+                                                    <div class="status_inner_div"  style="background-color: <?php echo ($row['status'] == 0) ? 'red' : 'green'; ?>;">
+                                                        <span><?php echo ($row['status'] == 0) ? 'New' : 'Viewed'; ?></span>
+                                                    </div>
+                                                </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Created On</td>
