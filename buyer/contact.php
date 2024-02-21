@@ -36,7 +36,7 @@ include("../database/connection.php");
                     <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
                         <div class="dropdown-content">
                               <a href="profile.php"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>
-                              <a href="#"><ion-icon name="cube-outline"></ion-icon> Orders</a>
+                              <a href="order.php"><ion-icon name="cube-outline"></ion-icon> Orders</a>
                               <a href="../login/logout.php"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
                         </div>
                     </li>
@@ -57,8 +57,8 @@ include("../database/connection.php");
                 <div>
                     <li>
                         <ion-icon name="map-outline"></ion-icon>
-                        <p>LJ Campus Near Sarkhej-Sanand Circle, Off, <br>
-                           Sarkhej - Gandhinagar Hwy, Ahmedabad, Gujarat 382210</p>
+                        <p>50, Sachin Park Society, <br>
+                           Jodhpur Gam Road Satellite Ahmedabad, Gujarat 380015</p>
                     </li>
                     <li>
                         <ion-icon name="mail-open-outline"></ion-icon>

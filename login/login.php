@@ -67,7 +67,10 @@
 
                 <div class="login-signup">
                     <span class="text">Not a member?
-                        <a href="#" class="text signup-link">Signup Now</a>
+                        <a href="#" class="text signup-link">Signup Now</a><br>
+                    </span>
+                     <span class="text">
+                        <a href="s_login.php" class="text signup-link">Seller Account</a><br>
                     </span>
                 </div>
             </div>
@@ -98,7 +101,7 @@
                     <div class="checkbox-text">
                         <div class="checkbox-content">
                             <input type="checkbox" id="termCon" required>
-                            <label for="termCon" class="text">I accepted all terms and conditions</label>
+                            <label for="termCon" class="text">I accepted all <a href="../t&c/T&C_buyer.php">terms and conditions</a></label>
                         </div>
                     </div>
 

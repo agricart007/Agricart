@@ -40,7 +40,7 @@ $result = mysqli_query($conn, $query);
             <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
                 <div class="dropdown-content">
                       <a href="profile.php"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>
-                      <a href="#"><ion-icon name="cube-outline"></ion-icon> Orders</a>
+                      <a href="order.php"><ion-icon name="cube-outline"></ion-icon> Orders</a>
                       <a href="../login/logout.php"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
                 </div>
             </li>
@@ -49,8 +49,8 @@ $result = mysqli_query($conn, $query);
 </section>
 
 <section id="map-hadder" class="shop-headder">
-    <h2>Location</h2>
-    <p>Find the location of shops near you</p>
+    <h2>Find Shops</h2>
+    <p><h3>Find the location of shops near you</h3></p>
 </section>
 
 <center>

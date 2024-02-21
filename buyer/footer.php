@@ -40,13 +40,13 @@
             </div>
             <div class="col">
                 <h4>Terms and condition</h4>
-                <a href="#">Terms & Condition</a>
+                <a href="../t&c/T&C_buyer.php">Terms & Condition</a>
             </div>
 
             <div class="col install">
                 <h4>Seller</h4>
-                <a href="">Became a Seller</a>
-                <a href="../login/login.php">Login To Seller Account</a>
+                <a href="../login/s_login.php">Became a Seller</a>
+                <a href="../login/s_login.php">Login To Seller Account</a>
                 <!-- <p>Form App Store or Google Play</p>
                 <div class="row">
                     <img src="../images/google-apple-badge.jpg" class="logo-ga">

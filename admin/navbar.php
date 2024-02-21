@@ -75,6 +75,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="new_seller.php">
+                            <span class="las la-user"></span>
+                            <span>New Seller</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="create_admin.php">
                             <span class="las la-user"></span>
                             <span>Create Admin</span>

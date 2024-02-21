@@ -109,11 +109,15 @@ if(isset($_SESSION['username'])) {
             </div>
             <div class="name">
                 Email<br>
-                <input type="text" name="email" value="<?php echo $buyer_details['email']; ?>">
+                <input type="text" name="email" value="<?php echo $buyer_details['email']; ?>" readonly>
             </div>
             <div class="name">
                 Address<br>
                 <textarea name="address"><?php echo $buyer_details['address']; ?></textarea>
+            </div>
+            <div class="name">
+                Pin code<br>
+                <input type="number" name="pin_code" value="<?php echo $buyer_details['pin_code']; ?>" >
             </div>
             <div class="name">
                 State/Region<br>

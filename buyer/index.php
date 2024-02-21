@@ -3,6 +3,7 @@ include("../session/session_start.php");
 include("../session/session_check.php");
 include("../database/connection.php");
 
+
 $query = "SELECT * FROM product_details ORDER BY RAND() LIMIT 8"; // Ordering randomly and limiting to 8 products
 $result = mysqli_query($conn, $query);
 ?>
@@ -37,7 +38,7 @@ $result = mysqli_query($conn, $query);
             <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
             <div class="dropdown-content">
                 <a href="profile.php"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>
-                <a href="#"><ion-icon name="cube-outline"></ion-icon> Orders</a>
+                <a href="order.php"><ion-icon name="cube-outline"></ion-icon> Orders</a>
                 <a href="../login/logout.php"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
             </div>
             </li>
@@ -88,11 +89,14 @@ $result = mysqli_query($conn, $query);
         <h2>SEASONAL SALE</h2>
         <h4>For winter Cultivation</h4>
     </div>
+    
 </section>
+
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 <?php
+// include("../1.php"); 
 include("newsletter.php");
 include ("footer.php");
 ?>

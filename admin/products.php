@@ -93,20 +93,35 @@ $result = mysqli_query($conn, $query);
                                                                     <tr>
                                                                         <td>Photo</td>
                                                                         <td>
-                                                                            <div id="photoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo']; ?></div>
+                                                                        <div id="photoDisplay" >
+                                                                        <?php
+                                                                            $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                                                                            echo "<img src='$image' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
+                                                                            ?>
+                                                                            </div>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Photo2</td>
                                                                         <td>
-                                                                            <div id="photoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo2']; ?></div>
+                                                                        <div id="photoDisplay" >
+                                                                        <?php
+                                                                            $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                                                                            echo "<img src='$image' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
+                                                                            ?>
+                                                                            </div>
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Photo3</td>
                                                                         <td>
-                                                                            <div id="photoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo3']; ?></div>
-                                                                        </td>
+                                                                        <div id="photoDisplay" >
+                                                                            <?php
+                                                                                $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                                                                                echo "<img src='$image' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
+                                                                                ?>
+                                                                               </div> 
+                                                                            </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Name</td>

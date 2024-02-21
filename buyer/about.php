@@ -36,7 +36,7 @@ include("../database/connection.php");
                     <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
                         <div class="dropdown-content">
                             <a href="profile.php"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>
-                            <a href="#"><ion-icon name="cube-outline"></ion-icon> Orders</a>
+                            <a href="order.php"><ion-icon name="cube-outline"></ion-icon> Orders</a>
                             <a href="../login/logout.php"><ion-icon name="log-out-outline"></ion-icon> Log Out</a>
                         </div>
                     </li>

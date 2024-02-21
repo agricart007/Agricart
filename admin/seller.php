@@ -2,7 +2,7 @@
 include ("../database/connection.php");
 include ("../session/session_start.php");
 include("../session/session_check.php");
-$query = "select * from seller_details";
+$query = "SELECT * FROM seller_details WHERE verify = 1";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -109,7 +109,12 @@ $result = mysqli_query($conn, $query);
                                                                         <tr>
                                                                             <td>Photo</td>
                                                                             <td>
-                                                                                <div id="sellerPhotoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['photo']; ?></div>
+                                                                            <div id="sellerPhotoDisplay">
+                                                                                <?php
+                                                                                    $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                                                                                    echo "<img src='$image' alt='Seller Photo' style='width: 50px; height: 50px; border-radius: 50%;'>";
+                                                                                ?>
+                                                                                </div>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -146,7 +151,8 @@ $result = mysqli_query($conn, $query);
                                                                         <tr>
                                                                             <td>GST Number</td>
                                                                             <td>
-                                                                                <div id="sellerPhotoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['gst_no']; ?></div>
+                                                                                <div id="sellerPhotoDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;">
+                                                                                <?php if($row['gst_no'] == 0){ echo '-';}else{ echo $row['gst_no'];} ?></div>
                                                                             </td>
                                                                         </tr>
                                                                         <tr>

@@ -12,7 +12,7 @@
 		
 	<div id="mySidenav" class="sidenav">
     <img class="img" src="images/homelogo.png">
-    <a href="dashboard.php" class="icon-a"><i class="fa-solid fa-gauge"></i>   <v class="white">   Dashboard</v></a>
+    <a href="index.php" class="icon-a"><i class="fa-solid fa-gauge"></i>   <v class="white">   Dashboard</v></a>
     <a href="sales.php" class="icon-a"><i class="fa-solid fa-cart-shopping"></i>     <v class="white">Sales</v>  </a>
     <a href="products.php" class="icon-a"><i class="fa-solid fa-barcode"></i>      <v class="white">Products</v></a>
     <a href="order.php" class="icon-a"><i class="fa-solid fa-list"></i>      <v class="white">Order</v>  </a>

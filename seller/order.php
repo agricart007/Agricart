@@ -11,7 +11,7 @@ $seller_id_row = mysqli_fetch_assoc($seller_id_result);
 $seller_id = $seller_id_row['seller_id'];
 
 // Fetch order details for the seller including product details
-$order_query = "SELECT o.*, p.name, p.photo, p.description, `by`.first_name, `by`.address, `by`.state FROM order_details o
+$order_query = "SELECT o.*, p.name, p.photo, p.description, `by`.full_name, `by`.address, `by`.state FROM order_details o
                 INNER JOIN product_details p ON o.product_id = p.product_id
                 INNER JOIN buyer_details `by` ON o.buyer_id = `by`.buyer_id
                 WHERE o.seller_id = '$seller_id'";
@@ -124,7 +124,7 @@ $order_result = mysqli_query($conn, $order_query);
                                                         <tr>
                                                             <td>Buyer Name</td>
                                                             <td>
-                                                                <?php echo $row['first_name']; ?>
+                                                                <?php echo $row['full_name']; ?>
                                                             </td>
                                                         </tr>
                                                         <tr>

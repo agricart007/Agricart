@@ -11,7 +11,7 @@
         $tracking_no = mysqli_real_escape_string($conn, $_POST['tracking_no']);
 
         // Update the database with the tracking ID
-        $update_query = "UPDATE order_details SET tracking_no = '$tracking_no' WHERE order_id = '$order_id'";
+        $update_query = "UPDATE order_details SET status= '1', tracking_no = '$tracking_no' WHERE order_id = '$order_id'";
         $update_result = mysqli_query($conn, $update_query);
 
         // Check if the update was successful

@@ -36,34 +36,34 @@
                     <form action="add_shop_process.php" method="POST" enctype="multipart/form-data">
                         <div class="product-details">
                         <label for="shop_name">Shop Name:</label><br>
-<input type="text" id="shop_name" name="shop_name" required><br>
-
-<label for="description">Shop address:</label><br>
-<textarea id="description" name="description" required></textarea><br>
-
-<label for="shop_city">Shop city:</label><br>
-<input type="text" id="shop_city" name="shop_city" required><br>
-
-<label for="shop_email">Shop E-mail:</label><br>
-<input type="email" id="shop_email" name="shop_email" required><br>
-
-<label for="contact_number">Contact Number:</label><br>
-<input type="number" id="contact_number" name="contact_number" required><br>
-
-<label for="shop_timing">Shop Timing:</label><br>
-<input type="text" id="shop_timing" name="shop_timing" required><br>
-(eg: Monday-Friday 8:30AM To 7:00PM)
-<br>
-<br>
-
-<label for="contact_person">Contact Person:</label><br>
-<input type="text" id="contact_person" name="contact_person" required><br>
-
-<label for="location_link">Shop Location link:</label><br>
-<input type="text" id="location_link" name="location_link" required><br>
-
-<label for="image1">Upload Shop Image:</label><br>
-<input type="file" id="image1" name="image1" required><br>
+                        <input type="text" id="shop_name" name="shop_name" required><br>
+                        
+                        <label for="description">Shop address:</label><br>
+                        <textarea id="description" name="description" required></textarea><br>
+                        
+                        <label for="shop_city">Shop city:</label><br>
+                        <input type="text" id="shop_city" name="shop_city" required><br>
+                        
+                        <label for="shop_email">Shop E-mail:</label><br>
+                        <input type="email" id="shop_email" name="shop_email" required><br>
+                        
+                        <label for="contact_number">Contact Number:</label><br>
+                        <input type="number" id="contact_number" name="contact_number" required><br>
+                        
+                        <label for="shop_timing">Shop Timing:</label><br>
+                        <input type="text" id="shop_timing" name="shop_timing" required><br>
+                        (eg: Monday-Friday 8:30AM To 7:00PM)
+                        <br>
+                        <br>
+                        
+                        <label for="contact_person">Contact Person:</label><br>
+                        <input type="text" id="contact_person" name="contact_person" required><br>
+                        
+                        <label for="location_link">Shop Location link:</label><br>
+                        <input type="text" id="location_link" name="location_link" required><br>
+                        
+                        <label for="image1">Upload Shop Image:</label><br>
+                        <input type="file" id="image1" name="image1" required><br>
 
                             <div class="submit">
                                 <input type="submit" value="Submit">

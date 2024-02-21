@@ -150,18 +150,12 @@ if(isset($_POST['add_to_cart'])) {
 
     <div class="single-product-details">
         <h1><?php echo $name; ?></h1>
-        <h4>Product Description</h4>
+        <!-- <h4>Product Description</h4> -->
+        <br>
         <?php if($quantity > 0): ?>
             <h2>₹<?php echo $price; ?></h2>
             <form method="post" action="">
-                <select name="size">
-                    <option>Select Size</option>
-                    <option>Small</option>
-                    <option>Medium</option>
-                    <option>Large</option>
-                    <option>XL</option>
-                    <option>XXL</option>
-                </select>
+                <br>
                 <input type="number" name="quantity" value="1" min="1" max="<?php echo $quantity; ?>">
                 <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
                 <button type="submit" name="add_to_cart" class="normal">Add To Cart</button>

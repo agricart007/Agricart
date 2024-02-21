@@ -70,10 +70,11 @@ if (!$order_result) {
         <br />
         <div class="col-div-3">
             <div class="box">
-                <p><?php echo $total_sales; ?><br /><span>Total Sales</span></p>
+                <p><?php echo ($total_sales !== null) ? $total_sales : '0'; ?><br /><span>Total Sales</span></p>
                 <i class="fa-solid fa-cart-shopping"></i>
             </div>
         </div>
+
         <div class="col-div-3">
             <div class="box">
                 <p><?php echo $total_orders; ?><br /><span>Orders</span></p> <!-- Corrected label -->

@@ -11,8 +11,9 @@ if(isset($_POST['save_profile'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $address = mysqli_real_escape_string($conn, $_POST['address']);
     $state = mysqli_real_escape_string($conn, $_POST['state']);
+    $pincode = mysqli_real_escape_string($conn, $_POST['pin_code']);
 
-    $query = "UPDATE buyer_details SET full_name='$full_name', contact_no='$contact_no', email='$email', address='$address', state='$state' WHERE email = '$username'";
+    $query = "UPDATE buyer_details SET full_name='$full_name', contact_no='$contact_no', email='$email', address='$address', pin_code='$pincode' , state='$state' WHERE email = '$username'";
     if(mysqli_query($conn, $query)) {
         header("Location: profile.php?alert=profile_update");
     } else {
