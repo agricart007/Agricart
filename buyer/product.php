@@ -107,27 +107,42 @@ if(isset($_POST['add_to_cart_short_cut'])) {
             $product_id = $row['product_id']; // Assuming 'product_id' is the primary key column in your 'product_details' table
             $name = $row['name'];
             $price = $row['price'];
+?>
 
-            // Output HTML for each product with a link to product_detail.php along with the product ID
-            echo '<div class="pro" onclick="window.location.href=\'product_detail.php?product_id=' . $product_id . '\'">';
-            echo '<img src="' . $image . '" alt="">';
-            echo '<div class="des">';
-            echo '<span>ABCD</span>';
-            echo '<h5>' . $name . '</h5>';
-            echo '<div class="star">';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '<ion-icon name="star"></ion-icon>';
-            echo '</div>';
-            echo '<h4>₹' . $price . '</h4>';
-            echo '</div>';
-            echo '<form method="post" action="">';
-            echo '<input type="hidden" name="product_id" value="' . $product_id . '">';
-            echo '<button class="cart" type="submit" name="add_to_cart_short_cut"><ion-icon name="cart-outline"></ion-icon></button>';
-            echo '</form>';
-            echo '</div>';
+            <div class="pro" onclick="window.location.href='product_detail.php?product_id=<?php echo $product_id; ?>'">
+            <img src="<?php echo $image; ?>" alt="">
+            <div class="des">
+                <span>ABCD</span>
+                <h5><?php echo $name; ?></h5>
+                <div class="star">
+                        <?php
+                        for ($i = 0; $i < 2; $i++) {
+                            echo '<ion-icon name="star"></ion-icon>';
+                        }
+                        ?>
+                    </div>
+                <?php 
+                        if ($row['quantity'] > 0) {
+                            ?>
+                            <h4>₹<?php echo $price; ?></h4>
+                        <?php } else {
+                            // echo "Out of stock";?>
+                            <h2 class="out-of-stock" style="color: red;">Out of Stock</h2>
+                            <?php
+                        } 
+                    ?>
+            </div>
+            <form method="post" action="">
+                    <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                    <?php if ($row['quantity'] > 0): ?>
+                        <button class="cart" type="submit" name="add_to_cart_short_cut">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </button>
+                    <?php endif; ?>
+                </form>
+
+        </div>
+        <?php
         }
         ?>
     </div>

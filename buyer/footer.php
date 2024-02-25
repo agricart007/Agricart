@@ -28,8 +28,7 @@
             <div class="col">
                 <h4>About</h4>
                 <a href="about.php">About Us</a>
-                <a href="contact.php">contact Us</a>
-                <a href="#">Term & Condition</a>
+                <a href="contact.php">Contact Us</a>
             </div>
 
             <div class="col">

@@ -11,7 +11,8 @@ include("../session/session_check.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin dashboard</title>
+    <title>Admin</title>
+    <link rel="icon" href="../images/titlelogo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="admin.css">
 </head>
@@ -45,8 +46,6 @@ include("../session/session_check.php");
                     <section>
                     <div class="profile-3">
                         <form action="create_admin_process.php" method="post">
-                            <!-- Password Change Form -->
-                            
                             <div class="name">
                                 User Name<br>
                                 <input type="text" name="email">

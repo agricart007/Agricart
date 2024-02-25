@@ -566,26 +566,12 @@ main {
 .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
 }
-/* Add this CSS to your existing styles */
-/* .status {
-    display: inline-block;
-    padding: 5px;
-    background-color: white;
-    border-radius: 3px; /* Optional: Add rounded corners for a better visual effect */
-/* }
 
-.status_inner_div {
-    background-color: green;
-    padding: 5px;
-    display: inline-block;
-    border-radius: 5px;
-    
-} */ */
 
 .status {
     display: inline-block;
     padding: 5px;
-    border-radius: 3px; /* Optional: Add rounded corners for a better visual effect */
+    border-radius: 3px; 
 }
 
 .status_inner_div {
@@ -595,7 +581,7 @@ main {
     align-items: center;
     justify-content: center;
     width: 75px;
-    height: 30px; /* Set a fixed height for better appearance */
+    height: 30px; 
     border-radius: 5px;
     color: white;
 }
@@ -680,10 +666,7 @@ input {
     text-align: right;
 
 }
-/* .mark-as-read{
-    cursor: ;
-} */
-/* styles.css */
+
 #usernameDisplay {
     border: 1px solid #ccc;
     padding: 5px;

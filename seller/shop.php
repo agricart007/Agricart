@@ -19,6 +19,7 @@ $result_shop = mysqli_query($conn, $sql_shop);
 
 <head>
     <title>Shop List</title>
+    <link rel="icon" href="../images/titlelogo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"

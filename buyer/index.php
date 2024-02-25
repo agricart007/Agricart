@@ -53,7 +53,9 @@ $result = mysqli_query($conn, $query);
     <p>Get up to 20% off!</p>
     <a href="product.php"><button>Shop Now</button></a>
 </section><br><br>
+
 <?php include("8_product.php");?>
+
 <section id="banner" class="section-m1">
     <h4>Repair Services</h4>
     <h2>Get up to <span>20% OFF</span> At Farming Goods</h2>

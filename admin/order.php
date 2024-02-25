@@ -34,7 +34,8 @@ $totalIncome = $incomeData['totalIncome'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin dashboard</title>
+    <title>Order List</title>
+    <link rel="icon" href="../images/titlelogo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="admin.css">
 </head>
@@ -125,7 +126,6 @@ $totalIncome = $incomeData['totalIncome'];
                                                             <h2>Order Details</h2>
                                                             <form>
                                                             <div style="max-height: 400px; overflow-y: auto;">
-                                                                <!-- Adjust the following lines to display the correct details -->
                                                                 <table>
                                                                     <tr>
                                                                         <td>Order Number</td>

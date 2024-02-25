@@ -281,6 +281,7 @@ button.normal{
 }
 .cart:hover {
     cursor: pointer;
+    size: 10px;
 }
 #banner .normal:hover{
     color: white;
@@ -771,12 +772,31 @@ button.normal{
 }
 
 /* cart css */
+/* cart css */
 
 #cart table {
     width: 100%;
     border-collapse: collapse;
     table-layout: fixed;
     white-space: nowrap;
+}
+
+#cart button {
+    background-color: #049b91;
+    color: white;
+    font-size: 16px;
+    height: 40px;
+    width: 90px;
+    cursor: pointer;
+}
+
+#cart button.hello {
+    background-color: #049b91;
+    color: white;
+    font-size: 16px;
+    height: 40px;
+    width: 110px;
+    cursor: pointer;
 }
 
 #cart table img {
@@ -806,6 +826,12 @@ button.normal{
 #cart table td:nth-child(6) {
     width: 150px;
     text-align: center;
+}
+
+#cart table td:nth-child(4) input {
+    width: 70px;
+    padding: 10px 5px 10px 15px;    
+    outline: none;
 }
 
 #cart table td:nth-child(5) input {
@@ -886,6 +912,65 @@ button.normal{
     padding: 10px;
     font-size: 16px;
 }
+
+/* order popup css */
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    text-align: center;
+    min-width: 500px;
+}
+.popup h2{
+    font-size: 30px;
+}
+.popup .details b{
+    font-size: 21px;
+}
+.popup .details {
+    font-size: 18px;
+}
+.close-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color:#088178;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
 #map-hadder{
     margin-bottom: 50px;
     padding: 50px;

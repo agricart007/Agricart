@@ -22,7 +22,8 @@ $order_result = mysqli_query($conn, $order_query);
 <html>
 
 <head>
-    <title></title>
+    <title>Order List</title>
+    <link rel="icon" href="../images/titlelogo.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
