@@ -22,6 +22,27 @@ if(isset($_SESSION['username'])) {
 
     $order_result = mysqli_query($conn, $order_query);
 }
+
+function generateAndDownloadInvoice($order_id) {
+    // Generate PDF invoice code here
+    // Example:
+    // $pdf_content = "PDF content"; // Replace with your PDF generation code
+
+    // Set appropriate headers
+    header("Content-Type: application/pdf");
+    header("Content-Disposition: attachment; filename='invoice.pdf'");
+
+    // Output the PDF content
+    // echo $pdf_content;
+    // Replace the above line with your PDF content generation code
+
+    // For demonstration, let's just output a sample content
+    echo "Sample PDF content for order ID: $order_id";
+    exit; // Terminate further execution
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -109,6 +130,14 @@ if(isset($_SESSION['username'])) {
                                     <div class="details"><b>State : </b><?php echo $order_row['state']; ?></div>
                                     <div class="details"><b>Pin code : </b><?php echo $order_row['pin_code']; ?></div>
                                     <div class="details"><b>Payment Type : </b><?php if($order_row['payment'] == 0){echo "cash";}else{echo "online";} ?></div>
+                                    <div class="details"><b>Shipping Charges : </b><?php if($order_row['price'] < 150){echo "20";}else{echo"Free";} ?></div>
+                                    <?php
+                                        $totalPrice = $order_row['price'] * $order_row['quantity'];
+                                        if ($totalPrice < 150) {
+                                            $totalPrice += 20; // Add shipping charge if applicable
+                                        }
+                                    ?>
+                                    <div class="details"><b>Total Amount : </b> ₹<?php echo $totalPrice; ?></div>
                                     <div class="details"><b>Status : </b><?php if($order_row['status'] == 0){echo "Pending";}else{ echo "Shipped";} ?></div>
                                     <div class="details"><b>Tracking Id : </b><?php echo $order_row['tracking_no']; ?></div>
                                     <div class="details"><b>Seller Name : </b><?php echo $order_row['first_name'] . ' ' . $order_row['last_name']; ?></div><br>
@@ -118,7 +147,7 @@ if(isset($_SESSION['username'])) {
                         </div>
                         
                     </td>
-                    <td><button class="hello">Download</button></td>
+                    <td><button class="hello" onclick="downloadInvoice(<?php echo $order_row['order_id']; ?>)">Download</button></td>
                 </tr>
                 <?php
                 }
@@ -135,7 +164,13 @@ if(isset($_SESSION['username'])) {
     function closePopup(orderId) {
         document.getElementById("overlay_" + orderId).style.display = "none";
     }
-</script>
+    </script>
+    <script>
+        function downloadInvoice(orderId) {
+            // Invoke PHP script to generate and download PDF invoice
+            window.location.href = "../pdf_makker/generatePDF.php?order_id=" + orderId;
+        }
+    </script>
 
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

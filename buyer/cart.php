@@ -89,6 +89,19 @@ if(isset($_GET['remove_coupon']) && $_GET['remove_coupon'] === 'true') {
     $discount = 0;
     
 }
+
+$shippingCharges = 0;
+if(isset($result)) {
+    mysqli_data_seek($result, 0);
+    while ($row = mysqli_fetch_assoc($result)) {
+        $product_price = $subtotal;
+        if ($product_price < 150) {
+            $shippingCharges += 20;
+        }
+    }
+}
+
+$totalWithShipping = $totalPrice + $shippingCharges;
 ?>
 
 <!DOCTYPE html>
@@ -214,7 +227,7 @@ if(isset($_GET['remove_coupon']) && $_GET['remove_coupon'] === 'true') {
                 </tr>
                 <tr>
                     <td>Shipping Charges</td>
-                    <td>₹<?php echo ($totalPrice == 0) ? '0' : (($totalPrice >= 400) ? 'Free' : '40'); ?></td>
+                    <td><?php echo ($shippingCharges == 0) ? 'Free' : "₹" . $shippingCharges; ?></td>
                 </tr>
                 <?php if($discount > 0): ?>
                 <tr>
@@ -227,12 +240,13 @@ if(isset($_GET['remove_coupon']) && $_GET['remove_coupon'] === 'true') {
                 <?php endif; ?>
                 <tr>
                     <td><strong>Total</strong></td>
-                    <td>₹<?php echo number_format(($totalPrice == 0) ? '0' : (($totalPrice >= 400) ? $totalPrice : $totalPrice + 40), 2);?></td>
+                    <td>₹<?php echo number_format($totalWithShipping, 2);?></td>
                 </tr>
             </table>
 
             <form method="post" action="checkout_process.php" id="checkout_form">
                 <input type="hidden" name="product_details" id="product_details">
+                <!-- <input type="hidden" name="shipping_charges" value="<?php echo $shippingCharges; ?>"> -->
                 <button type="submit" name="proceed_to_checkout" class="normal" onclick="prepareCheckout()">Proceed To Checkout</button>
             </form>
         </div>

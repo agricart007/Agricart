@@ -1,44 +1,33 @@
 <?php
-// Include TCPDF library
-require_once('D/software/xampp/htdocs/User/Agricart/pdf_makker/tcpdf.php');
+require('fpdf186/fpdf.php');
 
-// Create new PDF document
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+function generateInvoicePDF($order_id) {
+    // Create new PDF instance
+    $pdf = new FPDF();
+    $pdf->AddPage();
 
-// Set document information
-$pdf->SetCreator('Your Name');
-$pdf->SetAuthor('Your Name');
-$pdf->SetTitle('Sample PDF');
-$pdf->SetSubject('Sample PDF Document');
-$pdf->SetKeywords('TCPDF, PDF, example, sample');
+    // Set font
+    $pdf->SetFont('Arial', '', 12);
 
-// Set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
+    // Add a title
+    $pdf->Cell(0, 10, 'Invoice for Order ID: ' . $order_id, 0, 1, 'C');
 
-// Set header and footer fonts
-$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    // Add some content
+    $pdf->Cell(0, 10, 'This is a sample invoice content. You can customize it as needed.', 0, 1);
 
-// Set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+    // Output PDF to browser
+    $pdf->Output('invoice.pdf', 'D'); // 'D' to force download
 
-// Set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+    // Terminate further execution
+    exit;
+}
 
-// Add a page
-$pdf->AddPage();
-
-// Set some content
-$html = '<h1>Sample PDF</h1>';
-$html .= '<p>This is a sample PDF document generated using TCPDF library.</p>';
-
-// Output the HTML content
-$pdf->writeHTML($html, true, false, true, false, '');
-
-// Add more pages or content as needed
-
-// Close and output PDF document
-$pdf->Output('sample.pdf', 'I'); // 'I' for inline rendering, 'F' to save to file, 'D' to force download
+// Check if order_id is provided and call the function to generate the PDF
+if(isset($_GET['order_id'])) {
+    $order_id = $_GET['order_id'];
+    generateInvoicePDF($order_id);
+} else {
+    // Handle case where order_id is not provided
+    echo "Order ID not provided.";
+}
 ?>

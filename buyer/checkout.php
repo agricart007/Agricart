@@ -22,7 +22,7 @@ $order_no = $_SESSION['order_no'];
         .inner button{
             background: #088178;
             width: 15%;
-            height: 5%;
+            height: 10px;
             border-radius: 10px;
             padding-bottom: 50px;
             border: none;

@@ -123,6 +123,19 @@ $order_result = mysqli_query($conn, $order_query);
                                                             </td>
                                                         </tr>
                                                         <tr>
+                                                            <td>Total</td>
+                                                            <td>
+                                                                <?php
+                                                                    $totalPrice = $row['price'] * $row['quantity'];
+                                                                    if ($totalPrice < 150) {
+                                                                        $totalPrice += 20; // Add shipping charge if applicable
+                                                                    }
+                                                                    echo "$totalPrice";
+                                                                ?>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
                                                             <td>Buyer Name</td>
                                                             <td>
                                                                 <?php echo $row['full_name']; ?>

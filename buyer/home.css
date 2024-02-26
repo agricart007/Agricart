@@ -865,6 +865,7 @@ button.normal{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    
 }
 
 #coupon {
@@ -877,6 +878,7 @@ button.normal{
     padding-bottom: 15px;
     font-size: 25px;
 }
+
 
 #coupon input {
     padding: 16px 20px;
