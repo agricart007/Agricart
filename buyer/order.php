@@ -96,23 +96,23 @@ if(isset($_SESSION['username'])) {
                             <span class="close-btn" onclick="closePopup(<?php echo $order_row['order_id']; ?>)">×</span>
 
                                 <h2>Order Details</h2><br>
-                                <form>
+                                <form class="scrollable-form">
                                     <div class="details"><b>Name : </b><?php echo $order_row['name']; ?></div><br>
                                     <div class="details"><?php $image = empty($order_row['photo']) ? '../images/profile.jpg' : '../images/' . $order_row['photo'];
                                                             echo "<img src='$image'>";
                                                         ?>
                                     </div><br>
-                                    <div class="details"><b>Price : </b>₹<?php echo $order_row['price']; ?></div><br>
-                                    <div class="details"><b>Quantity : </b><?php echo $order_row['quantity']; ?></div><br>
-                                    <div class="details"><b>Order Date : </b><?php echo $order_row['order_date']; ?></div><br>
-                                    <div class="details"><b>Delivery Address : </b><?php echo $order_row['address']; ?></div><br>
-                                    <div class="details"><b>State : </b><?php echo $order_row['state']; ?></div><br>
-                                    <div class="details"><b>Pin code : </b><?php echo $order_row['pin_code']; ?></div><br>
-                                    <div class="details"><b>Payment Type : </b><?php if($order_row['payment'] == 0){echo "cash";}else{echo "online";} ?></div><br>
-                                    <div class="details"><b>Status : </b><?php if($order_row['status'] == 0){echo "Pending";}else{ echo "Shipped";} ?></div><br>
-                                    <div class="details"><b>Tracking Id : </b><?php echo $order_row['tracking_no']; ?></div><br>
+                                    <div class="details"><b>Price : </b> ₹<?php echo $order_row['price']; ?></div>
+                                    <div class="details"><b>Quantity : </b><?php echo $order_row['quantity']; ?></div>
+                                    <div class="details"><b>Order Date : </b><?php echo $order_row['order_date']; ?></div>
+                                    <div class="details"><b>Delivery Address : </b><?php echo $order_row['address']; ?></div>
+                                    <div class="details"><b>State : </b><?php echo $order_row['state']; ?></div>
+                                    <div class="details"><b>Pin code : </b><?php echo $order_row['pin_code']; ?></div>
+                                    <div class="details"><b>Payment Type : </b><?php if($order_row['payment'] == 0){echo "cash";}else{echo "online";} ?></div>
+                                    <div class="details"><b>Status : </b><?php if($order_row['status'] == 0){echo "Pending";}else{ echo "Shipped";} ?></div>
+                                    <div class="details"><b>Tracking Id : </b><?php echo $order_row['tracking_no']; ?></div>
                                     <div class="details"><b>Seller Name : </b><?php echo $order_row['first_name'] . ' ' . $order_row['last_name']; ?></div><br>
-                                    <div class="details"><button class="hello">Invoice</button></div><br>
+                                    <div class="details_button"><button class="hello">Invoice</button></div>
                                 </form>
                             </div>
                         </div>

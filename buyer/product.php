@@ -132,11 +132,11 @@ if(isset($_POST['add_to_cart_short_cut'])) {
                         } 
                     ?>
             </div>
-            <form method="post" action="">
+            <form method="post" class="cart_form" action="">
                     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
                     <?php if ($row['quantity'] > 0): ?>
                         <button class="cart" type="submit" name="add_to_cart_short_cut">
-                            <ion-icon name="cart-outline"></ion-icon>
+                            <a><ion-icon name="cart-outline"></ion-icon></a>
                         </button>
                     <?php endif; ?>
                 </form>

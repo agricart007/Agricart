@@ -915,6 +915,11 @@ button.normal{
 
 /* order popup css */
 
+.scrollable-form {
+    max-height: 400px; /* Adjust this value as needed */
+    overflow-y: auto;
+}
+
 .overlay {
     display: none;
     position: fixed;
@@ -934,7 +939,9 @@ button.normal{
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     position: relative;
     text-align: center;
-    min-width: 500px;
+    min-width: 250px;
+    min-height: 300px;
+    margin-top: 120px;
 }
 .popup h2{
     font-size: 30px;
@@ -943,6 +950,12 @@ button.normal{
     font-size: 21px;
 }
 .popup .details {
+    margin-bottom: 10px;
+    font-size: 18px;
+    display: flex;
+}
+.popup .details_button {
+    margin-bottom: 10px;
     font-size: 18px;
 }
 .close-btn {
@@ -1085,7 +1098,7 @@ button {
 #profile {
     display: flex;
     justify-content: space-between;
-    height: 700px;
+    height: 860px;
 }
 
 .profile-1 img {
@@ -1186,4 +1199,7 @@ button {
     outline: none;
     border-radius: 4px;
     cursor: pointer;
+}
+form.cart_form a{
+    font-size: 20px;
 }

@@ -88,7 +88,7 @@ if(isset($_POST['add_to_cart_short_cut'])) {
                 </a>
                 <div class="des">
                     <span><h5><?php echo $name; ?></h5></span>
-                    <h5>700</h5>
+                    <!-- <h5>700</h5> -->
                     <div class="star">
                         <?php
                         for ($i = 0; $i < 2; $i++) {
@@ -108,11 +108,11 @@ if(isset($_POST['add_to_cart_short_cut'])) {
                     ?>
                 </div>
 
-                <form method="post" action="">
+                <form method="post" class="cart_form" action="">
                     <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
                     <?php if ($row['quantity'] > 0): ?>
                         <button class="cart" type="submit" name="add_to_cart_short_cut">
-                            <ion-icon name="cart-outline"></ion-icon>
+                            <a><ion-icon name="cart-outline"></ion-icon></a>
                         </button>
                     <?php endif; ?>
                 </form>
