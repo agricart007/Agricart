@@ -21,6 +21,7 @@ if(isset($_GET['product_id'])) {
     if(mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
         $name = $row['name'];
+        $mrp = $row['mrp'];
         $price = $row['price'];
         $quantity = $row['quantity'];
         $image1 = empty($row['photo']) ? '../images/xyz.png' : $row['photo'];
@@ -153,7 +154,11 @@ if(isset($_POST['add_to_cart'])) {
         <!-- <h4>Product Description</h4> -->
         <br>
         <?php if($quantity > 0): ?>
-            <h2>₹<?php echo $price; ?></h2>
+            <div class="mrp">
+                <b><strike>₹<?php echo $mrp; ?></strike></b>
+                <h2>₹<?php echo $price; ?></h2>
+
+            </div>
             <form method="post" action="">
                 <br>
                 <input type="number" name="quantity" value="1" min="1" max="<?php echo $quantity; ?>">

@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$seller_id', '$shop_name', '$shop_address', '$shop_city', '$shop_email', '$contact_number', '$shop_timing', '$contact_person', '$location_link', '$shop_image')";
 
     if ($conn->query($sql) === TRUE) {
-        header("Location: add_shop.php?alert=Shop Details INserted Successfully");
+        header("Location: add_shop.php?alert=Shop Details Inserted Successfully");
     } else {
         header("Location: add_shop.php?alert=error");
     }

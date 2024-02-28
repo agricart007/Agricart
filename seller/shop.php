@@ -27,6 +27,8 @@ $result_shop = mysqli_query($conn, $sql_shop);
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
         function openPopup(shopid) {
             document.getElementById("overlay_" + shopid).style.display = "flex";
@@ -126,7 +128,7 @@ $result_shop = mysqli_query($conn, $sql_shop);
                                                 <form method="POST" action="delete_shop.php">
                                                     <input type="hidden" name="shop_id" value="<?php echo $row['shop_id']; ?>">
                                                     <button type="submit">
-                                                        <i class='fa-solid fa-magnifying-glass'></i> Delete
+                                                    <ion-icon name="trash-outline"></ion-icon> Delete
                                                     </button>
                                                 </form>
                                             </div>

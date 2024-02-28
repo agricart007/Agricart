@@ -50,45 +50,6 @@ if(isset($_SESSION['username'])) {
     }
 }
 
-// Initialize discount variable
-$discount = 0;
-
-// Handle coupon code submission
-if(isset($_POST['apply_coupon'])) {
-    $coupon_code = mysqli_real_escape_string($conn, $_POST['coupon_code']);
-
-    // Query the database to check if the coupon code exists
-    $coupon_query = "SELECT * FROM coupon_details WHERE coupon_code = '$coupon_code'";
-    $coupon_result = mysqli_query($conn, $coupon_query);
-
-    if(mysqli_num_rows($coupon_result) > 0) {
-        // Coupon code exists, retrieve its discount value
-        $coupon_data = mysqli_fetch_assoc($coupon_result);
-        $discount = $coupon_data['discount_percentage'];
-
-        // Apply the discount to the total price
-        $discountedAmount = ($totalPrice * $discount) / 100;
-        $totalPrice -= $discountedAmount;
-
-        // If the total price becomes negative due to the discount, set it to 0
-        if($totalPrice < 0) {
-            $totalPrice = 0;
-        }
-
-        // Alert for successful coupon application
-        echo "<script>alert('Coupon applied successfully.')</script>";
-    } else {
-        // Coupon code not valid
-        echo "<script>alert('Coupon code not valid.')</script>";
-    }
-}
-
-// Handle coupon removal
-if(isset($_GET['remove_coupon']) && $_GET['remove_coupon'] === 'true') {
-    // Reset discount to 0
-    $discount = 0;
-    
-}
 
 $shippingCharges = 0;
 if(isset($result)) {
@@ -210,14 +171,6 @@ $totalWithShipping = $totalPrice + $shippingCharges;
     </section>
 
     <section id="cart-parts" class="section-p1"> 
-        <div id="coupon">
-            <h3>Apply Coupon</h3>
-            <form method="post" action="">
-                <input type="text" name="coupon_code" placeholder="Enter Your Coupon Code">
-                <button type="submit" name="apply_coupon" class="normal">Apply</button>
-            </form>
-        </div>
-
         <div id="subtotal">
             <h3>Cart Total</h3>
             <table>
@@ -229,23 +182,15 @@ $totalWithShipping = $totalPrice + $shippingCharges;
                     <td>Shipping Charges</td>
                     <td><?php echo ($shippingCharges == 0) ? 'Free' : "₹" . $shippingCharges; ?></td>
                 </tr>
-                <?php if($discount > 0): ?>
-                <tr>
-                    <td>Coupon Discount</td>
-                    <td>
-                        <?php echo $discount; ?>%
-                        <a href="cart.php?remove_coupon=true" style="margin-left: 10px;">Remove</a>
-                    </td>
-                </tr>
-                <?php endif; ?>
+            
                 <tr>
                     <td><strong>Total</strong></td>
                     <td>₹<?php echo number_format($totalWithShipping, 2);?></td>
                 </tr>
             </table>
 
-            <form method="post" action="checkout_process.php" id="checkout_form">
-                <input type="hidden" name="product_details" id="product_details">
+            <!-- <form method="post" action="checkout_process.php" id="checkout_form"> -->
+                <!-- <input type="hidden" name="product_details" id="product_details"> -->
                 <!-- <input type="hidden" name="shipping_charges" value="<?php echo $shippingCharges; ?>"> -->
                 <button type="submit" name="proceed_to_checkout" class="normal" onclick="prepareCheckout()">Proceed To Checkout</button>
             </form>

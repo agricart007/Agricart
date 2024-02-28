@@ -137,6 +137,12 @@ $result = mysqli_query($conn, $query);
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
+                                                                        <td>MRP</td>
+                                                                        <td>
+                                                                            <div id="priceDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['mrp']; ?></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
                                                                         <td>Price</td>
                                                                         <td>
                                                                             <div id="priceDisplay" style="border: 1px solid #ccc; padding: 5px; width: 700px; height: 50px;"><?php echo $row['price']; ?></div>

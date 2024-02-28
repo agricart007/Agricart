@@ -189,6 +189,7 @@ img.logo{
 
 #product1 .pro img {
     width: 100%;
+    height: 250px;
     border-radius: 1.25rem;
 }
 
@@ -705,10 +706,24 @@ button.normal{
 }
 
 /* single product details page */
+.mrp{
+    display: flex;
+    flex-wrap: wrap;
+    }
+.mrp h2{
+    padding-left: 10px;
+    color: #049b91;
+}
+.mrp b{
+    color: #858585;
+    font-size: 23px;
+}
 
 #productdetails {
     display: flex;
     margin-top: 20px;
+    
+    
 }
 
 #productdetails .single-product-image {
@@ -753,7 +768,7 @@ button.normal{
 }
 
 #productdetails .single-product-details input {
-    width: 50px;
+    width: 64px;
     height: 47px;
     padding-left: 10px;
     font-size: 16px;
@@ -862,9 +877,10 @@ button.normal{
 }
 
 #cart-parts {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    /* display: flex; */
+    /* flex-wrap: wrap;
+    justify-content: space-between; */
+    justify-content: right;
     
 }
 
@@ -900,6 +916,7 @@ button.normal{
     margin-bottom: 30px;
     border: 1px solid #e2e9e1;
     padding: 30px;
+    margin-left: 700px;
 }
 
 #subtotal table {

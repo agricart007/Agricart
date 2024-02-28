@@ -38,7 +38,10 @@
                             <label for="product_name">Product Name:</label><br>
                             <input type="text" id="product_name" name="product_name" required><br>
 
-                            <label for="price">Price:</label><br>
+                            <label for="price">MRP:</label><br>
+                            <input type="number" min="0" id="price" name="mrp" required><br>
+
+                            <label for="price">Selling Price:</label><br>
                             <input type="number" min="0" id="price" name="price" required><br>
 
                             <label for="quantity">Quantity:</label><br>

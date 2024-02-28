@@ -92,7 +92,7 @@ $product_result = mysqli_query($conn, $product_query);
                                         <form method="POST" action="delete_product.php">
                                             <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>">
                                             <button type="submit">
-                                                <i class='fa-solid fa-magnifying-glass'></i> Delete
+                                            <ion-icon name="trash-outline"></ion-icon>  Delete
                                             </button>
                                         </form>
 
@@ -116,6 +116,12 @@ $product_result = mysqli_query($conn, $product_query);
                                                             <td>Description</td>
                                                             <td>
                                                                 <input type="text" name="description" value="<?php echo $row['description']; ?>">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>MRP</td>
+                                                            <td>
+                                                                <input type="number" name="price" value="<?php echo $row['mrp']; ?>">
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -171,6 +177,8 @@ $product_result = mysqli_query($conn, $product_query);
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
         function openPopup(productId) {
             document.getElementById("overlay_" + productId).style.display = "flex";

@@ -75,7 +75,7 @@ include("../database/connection.php");
                 </div>
             </div>
             <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.9106382472673!2d72.4839385747693!3d22.990313317532237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e83178affe615%3A0xec0bcf70a6918be9!2sL.J.%20Polytechnic%2C%20Ahmedabad!5e0!3m2!1sen!2sin!4v1704461058810!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.126994400442!2d72.52402557479734!3d23.019108916458432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84d1630e9e71%3A0x37c4234cd826b1aa!2sSachin%20Park%20Society!5e0!3m2!1sen!2sin!4v1709014182028!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
 
@@ -92,7 +92,7 @@ include("../database/connection.php");
             <div class="people">
                 <div>
                     <img src="../images/shlok.png">
-                    <p><span>Sholk Patel</span>Project Leader<br>Phone: +91 89800 72388<br>Email: agricart007@gmail.com</p>
+                    <p><span>Sholk Patel</span>Project Leader<br> Back-end Developer <br>Phone: +91 89800 72388<br>Email: agricart007@gmail.com</p>
                 </div>
                 <div>
                     <img src="../images/vraj.png">
@@ -102,7 +102,9 @@ include("../database/connection.php");
                     <img src="../images/nand.png">
                     <p><span>Nand Patel</span>Web Designer<br>Phone: +91 99985 58383<br>Email: agricart007@gmail.com</p>
                 </div>
+                
             </div>
+            
         </section>
 
 

@@ -12,6 +12,7 @@ $seller_id = $seller_id_row['seller_id'];
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $product_name = $_POST['product_name'];
+    $mrp = $_POST['mrp'];
     $price = $_POST['price'];
     $quantity = $_POST['quantity'];
     $description = $_POST['description'];
@@ -27,13 +28,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $image3_tmp = $_FILES['image3']['tmp_name'];
 
     // Move uploaded images to desired directory
-    move_uploaded_file($image1_tmp, "images/" . $image1);
-    move_uploaded_file($image2_tmp, "images/" . $image2);
-    move_uploaded_file($image3_tmp, "images/" . $image3);
+    move_uploaded_file($image1_tmp, "../images/" . $image1);
+    move_uploaded_file($image2_tmp, "../images/" . $image2);
+    move_uploaded_file($image3_tmp, "../images/" . $image3);
 
     // Insert data into database
-    $sql = "INSERT INTO product_details (seller_id, name, price, quantity, description, photo, photo2, photo3) 
-            VALUES ('$seller_id', '$product_name', '$price', '$quantity', '$description', '$image1', '$image2', '$image3')";
+    $sql = "INSERT INTO product_details (seller_id, name, mrp, price, quantity, description, photo, photo2, photo3) 
+            VALUES ('$seller_id', '$product_name', '$mrp', '$price', '$quantity', '$description', '$image1', '$image2', '$image3')";
     
     if ($conn->query($sql) === TRUE) {
         header("Location: add_product.php?alert=Shop Details INserted Successfully");
