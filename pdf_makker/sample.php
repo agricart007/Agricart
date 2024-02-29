@@ -1,9 +1,8 @@
 <?php
-require('fpdf186/fpdf.php');
+    require('D:\XAMPP\htdocs\Test\generatePDF.php');
 
-function generateInvoicePDF($order_id) {
-    // Create new PDF instance
-    $pdf = new FPDF();
+    $pdf = new FPDF('p', 'mm', "A4");
+
     $pdf->AddPage();
 
     $pdf->SetFont('Arial', 'B', 20);
@@ -30,25 +29,7 @@ function generateInvoicePDF($order_id) {
     $pdf->Cell(34, 5,'',0,1);
     
 
-    // Output PDF to browser
-    $pdf->Output('invoice.pdf', 'D'); // 'D' to force download
-
-    // Terminate further execution
-    exit;
-}
 
 
+    $pdf->Output()
 ?>
-
-
-
-
-
-// // Check if order_id is provided and call the function to generate the PDF
-// if(isset($_GET['order_id'])) {
-//     $order_id = $_GET['order_id'];
-//     generateInvoicePDF($order_id);
-// } else {
-//     // Handle case where order_id is not provided
-//     echo "Order ID not provided.";
-// }

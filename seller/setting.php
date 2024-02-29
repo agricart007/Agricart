@@ -5,7 +5,18 @@ include("../database/connection.php");
 
 // Fetch shop details for the specific user from the database
 $seller_username = $_SESSION['username'];
+$seller_id_query = "SELECT seller_id FROM seller_details WHERE email = '$seller_username'";
+$seller_id_result = mysqli_query($conn, $seller_id_query);
+$seller_id_row = mysqli_fetch_assoc($seller_id_result);
+$seller_id = $seller_id_row['seller_id'];
 
+$sql = "SELECT photo FROM seller_details WHERE seller_id = '$seller_id'";
+$result_img = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result_img) > 0) {
+    // Fetch photo path
+    $row = mysqli_fetch_assoc($result_img);
+}
 
 ?>
 
@@ -39,7 +50,16 @@ $seller_username = $_SESSION['username'];
                 <span style="font-size:30px;cursor:pointer; color: rgb(0, 0, 0); display: none;" class="nav2"><i
                         class="fa-solid fa-bars"></i> Setting</span>
             </div>
-            <div class="col-div-6"></div>
+            <div class="col-div-6">
+            <div class="profile">
+                <?php
+                    $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                    echo "<td><img src='$image' class='pro-img'></td>";
+                ?>
+                    <!-- <img src="images/user.png" class="pro-img" /> -->
+                    <p><?php echo $seller_username; ?></p>
+                </div>
+            </div>
             <div class="clearfix"></div>
         </div>
 

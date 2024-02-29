@@ -84,7 +84,7 @@ switch ($action) {
                 
                     if ($run_query) {
                         $_SESSION['username'] = $email;
-                        header("location:../seller/index.php");
+                        header("location:../seller/verify_account.php");
                         exit();
                     } else {
                         echo "Registration failed.";

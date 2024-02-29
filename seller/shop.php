@@ -12,6 +12,14 @@ $seller_id = $seller_id_row['seller_id'];
 
 $sql_shop = "SELECT * FROM shop_details WHERE seller_id = $seller_id";
 $result_shop = mysqli_query($conn, $sql_shop);
+
+$sql = "SELECT photo FROM seller_details WHERE seller_id = '$seller_id'";
+$result_img = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result_img) > 0) {
+    // Fetch photo path
+    $row = mysqli_fetch_assoc($result_img);
+}
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +89,16 @@ $result_shop = mysqli_query($conn, $sql_shop);
                 <span style="font-size:30px;cursor:pointer; color: rgb(0, 0, 0); display: none;" class="nav2"><i
                         class="fa-solid fa-bars"></i> Shop</span>
             </div>
-            <div class="col-div-6"></div>
+            <div class="col-div-6">
+            <div class="profile">
+                <?php
+                    $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                    echo "<td><img src='$image' class='pro-img'></td>";
+                ?>
+                    <!-- <img src="images/user.png" class="pro-img" /> -->
+                    <p><?php echo $seller_username; ?></p>
+                </div>
+            </div>
             <div class="clearfix"></div>
         </div>
 

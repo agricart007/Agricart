@@ -2,7 +2,6 @@
 include("../database/connection.php");
 include("../session/session_start.php");
 
-// Check if 'username' session variable is set
 if(isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
@@ -12,7 +11,6 @@ $buyer_id_row = mysqli_fetch_assoc($buyer_id_result);
 $buyer_id = $buyer_id_row['buyer_id'];
 // echo $buyer_id;
 
-// Fetch product details based on product_id if available
 if(isset($_GET['product_id'])) {
     $product_id = mysqli_real_escape_string($conn, $_GET['product_id']);
     $query = "SELECT * FROM product_details WHERE product_id = '$product_id'";
@@ -24,6 +22,7 @@ if(isset($_GET['product_id'])) {
         $mrp = $row['mrp'];
         $price = $row['price'];
         $quantity = $row['quantity'];
+        $description = $row['description'];
         $image1 = empty($row['photo']) ? '../images/xyz.png' : $row['photo'];
         $image2 = empty($row['photo']) ? '../images/xyz.png' : $row['photo2'];
         $image3 = empty($row['photo']) ? '../images/xyz.png' : $row['photo3'];
@@ -31,60 +30,55 @@ if(isset($_GET['product_id'])) {
 }
 
 if(isset($_POST['add_to_cart'])) {
-    // Sanitize and validate form data
     $product_id = mysqli_real_escape_string($conn, $_POST['product_id']);
-    $requested_quantity = (int)$_POST['quantity']; // Convert to integer
+    $requested_quantity = (int)$_POST['quantity'];
 
-    // Check if the requested quantity is greater than the available quantity
     if($requested_quantity > $quantity) {
-        // If requested quantity exceeds available quantity, show alert
         echo "<script>alert('Not enough quantity available.')</script>";
     } else {
-        // Proceed to add the product to cart
-        // Check if the product already exists in the cart
         $check_query = "SELECT * FROM cart_details WHERE product_id = '$product_id' AND buyer_id = '$buyer_id'";
         $check_result = mysqli_query($conn, $check_query);
         
         if(mysqli_num_rows($check_result) > 0) {
-            // If the product already exists, update the quantity
             $row = mysqli_fetch_assoc($check_result);
             $existing_quantity = (int)$row['quantity'];
             $new_quantity = $existing_quantity + $requested_quantity;
 
             if($new_quantity > $quantity) {
-                // If new quantity exceeds available quantity, show alert
                 echo "<script>alert('Not enough quantity available.')</script>";
             } else {
                 $update_query = "UPDATE cart_details SET quantity = $new_quantity WHERE product_id = '$product_id' AND buyer_id = '$buyer_id'";
                 $update_result = mysqli_query($conn, $update_query);
 
                 if($update_result) {
-                    // Quantity updated successfully
                     echo "<script>alert('Quantity updated successfully.')</script>";
                 } else {
-                    // Error updating quantity
                     echo "<script>alert('Failed to update quantity. Please try again.')</script>";
                 }
             }
         } else {
-            // If the product does not exist, insert a new entry
             $insert_query = "INSERT INTO cart_details (product_id, buyer_id, quantity) VALUES ('$product_id', '$buyer_id', '$requested_quantity')";
             $insert_result = mysqli_query($conn, $insert_query);
 
             if($insert_result) {
-                // Product successfully added to cart
                 echo "<script>alert('Product added to cart successfully.')</script>";
             } else {
-                // Error occurred while adding product to cart
                 echo "<script>alert('Failed to add product to cart. Please try again.')</script>";
             }
         }
     }
-
-    // Redirect to the same page to prevent form resubmission
     header("Location: ".$_SERVER['PHP_SELF']."?product_id=$product_id");
     exit();
 }
+
+
+$cartcount= "SELECT COUNT(*) AS product_count FROM cart_details WHERE buyer_id = $buyer_id";
+$cartcount_result = mysqli_query($conn, $cartcount);
+    
+if ($cartcount_result) {
+    $row = mysqli_fetch_assoc($cartcount_result);
+} 
+    
 ?>
 
 <!DOCTYPE html>
@@ -118,7 +112,14 @@ if(isset($_POST['add_to_cart'])) {
             <li class="module"><a href="shop.php">Shop</a></li>
             <li class="module"><a href="about.php">About</a></li>
             <li class="module"><a href="contact.php">Contact</a></li>
-            <li class="icon"><a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a></li>
+            <!-- <li class="icon"><a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a></li> -->
+            <div class="cart">
+                <li class="icon"><a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a></li>
+                <h4><?php if($row['product_count'] > 0){
+                    echo $row['product_count']; }?>
+                </h4>
+
+            </div>
             <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
                         <div class="dropdown-content">
                               <a href="profile.php"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>
@@ -151,7 +152,6 @@ if(isset($_POST['add_to_cart'])) {
 
     <div class="single-product-details">
         <h1><?php echo $name; ?></h1>
-        <!-- <h4>Product Description</h4> -->
         <br>
         <?php if($quantity > 0): ?>
             <div class="mrp">
@@ -169,7 +169,7 @@ if(isset($_POST['add_to_cart'])) {
             <h2 class="out-of-stock">Out of Stock</h2>
         <?php endif; ?>
         <h4>Product Details</h4>
-        <span><?php echo $row['description']; ?></span>
+        <span><?php echo $description; ?></span>
     </div>
     <?php else: ?>
     <p>No product found.</p>

@@ -13,6 +13,14 @@ $seller_id = $seller_id_row['seller_id'];
 // Fetch products for the specific seller from the database
 $product_query = "SELECT * FROM product_details WHERE seller_id = '$seller_id'";
 $product_result = mysqli_query($conn, $product_query);
+
+$sql = "SELECT photo FROM seller_details WHERE seller_id = '$seller_id'";
+$result_img = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result_img) > 0) {
+    // Fetch photo path
+    $row = mysqli_fetch_assoc($result_img);
+}
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +51,14 @@ $product_result = mysqli_query($conn, $product_query);
             </div>
 
             <div class="col-div-6">
-                <!-- Your content for the right side of the header, if any -->
+            <div class="profile">
+                <?php
+                    $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                    echo "<td><img src='$image' class='pro-img'></td>";
+                ?>
+                    <!-- <img src="images/user.png" class="pro-img" /> -->
+                    <p><?php echo $seller_username; ?></p>
+                </div>
             </div>
             <div class="clearfix"></div>
         </div>

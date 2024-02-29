@@ -2,6 +2,27 @@
 include ("../session/session_start.php");
 include("../session/session_check.php");
 include("../database/connection.php");
+
+if(isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+
+    $buyer_id_query = "SELECT buyer_id FROM buyer_details WHERE email = '$username'";
+    $buyer_id_result = mysqli_query($conn, $buyer_id_query);
+    $buyer_id_row = mysqli_fetch_assoc($buyer_id_result);
+    $buyer_id = $buyer_id_row['buyer_id'];
+    // echo $buyer_id;
+$cartcount= "SELECT COUNT(*) AS product_count FROM cart_details WHERE buyer_id = $buyer_id";
+$result = $conn->query($cartcount);
+
+// Check if the query executed successfully
+if ($result) {
+    // Fetch the result
+    $row = $result->fetch_assoc();
+}
+
+
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +53,14 @@ include("../database/connection.php");
                     <li class="module"><a href="shop.php">Shop</a></li>
                     <li  class="module"><a class="active" href="about.php">About</a></li>
                     <li class="module"><a href="contact.php">Contact</a></li>
-                    <li class="icon"><a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a></li>
+                    <li class="icon">
+                        <div class="cart">
+                            <a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a>
+                            <sup><?php if($row['product_count'] > 0){
+                                echo $row['product_count']; }?>
+                            </sup>
+                        </div>
+                    </li>
                     <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
                         <div class="dropdown-content">
                             <a href="profile.php"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>

@@ -41,6 +41,15 @@ if(isset($_SESSION['username'])) {
     $query = "SELECT * FROM buyer_details where buyer_id = '$buyer_id' "; // Ordering randomly and limiting to 6 products
     $result = mysqli_query($conn, $query);
     $buyer_details = mysqli_fetch_assoc($result);
+
+    $cartcount= "SELECT COUNT(*) AS product_count FROM cart_details WHERE buyer_id = $buyer_id";
+    $result_count = $conn->query($cartcount);
+
+// Check if the query executed successfully
+    if ($result_count) {
+    // Fetch the result
+    $row = $result_count->fetch_assoc();
+    }
 }
 ?>
 
@@ -71,7 +80,14 @@ if(isset($_SESSION['username'])) {
             <li class="module"><a href="shop.php">Shop</a></li>
             <li class="module"><a href="about.php">About</a></li>
             <li class="module"><a href="contact.php">Contact</a></li>
-            <li class="icon"><a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a></li>
+            <li class="icon">
+                <div class="cart">
+                    <a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a>
+                    <sup><?php if($row['product_count'] > 0){
+                        echo $row['product_count']; }?>
+                    </sup>
+                </div>
+            </li>
             <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
             <div class="dropdown-content">
                 <a href="profile.php"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>

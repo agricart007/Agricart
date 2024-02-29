@@ -28,7 +28,7 @@
 <body>
     <div class="outer">
         <div class="inner">
-            Your account has been disabled contact the coustomer-care to activate again
+            Your account has been disabled. Contact the coustomer-care to activate again.
             <br>
             <br>
             <a href="../login/s_login.php"><button>login</button></a>

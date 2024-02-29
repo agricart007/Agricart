@@ -11,12 +11,23 @@ $seller_id_row = mysqli_fetch_assoc($seller_id_result);
 $seller_id = $seller_id_row['seller_id'];
 
 // Fetch order details for the seller including product details
-$order_query = "SELECT o.*, p.name, p.photo, p.description, `by`.full_name, `by`.address, `by`.state FROM order_details o
+$order_query = "SELECT o.*, p.name, p.photo, p.description, `by`.full_name, `by`.address, `by`.state 
+                FROM order_details o
                 INNER JOIN product_details p ON o.product_id = p.product_id
                 INNER JOIN buyer_details `by` ON o.buyer_id = `by`.buyer_id
-                WHERE o.seller_id = '$seller_id'";
+                WHERE o.seller_id = '$seller_id'
+                ORDER BY o.order_id DESC";
+
 
 $order_result = mysqli_query($conn, $order_query);
+
+$sql = "SELECT photo FROM seller_details WHERE seller_id = '$seller_id'";
+$result_img = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result_img) > 0) {
+    // Fetch photo path
+    $row = mysqli_fetch_assoc($result_img);
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -45,7 +56,16 @@ $order_result = mysqli_query($conn, $order_query);
                 <span style="font-size:30px;cursor:pointer; color: rgb(0, 0, 0);" class="nav2"><i
                         class="fa-solid fa-bars"></i> Order</span>
             </div>
-            <div class="col-div-6"></div>
+            <div class="col-div-6">
+            <div class="profile">
+                <?php
+                    $image = empty($row['photo']) ? '../images/profile.jpg' : '../images/' . $row['photo'];
+                    echo "<td><img src='$image' class='pro-img'></td>";
+                ?>
+                    <!-- <img src="images/user.png" class="pro-img" /> -->
+                    <p><?php echo $seller_username; ?></p>
+                </div>
+            </div>
             <div class="clearfix"></div>
         </div>
 
