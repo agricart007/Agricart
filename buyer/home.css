@@ -1097,10 +1097,16 @@ button {
 #shop-details .outer{
     display: flex;
     align-items:center;
-    justify-content: space-between;
     margin-bottom: 100px;
     /* border: solid 1px #797979; */
     padding: 20px;
+}
+.abcd{
+    width: 600px;
+}
+.img_abcd{
+    margin-right: 50px;
+    margin-left: -390px;
 }
 #shop-details{
     display: grid;

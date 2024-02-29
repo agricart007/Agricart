@@ -140,7 +140,6 @@ if(isset($_SESSION['username'])) {
             <div class="pro" onclick="window.location.href='product_detail.php?product_id=<?php echo $product_id; ?>'">
             <img src="<?php echo $image; ?>" alt="">
             <div class="des">
-                <span>ABCD</span>
                 <h5><?php echo $name; ?></h5>
                 <div class="star">
                         <?php

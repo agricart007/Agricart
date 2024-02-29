@@ -100,9 +100,9 @@ if(isset($_SESSION['username'])) {
     <?php
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="outer"><div class="detalis">';
+            echo '<div class="outer"><div class="detalis_2">';
             echo '<h2>' . $row['name'] . '</h2>';
-            echo '<div>';
+            echo '<div class="abcd">';
             echo '<li>';
             echo '<ion-icon name="map-outline"></ion-icon>';
             echo '<p>' . $row['address'] . '</p>';
@@ -128,7 +128,7 @@ if(isset($_SESSION['username'])) {
             echo '</li>';
             echo '</div>';
             echo '</div>';
-            echo '<div class="img">';
+            echo '<div class="img_abcd">';
             echo '<img src="../images/' . $row['photo'] . '" alt="' . $row['name'] . '">';
             echo '</div></div>';
         }
