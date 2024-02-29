@@ -32,21 +32,13 @@ if(isset($_SESSION['username'])) {
 }
 
 function generateAndDownloadInvoice($order_id) {
-    // Generate PDF invoice code here
-    // Example:
-    // $pdf_content = "PDF content"; // Replace with your PDF generation code
-
-    // Set appropriate headers
+    
     header("Content-Type: application/pdf");
     header("Content-Disposition: attachment; filename='invoice.pdf'");
 
-    // Output the PDF content
-    // echo $pdf_content;
-    // Replace the above line with your PDF content generation code
-
-    // For demonstration, let's just output a sample content
+    
     echo "Sample PDF content for order ID: $order_id";
-    exit; // Terminate further execution
+    exit; 
 }
 
 
