@@ -588,8 +588,7 @@ h1.why{
     font-weight: 800;
 }
 #form-detail{
-    display: flex;
-    justify-content: space-between;
+    
     margin: 30px;
     padding: 80px;
     border: 2px solid #e1e1e1;
@@ -632,28 +631,41 @@ button.normal{
     color: white;
     width: 120px;
 }
-#form-detail .people div{
+.our_team{
+    font-size: 40px;
+}
+#meat_our_member{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 250px;
+    margin-right: 300px;
+}
+.people div{
     padding-bottom: 30px;
     display: flex;
     align-items: flex-start;
+    margin-top: 4px;
+    margin-left:20px;
 }
-#form-detail .people div img{
+.people div img{
     width: 130px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 15px;
 }
-#form-detail .people div p{
+.people div p{
     margin: 0;
     font-size: 15PX;
     line-height: 25PX;
 }
-#form-detail .people div span{
+.people div span{
     display: block;
     font-size: 18px;
     color: #1a1a1a  ;
 }
+
+
 #why {
     display: flex;
     justify-content: space-between;
@@ -1102,22 +1114,21 @@ button {
     padding: 20px;
 }
 .abcd{
-    width: 600px;
+    width: 500px;
 }
 .img_abcd{
-    margin-right: 50px;
-    margin-left: -390px;
+    margin-left: -300px;
 }
 #shop-details{
     display: grid;
     align-items:center;
     justify-content: space-between;
-    margin-left: 100px;
+    margin-left: 40px;
 }
 
 #shop-details h2{
     font-size: 35px;
-    line-height: 20px;
+    line-height: 40px;
     padding-bottom: 27px;
 }
 

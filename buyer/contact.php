@@ -55,9 +55,9 @@ if ($result) {
                     <li class="icon">
                         <div class="cart">
                             <a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a>
-                            <sup><?php if($row['product_count'] > 0){
-                                echo $row['product_count']; }?>
-                            </sup>
+                            <?php if($row['product_count'] > 0): ?>
+                        <sup><?php echo $row['product_count'];?></sup>
+                    <?php endif; ?>
                         </div>
                     </li>
                     <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
@@ -114,27 +114,42 @@ if ($result) {
                 <input type="text" name="email" placeholder="E-mail" required>
                 <!-- <input type="text" placeholder="Subject" required> -->
                 <textarea name="message" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
-                <button class="normal">Submit</button>
-            </form>
-            <div class="people">
+                <button class="normal">Submit</button><br><br>
+                
+            </form>    
+        </section>
+
+        <center><h2 class="our_team">Meat Our Developers</h2></center><br><br>
+        <section id="meat_our_member">
+        <div class="people">
                 <div>
                     <img src="../images/shlok.png">
-                    <p><span>Sholk Patel</span>Project Leader<br> Back-end Developer <br>Phone: +91 89800 72388<br>Email: agricart007@gmail.com</p>
+                    <p><span>Shlok Patel</span>Project Leader<br> Back-end Developer <br>Phone: +91 89800 72388<br>Email: agricart007@gmail.com</p>
                 </div>
                 <div>
+                    <img src="../images/punya.jpg">
+                    <p><span>Punya Patel</span>Back-end Developer<br>Phone: +91 93276 62196<br>Email: agricart007@gmail.com</p>
+                </div>
+                <div>
+                    <img src="../images/shreyansh.jpg">
+                    <p><span>Shreyansh Patel</span>Back-end Developer<br>Phone: +91 94295 24035<br>Email: agricart007@gmail.com</p>
+                </div><br><br>
+            </div>
+            <div class="people">
+                <div>
                     <img src="../images/vraj.png">
-                    <p><span>Vraj Patel</span>Web Designer<br>Phone: +91 98988 66307<br>Email: agricart007@gmail.com</p>
+                    <p><span>Vraj Patel</span>Web Designer <br>Phone: +91 98988 66307<br>Email: agricart007@gmail.com</p>
+                </div>
+                <div>
+                    <img src="../images/manthan.jpg">
+                    <p><span>Manthan Patel</span>Web Designer<br>Phone: +91 70416 23443<br>Email: agricart007@gmail.com</p>
                 </div>
                 <div>
                     <img src="../images/nand.png">
                     <p><span>Nand Patel</span>Web Designer<br>Phone: +91 99985 58383<br>Email: agricart007@gmail.com</p>
-                </div>
-                
+                </div><br><br>
             </div>
-            
         </section>
-
-
         
 
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
