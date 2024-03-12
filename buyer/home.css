@@ -325,7 +325,7 @@ button.normal{
     justify-content: center;
     align-items: flex-start;
     background-image: url("../images/sm-banner2.jpg");
-    min-width: 680px;
+    min-width: 650px;
     height: 50vh;
     background-size: cover;
     background-position: center;

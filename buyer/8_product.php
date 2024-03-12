@@ -89,13 +89,7 @@ if(isset($_POST['add_to_cart_short_cut'])) {
                 <div class="des">
                     <span><h5><?php echo $name; ?></h5></span>
                     <!-- <h5>700</h5> -->
-                    <div class="star">
-                        <?php
-                        for ($i = 0; $i < 2; $i++) {
-                            echo '<ion-icon name="star"></ion-icon>';
-                        }
-                        ?>
-                    </div>
+                    
                     <?php 
                         if ($row['quantity'] > 0) {
                             ?>

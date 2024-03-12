@@ -123,7 +123,7 @@ if ($result) {
         <section id="meat_our_member">
         <div class="people">
                 <div>
-                    <img src="../images/shlok.png">
+                    <img src="../images/image.jpg">
                     <p><span>Shlok Patel</span>Project Leader<br> Back-end Developer <br>Phone: +91 89800 72388<br>Email: agricart007@gmail.com</p>
                 </div>
                 <div>

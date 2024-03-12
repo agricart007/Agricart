@@ -56,9 +56,9 @@ if ($result) {
                     <li class="icon">
                         <div class="cart">
                             <a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a>
-                            <sup><?php if($row['product_count'] > 0){
-                                echo $row['product_count']; }?>
-                            </sup>
+                            <?php if ($row['product_count'] > 0): ?>
+                        <sup><?php echo $row['product_count']; ?></sup>
+                    <?php endif; ?>
                         </div>
                     </li>
                     <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
@@ -80,7 +80,7 @@ if ($result) {
         <section id="contact-details" class="section-p1">
             <div class="detalis">
                 <h2>About Our Website</h2>
-                <p>Welcome to [Your E-Commerce Website Name],<br> 
+                <p>Welcome to Agricart,<br> 
                     where we celebrate the dedication and hard work<br>
                     of our farming community. As stewards of the land,<br>
                     farmers play a crucial role in feeding the world,<br>
@@ -97,8 +97,8 @@ if ($result) {
                 <img src="../images/useless.jpg">
             </div>
             <div class="detalis">
-                <p>At [Your E-Commerce Website Name],we<br>
-                    understandthe unique challenges that farmers<br>
+                <p>At Agricart,<br>
+                we understandthe unique challenges that farmers<br>
                     face, from unpredictable weather conditions to<br>
                     market fluctuations. Our mission is to empower farmers<br>
                     by providing them with a convenient and efficient way<br>

@@ -112,14 +112,14 @@ if ($cartcount_result) {
             <li class="module"><a href="shop.php">Shop</a></li>
             <li class="module"><a href="about.php">About</a></li>
             <li class="module"><a href="contact.php">Contact</a></li>
-            <!-- <li class="icon"><a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a></li> -->
-            <div class="cart">
-                <li class="icon"><a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a></li>
-                <h4><?php if($row['product_count'] > 0){
-                    echo $row['product_count']; }?>
-                </h4>
+            <li class="icon">
+                <div class="cart">
+                    <a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a>
+                    <?php if ($row['product_count'] > 0): ?>
+                        <sup><?php echo $row['product_count']; ?></sup>
+                    <?php endif; ?>
 
-            </div>
+                    </div>
             <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
                         <div class="dropdown-content">
                               <a href="profile.php"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>

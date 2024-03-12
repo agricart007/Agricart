@@ -22,6 +22,10 @@ if ($result) {
     // Fetch the result
     $row = $result->fetch_assoc();
 }
+
+
+
+
 }
 ?>
 <!DOCTYPE html>
@@ -54,9 +58,10 @@ if ($result) {
             <li class="icon">
                 <div class="cart">
                     <a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a>
-                    <sup><?php if($row['product_count'] > 0){
-                        echo $row['product_count']; }?>
-                    </sup>
+                    <?php if ($row['product_count'] > 0): ?>
+                        <sup><?php echo $row['product_count']; ?></sup>
+                    <?php endif; ?>
+
                 </div>
             </li>
             <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>

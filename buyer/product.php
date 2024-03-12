@@ -104,9 +104,9 @@ if(isset($_SESSION['username'])) {
             <li class="icon">
                 <div class="cart">
                     <a href="cart.php"><ion-icon name="cart-outline"></ion-icon></a>
-                    <sup><?php if($row['product_count'] > 0){
-                        echo $row['product_count']; }?>
-                    </sup>
+                    <?php if ($row['product_count'] > 0): ?>
+                        <sup><?php echo $row['product_count']; ?></sup>
+                    <?php endif; ?>
                 </div>
             </li>
             <li class="dropdown"><a href="#" class="dropbtn"><ion-icon name="person-outline"></ion-icon></a>
@@ -141,13 +141,7 @@ if(isset($_SESSION['username'])) {
             <img src="<?php echo $image; ?>" alt="">
             <div class="des">
                 <h5><?php echo $name; ?></h5>
-                <div class="star">
-                        <?php
-                        for ($i = 0; $i < 2; $i++) {
-                            echo '<ion-icon name="star"></ion-icon>';
-                        }
-                        ?>
-                    </div>
+                
                 <?php 
                         if ($row['quantity'] > 0) {
                             ?>

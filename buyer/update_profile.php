@@ -6,7 +6,7 @@ include("../session/session_check.php");
 if(isset($_POST['save_profile'])) {
     $username = $_SESSION['username'];
 
-    $full_name = mysqli_real_escape_string($conn, $_POST['full_name']);
+    $full_name = mysqli_real_escape_string($conn, $_POST['first_name']);
     $contact_no = mysqli_real_escape_string($conn, $_POST['contact_no']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $address = mysqli_real_escape_string($conn, $_POST['address']);
