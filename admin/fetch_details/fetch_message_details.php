@@ -8,14 +8,15 @@ $query = "select* from contact_details";
 $result = mysqli_query($conn, $query);
 
 // Generate CSV content
-$csvContent = "Contact ID,Buyer Name,E-mail,Description,Status,Created On\n";
+$csvContent = "Buyer Name,E-mail,Description,Status,Created On\n";
 
 while ($row = mysqli_fetch_assoc($result)) {
+    $status = ($row['status'] == 0) ? "New" : "Viewed";
     $description = str_replace("\n", " ", $row['message']); // Replace newlines with spaces in the description
     $description = str_replace('"', '""', $description); // Escape double quotes in the description
     $createdOn = new DateTime($row['created_on']);
     $formattedCreatedOn = $createdOn->format('Y-m-d H:i:s'); // Adjust the format as needed
-    $csvContent .= "{$row['contact_id']},{$row['buyer_name']},{$row['email']}," . '"' . "{$description}" . '"' . ",{$row['status']},{$formattedCreatedOn}\n";
+    $csvContent .= "{$row['buyer_name']},{$row['email']}," . '"' . "{$description}" . '"' . ",{$status},{$formattedCreatedOn}\n";
 }
 
 // Set headers for CSV download

@@ -6,10 +6,15 @@ $query = "select * from seller_details";
 $result = mysqli_query($conn, $query);
 
 // Generate CSV content
-$csvContent = "Seller ID,Photo,First Name,Last Name,Email,Contact,Government ID,GST Number,Created On\n";
+$csvContent = "First Name,Last Name,Photo,Email,Contact,Government ID,GST Number,Created On,Account Status, Verification Status\n";
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $csvContent .= "{$row['seller_id']},{$row['photo']},{$row['first_name']},{$row['last_name']},{$row['email']},{$row['contact_no']},{$row['government_id']},{$row['gst_no']},{$row['created_on']}\n";
+    $photoFilename = $row['photo'];
+    $photoUri = "../../images/" . $photoFilename;
+    $status = ($row['status'] == 0) ? "active" : "disabled";
+    $verify = ($row['verify'] == 0) ? "verify" : "completed";
+    $gst = ($row['gst_no'] == 0) ? "------" : $row['gst_no'];
+    $csvContent .= "{$row['first_name']},{$row['last_name']},{$photoUri},{$row['email']},{$row['contact_no']},{$row['government_id']},{$gst},{$row['created_on']},{$status},{$verify}\n";
 }
 
 // Set headers for CSV download

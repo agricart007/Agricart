@@ -7,11 +7,18 @@ $query = "SELECT product_details.*, seller_details.first_name AS seller_name FRO
 $result = mysqli_query($conn, $query);
 
 // Generate CSV content
-$csvContent = "Product ID,Photo,Photo2,Photo3,Name,Seller Name,Price,Quantity,Description\n";
+$csvContent = "Product Name,Photo,Photo2,Photo3,Seller Name,Price,Quantity,Description\n";
 
 while ($row = mysqli_fetch_assoc($result)) {
+    $photoFilename = $row['photo'];
+    $photoUri = "../../images/" . $photoFilename;
+    $photoFilename = $row['photo2']; 
+    $photoUri2 = "../../images/" . $photoFilename;
+    $photoFilename = $row['photo3'];
+    $photoUri3 = "../../images/" . $photoFilename;
     $description = str_replace("\n", " ", $row['description']); // Replace newlines with spaces in the description
-    $csvContent .= "{$row['product_id']},{$row['photo']},{$row['photo2']},{$row['photo3']},{$row['name']},{$row['seller_name']},{$row['price']},{$row['quantity']},{$description}\n";
+    $description = str_replace('"', '""', $description); // Escape double quotes within the description
+    $csvContent .= "{$row['name']},{$photoUri},{$photoUri2},{$photoUri3},{$row['seller_name']},{$row['price']},{$row['quantity']},\"{$description}\"\n"; // Wrap description in double quotes
 }
 
 // Set headers for CSV download

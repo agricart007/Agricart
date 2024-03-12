@@ -453,11 +453,15 @@ main {
 .graph-board {
     position: relative;
 }
-.download-button {
+.graph-board button{
+    position: relative;
+    right: 10px;
+}
+/* .download-button {
     position: absolute;
     top: -8px;
-    right: -10px;
-}
+    right: -4px;
+} */
 
 .table-data {
 	display: flex;
@@ -641,7 +645,7 @@ input {
     cursor: pointer;
     height: 30px;
     width: 40px;
-    margin-left: 490px;
+    margin-left: 800px;
 } button {
     background-color: #396aff;
     color: #fff;

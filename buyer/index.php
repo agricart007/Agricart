@@ -22,10 +22,6 @@ if ($result) {
     // Fetch the result
     $row = $result->fetch_assoc();
 }
-
-
-
-
 }
 ?>
 <!DOCTYPE html>

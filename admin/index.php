@@ -33,8 +33,10 @@ $incomeData = mysqli_fetch_assoc($incomeResult);
 $totalIncome = $incomeData['totalIncome'];
 
 // Calculate total income for each month
-$incomeQuery = "SELECT DATE_FORMAT(order_date, '%b') AS month, SUM(price) AS monthlyIncome FROM order_details GROUP BY month";
-$incomeResult = mysqli_query($conn, $incomeQuery);
+$incomeQuery = "SELECT DATE_FORMAT(od.order_date, '%b %Y') AS month_year, SUM(od.price * od.quantity) AS monthlyIncome
+                FROM order_details od
+                GROUP BY DATE_FORMAT(od.order_date, '%Y-%m')
+                ORDER BY od.order_date";$incomeResult = mysqli_query($conn, $incomeQuery);
 
 // Initialize arrays to store month labels and corresponding income values
 $months = [];
@@ -42,7 +44,7 @@ $incomeData = [];
 
 // Fetch data and populate arrays
 while ($row = mysqli_fetch_assoc($incomeResult)) {
-    $months[] = $row['month'];
+    $months[] = $row['month_year'];
     $incomeData[] = $row['monthlyIncome'];
 }
 ?>

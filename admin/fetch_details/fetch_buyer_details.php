@@ -2,14 +2,20 @@
 include ("..\..\database\connection.php");
 
 // Fetch data from the buyer_details table
-$query = "select * from buyer_details";
+$query = "SELECT * FROM buyer_details";
 $result = mysqli_query($conn, $query);
 
 // Generate CSV content
-$csvContent = "Buyer ID,Photo,First Name,Last Name,Email,Contact,Created On,Address\n";
+$csvContent = "Name,Photo,Email,Contact,Address,State,Pin code,Created On\n";
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $csvContent .= "{$row['Buyer_id']},{$row['photo']},{$row['first_name']},{$row['last_name']},{$row['email']},{$row['contact']},{$row['created_on']},{$row['address']}\n";
+    $photoFilename = $row['photo'];
+    $photoUri = "../../images/" . $photoFilename;
+    $address = str_replace("\n", "\\n", $row['address']);
+    $state = str_replace("\n", "\\n", $row['state']);
+
+    // Concatenate CSV row with properly formatted data
+    $csvContent .= "{$row['full_name']},{$photoUri},{$row['email']},{$row['contact_no']},\"{$address}\",\"{$state}\",{$row['pin_code']},{$row['created_on']}\n";
 }
 
 // Set headers for CSV download
